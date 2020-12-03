@@ -32,5 +32,20 @@ namespace BankManage
             LoginForm login = new LoginForm();
             login.ShowDialog();
         }
+
+        private void ToggleButton_Click(object sender, RoutedEventArgs e)
+        {
+            DrawerHost.IsLeftDrawerOpen = tabSwitch.IsChecked.Value;
+        }
+
+        private void DrawerHost_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            tabSwitch.IsChecked = DrawerHost.IsLeftDrawerOpen;
+        }
+
+        private void DrawerHost_MouseMove(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            tabSwitch.IsChecked = DrawerHost.IsLeftDrawerOpen;
+        }
     }
 }

@@ -29,10 +29,8 @@
                     </materialDesign:PopupBox>
                     <StackPanel
                         Orientation="Horizontal">
-                        <ToggleButton
-                            Style="{DynamicResource MaterialDesignHamburgerToggleButton}"
-                            
-                            />
+                        <ToggleButton x:Name="tabSwitch"
+                            Style="{DynamicResource MaterialDesignHamburgerToggleButton}" Click="ToggleButton_Click"/>
                         <TextBlock
                         VerticalAlignment="Center"
                         Margin="16 0 0 0"
@@ -41,8 +39,45 @@
                 </DockPanel>
             </materialDesign:ColorZone>
         </StackPanel>
-        
-        <ScrollViewer VerticalScrollBarVisibility="Auto">
+
+        <materialDesign:DrawerHost x:Name="DrawerHost"
+              BorderBrush="{DynamicResource MaterialDesignDivider}" MouseMove="DrawerHost_MouseMove" >
+            <materialDesign:DrawerHost.Style>
+                <Style
+                      TargetType="materialDesign:DrawerHost"
+                      BasedOn="{StaticResource {x:Type materialDesign:DrawerHost}}">
+                    <Style.Triggers>
+                        <DataTrigger
+                              Binding="{Binding IsChecked, ElementName=BackgroundToggle}"
+                              Value="True">
+                            <Setter
+                                Property="OverlayBackground"
+                                Value="{DynamicResource PrimaryHueMidBrush}" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </materialDesign:DrawerHost.Style>
+            <materialDesign:DrawerHost.LeftDrawerContent>
+                <StackPanel
+                    Margin="16">
+                    <TextBlock
+                        Margin="4"
+                        HorizontalAlignment="Center"
+                        Text="LEFT FIELD" />
+                    <Button
+                        Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"
+                        CommandParameter="{x:Static Dock.Left}"
+                        Margin="4"
+                        HorizontalAlignment="Center"
+                        Style="{DynamicResource MaterialDesignFlatButton}"
+                        Content="CLOSE THIS" />
+                    <Button
+                        Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"
+                        Margin="4"
+                        HorizontalAlignment="Center"
+                        Style="{DynamicResource MaterialDesignFlatButton}"
+                        Content="CLOSE ALL" />
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
             <StackPanel DockPanel.Dock="Left" Width="170"  >
                 <StackPanel.Resources>
                     <Style TargetType="Button">
@@ -131,7 +166,13 @@
                 </Expander>
             </StackPanel>
         </ScrollViewer>
-        
-        <Frame Name="frame1" Margin=" 5 20 40 20" BorderThickness="2" BorderBrush="#FFA6C9FD" NavigationUIVisibility="Hidden" />
+                </StackPanel>
+            </materialDesign:DrawerHost.LeftDrawerContent>
+            <Grid>
+                    <DockPanel Grid.ColumnSpan="3" Grid.RowSpan="3">
+                        <Frame Name="frame1" BorderThickness="2" BorderBrush="#FFA6C9FD" NavigationUIVisibility="Hidden" />
+                    </DockPanel>
+            </Grid>
+        </materialDesign:DrawerHost>
     </DockPanel>
 </Window>
