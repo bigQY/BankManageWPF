@@ -1,0 +1,46 @@
+﻿<Page x:Class="BankManage.query.TotalQuery"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="500"
+	Title="汇总查询">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock Text="账户查询" FontSize="20" TextAlignment="Center" Grid.Row="0" Grid.ColumnSpan="3" ></TextBlock>
+            <TextBlock Margin="7"  Grid.Row="1">账户：</TextBlock>
+            <TextBox Name="txtID" Margin="5" Grid.Column="1"  Grid.Row="1"></TextBox>
+            <Button  Margin="5" Padding="2" Grid.Column="2"  Grid.Row="1" Click="Button_Click_1">查询</Button>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+               <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <DataGrid Grid.Row="0" AutoGenerateColumns="False" Background="#FFDDFBF9" Name="datagrid1" CanUserAddRows="False" CanUserDeleteRows="False" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="账号" Binding="{Binding accountNo}" Width="60" />
+                    <DataGridTemplateColumn Header="处理时间" Width="150"
+                        SortMemberPath="BirthDate"
+                        CellTemplate="{StaticResource DealDateTemplate}" />
+                    <DataGridTextColumn Header="处理类型" Binding="{Binding dealType}" Width="100"/>
+                    <DataGridTextColumn Header="处理金额" Binding="{Binding dealMoney}" Width="100"/>
+                    <DataGridTextColumn Header="账户余额" Binding="{Binding balance}" Width="*" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </Grid>
+</Page>

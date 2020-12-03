@@ -1,0 +1,7 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <DataTemplate x:Key="DealDateTemplate">
+        <TextBlock
+                Text="{Binding dealDate, StringFormat={}{0:yyyy-MM-dd HH:mm:ss}}" />
+    </DataTemplate>
+</ResourceDictionary>

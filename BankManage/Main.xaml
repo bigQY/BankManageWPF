@@ -1,0 +1,137 @@
+﻿<Window x:Class="BankManage.Main"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        Title="Main" Height="500" Width="700" WindowStartupLocation="CenterScreen" >
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Top" Height="60" OpacityMask="{DynamicResource {x:Static SystemColors.WindowBrushKey}}">
+            <materialDesign:ColorZone
+                  Mode="PrimaryMid"
+                  Padding="16">
+                <DockPanel>
+                    <materialDesign:PopupBox
+                          DockPanel.Dock="Right"
+                          PlacementMode="BottomAndAlignRightEdges">
+                        <ListBox>
+                            <ListBoxItem
+                                Content="帮助" />
+                            <ListBoxItem
+                                Content="关于" />
+                            <ListBoxItem
+                                Content="退出" />
+                        </ListBox>
+                    </materialDesign:PopupBox>
+                    <StackPanel
+                        Orientation="Horizontal">
+                        <ToggleButton
+                            Style="{DynamicResource MaterialDesignHamburgerToggleButton}"
+                            
+                            />
+                        <TextBlock
+                        VerticalAlignment="Center"
+                        Margin="16 0 0 0"
+                        Text="银行管理系统" />
+                    </StackPanel>
+                </DockPanel>
+            </materialDesign:ColorZone>
+        </StackPanel>
+        
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel DockPanel.Dock="Left" Width="170"  >
+                <StackPanel.Resources>
+                    <Style TargetType="Button">
+                        <Setter Property="Margin" Value="10 10 10 0" />
+                    </Style>
+                </StackPanel.Resources>
+                <Expander Header="存款取款" ExpandDirection="Down" IsExpanded="True">
+                    <StackPanel>
+                        <Button Height="50" Width="60" Tag="money/NewAccount.xaml" Click="Button_Click">
+                            <StackPanel Orientation="Vertical">
+                                <Image Source="images/btn1.png" Width="30" />
+                                <TextBlock Text="开户" VerticalAlignment="Center" />
+                            </StackPanel>
+                        </Button>
+                        <Button Height="50" Width="60" Tag="money/Deposit.xaml" Click="Button_Click">
+                            <StackPanel Orientation="Vertical">
+                                <Image Source="images/btn1.png" Width="30" />
+                                <TextBlock Text="存款" VerticalAlignment="Center" />
+                            </StackPanel>
+                        </Button>
+                        <Button Height="50" Width="60" Tag="money/Withdraw.xaml" Click="Button_Click">
+                            <StackPanel Orientation="Vertical">
+                                <Image Source="images/btn1.png" Width="30" />
+                                <TextBlock Text="取款" VerticalAlignment="Center" />
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                </Expander>
+                <Expander Header="汇总查询">
+                    <StackPanel>
+                        <Button Height="50" Width="60" Tag="query/DayQuery.xaml" Click="Button_Click">
+                            <StackPanel Orientation="Vertical">
+                                <Image Source="images/btn1.png" Width="30" />
+                                <TextBlock Text="当日汇总" VerticalAlignment="Center" />
+                            </StackPanel>
+                        </Button>
+                        <Button Height="50" Width="60" Tag="query/TotalQuery.xaml" Click="Button_Click">
+                            <StackPanel Orientation="Vertical">
+                                <Image Source="images/btn1.png" Width="30" />
+                                <TextBlock Text="汇总查询" VerticalAlignment="Center" />
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                </Expander>
+                <Expander Header="职员管理">
+                    <StackPanel>
+                        <Button Height="50" Width="60" Tag="employee/EmployeeBase.xaml" Click="Button_Click">
+                            <StackPanel Orientation="Vertical">
+                                <Image Source="images/btn1.png" Width="30" />
+                                <TextBlock Text="职员管理" VerticalAlignment="Center" />
+                            </StackPanel>
+                        </Button>
+                        <Button Height="50" Width="60" Tag="employee/ChangePay.xaml" Click="Button_Click">
+                            <StackPanel Orientation="Vertical">
+                                <Image Source="images/btn1.png" Width="30" />
+                                <TextBlock Text="调整工资" VerticalAlignment="Center" />
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                </Expander>
+                <Expander Header="其他功能">
+                    <StackPanel>
+                        <Button Height="50" Width="90" Tag="other/ChangeAccount.xaml" Click="Button_Click">
+                            <StackPanel Orientation="Vertical">
+                                <Image Source="images/btn1.png" Width="30" />
+                                <TextBlock Text="更改账户密码" VerticalAlignment="Center" />
+                            </StackPanel>
+                        </Button>
+                        <Button Height="50" Width="90" Tag="other/ChangeOperate.xaml" Click="Button_Click">
+                            <StackPanel Orientation="Vertical">
+                                <Image Source="images/btn1.png" Width="30" />
+                                <TextBlock Text="更改操作员密码" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                </Expander>
+                <Expander Header="利率设置">
+                    <Button Height="50" Width="60" Tag="rateManage/ratePage.xaml" Click="Button_Click">
+                        <StackPanel Orientation="Vertical">
+                            <Image Source="images/btn1.png" Width="30" />
+                            <TextBlock Text="利率设置" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                </Expander>
+                <Expander Header="系统帮助">
+                </Expander>
+            </StackPanel>
+        </ScrollViewer>
+        
+        <Frame Name="frame1" Margin=" 5 20 40 20" BorderThickness="2" BorderBrush="#FFA6C9FD" NavigationUIVisibility="Hidden" />
+    </DockPanel>
+</Window>

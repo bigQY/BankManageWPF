@@ -1,0 +1,87 @@
+﻿<Window x:Class="BankManage.LoginForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Title="用户登录" Height="300" Width="400" 
+        Closing="Window_Closing"  
+        SourceInitialized="Window_SourceInitialized_1"
+        WindowStyle="None" 
+        AllowsTransparency="True" 
+        Background="Transparent" 
+        OpacityMask="White" 
+        ResizeMode="NoResize" 
+        WindowStartupLocation="CenterScreen">
+
+    <materialDesign:Card UniformCornerRadius="12" >
+        <Grid
+            Background="{DynamicResource MaterialDesignPaper}" Margin="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"></RowDefinition>
+                <RowDefinition Height="2*"></RowDefinition>
+                <RowDefinition Height="2*"></RowDefinition>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+                <ColumnDefinition Width="6*" ></ColumnDefinition>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock  TextAlignment="Center" HorizontalAlignment="Center"  TextWrapping="Wrap" Text="用户登录" VerticalAlignment="Center" Height="35" FontSize="20" FontWeight="Bold" Margin="0" Grid.Column="1"></TextBlock>
+            <TextBlock Grid.Row="1" Grid.Column="0" TextAlignment="Right"  TextWrapping="Wrap"  Height="23" Margin="0,10,0,0" HorizontalAlignment="Right" VerticalAlignment="Center">
+                <materialDesign:PackIcon Kind="Account" Margin="0,5,0,0" />
+            </TextBlock>
+            <ComboBox 
+                materialDesign:HintAssist.Hint="账号"
+                materialDesign:HintAssist.HelperText="请选择您的账号"
+                Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                Grid.Row="1" Grid.Column="1" x:Name="combox" HorizontalAlignment="Center" Margin="0"  Width="190" FontSize="13" AutomationProperties.HelpText="账号" />
+            <TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" TextWrapping="Wrap"   Height="23" Margin="0,10,0,0" VerticalAlignment="Center">
+                <materialDesign:PackIcon Kind="Key" Margin="0,5,0,0" />
+            </TextBlock>
+            <PasswordBox 
+                x:Name="pass" 
+                materialDesign:HintAssist.Hint="密码"
+                materialDesign:HintAssist.HelperText="密码若不慎遗忘，请联系管理员重置"
+                Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
+                HorizontalAlignment="Center"  
+                Width="190" Grid.Column="1" 
+                Grid.Row="2" Margin="0" 
+                VerticalAlignment="Center"
+                />
+            <Button  Grid.Row="3" Content="登录"  HorizontalAlignment="Center"  VerticalAlignment="Center" Width="62" Click="Button_Click_1" Grid.Column="1" Margin="0"/>
+           
+
+            <Button    
+                     HorizontalAlignment="Right" 
+                     Click="Button_Click_2" 
+                     Grid.Column="2" 
+                     VerticalAlignment="Top" 
+                     Width="32" 
+                     Foreground="#DD868686" 
+                     FontSize="28"
+                     Style="{StaticResource MaterialDesignIconForegroundButton}"
+                     ToolTip="退出" Height="32" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+                <materialDesign:PackIcon
+                        Kind="Close" />
+                </Button>
+
+            <!-- long hand form for setting the message -->
+            <materialDesign:Snackbar
+                x:Name="SnackbarMessage"
+                IsActive="False" Grid.Row="2" Grid.RowSpan="2" Grid.ColumnSpan="3">
+                <materialDesign:SnackbarMessage
+                    Content="登录失败"
+                    ActionContent="确定" ActionClick="SnackbarMessage_ActionClick" />
+            </materialDesign:Snackbar>
+
+        </Grid>
+    </materialDesign:Card>
+</Window>
