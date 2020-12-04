@@ -9,7 +9,7 @@
 
     <Grid>
         <StackPanel>
-            <DataGrid Grid.Row="0" AutoGenerateColumns="False" Background="#FFDDFBF9" Name="datagrid1"  CanUserAddRows="False" CanUserDeleteRows="False">
+            <DataGrid Grid.Row="0" AutoGenerateColumns="False" Background="#FFDDFBF9" Name="datagrid1"  CanUserAddRows="False" CanUserDeleteRows="False" Margin="10">
                 <DataGrid.Columns>
                     <DataGridTemplateColumn Header="处理时间" Width="150"
                         SortMemberPath="BirthDate"

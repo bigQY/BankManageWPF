@@ -1,0 +1,155 @@
+﻿<Window x:Class="BankManage.Welcome"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:local="clr-namespace:BankManage" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="Welcome" 
+        d:DesignHeight="547.308" d:DesignWidth="909.644">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="8*"/>
+            <ColumnDefinition Width="8*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Center"  Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Grid.ColumnSpan="2" FontSize="24" TextAlignment="Justify">
+            <materialDesign:PackIcon Kind="Bank" Width="44" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0" />欢迎使用银行管理系统
+        </TextBlock>
+        <Button
+              Style="{StaticResource MaterialDesignFlatButton}"
+              Click="ButtonBase_OnClick"
+              ToolTip="MaterialDesignFlatButton" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center"
+                >
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="Binoculars"/>
+                    <TextBlock Margin="8 0 0 0" Text="功能一览"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+
+        <materialDesign:Card
+                        Width="420"
+                        Margin="4 2 8 16"
+                        Height="300" Grid.RowSpan="3" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center">
+            <Grid VerticalAlignment="Stretch" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Image
+                     Source="/res/cs.jpg"
+                     Grid.RowSpan="5"
+                     StretchDirection="Both"
+                     VerticalAlignment="Stretch"
+                     Stretch="UniformToFill"/>
+
+                <TextBlock
+                                Grid.Column="1"
+                                Style="{StaticResource MaterialDesignHeadline5TextBlock}"
+                                Margin="16 16 16 2"
+                                Text="C# 综合实验"/>
+
+                <TextBlock
+                                Grid.Column="1"
+                                Grid.Row="1"
+                                TextWrapping="Wrap"
+                                Margin="16 0 16 8"
+                                Foreground="{DynamicResource MaterialDesignBodyLight}"
+                                VerticalAlignment="Center"
+                                Text="本次实验作业内容：使用WPF实现一个简易的银行管理系统，实现存款取款、汇总查询、职员管理、利率设置、辅助功能和帮助等模块。制作人为刘国庆和赵浩森，点击下方按钮获取更多相关内容"/>
+
+                <Border
+                                Grid.Column="1"
+                                Grid.Row="2"
+                                BorderThickness="0 1 0 0"
+                                BorderBrush="{DynamicResource MaterialDesignDivider}"
+                                Margin="0 8 0 0">
+                    <Grid Margin="8">
+                        <Button
+                                        Style="{DynamicResource MaterialDesignFlatButton}"
+                                        HorizontalAlignment="Left"
+                                        x:Name="GitHubButton" Click="GitHubButton_OnClick">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="Github"/>
+                                <TextBlock
+                                                Margin="8 0 0 0"
+                                                VerticalAlignment="Center"
+                                                Text="GitHub"/>
+                            </StackPanel>
+                        </Button>
+
+                        <Button
+                                        Style="{DynamicResource MaterialDesignFlatButton}"
+                                        HorizontalAlignment="Right"
+                                        x:Name="TwitterButton"
+                                        >
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="Twitter"/>
+                                <TextBlock
+                                                Margin="8 0 0 0"
+                                                VerticalAlignment="Center"
+                                                Text="Twitter"/>
+                            </StackPanel>
+                        </Button>
+                    </Grid>
+                </Border>
+
+                <Border
+                                Grid.Column="1"
+                                Grid.Row="3"
+                                BorderThickness="0 1 0 0"
+                                BorderBrush="{DynamicResource MaterialDesignDivider}">
+                    <Grid Margin="8">
+                        <Button
+                                        Style="{DynamicResource MaterialDesignFlatButton}"
+                                        HorizontalAlignment="Left"
+                                        x:Name="ChatButton"
+                                        >
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="Message"/>
+                                <TextBlock
+                                                Margin="8 0 0 0"
+                                                VerticalAlignment="Center"
+                                                Text="Chat"/>
+                            </StackPanel>
+                        </Button>
+
+                        <Button
+                                        Style="{DynamicResource MaterialDesignFlatButton}"
+                                        HorizontalAlignment="Right"
+                                        x:Name="EmailButton"
+                                        >
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="Email"/>
+                                <TextBlock
+                                                Margin="8 0 0 0"
+                                                VerticalAlignment="Center"
+                                                Text="Email"/>
+                            </StackPanel>
+                        </Button>
+                    </Grid>
+                </Border>
+            </Grid>
+        </materialDesign:Card>
+
+    </Grid>
+</Window>

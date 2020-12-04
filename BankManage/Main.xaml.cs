@@ -18,6 +18,8 @@ namespace BankManage
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            tabSwitch.IsChecked = false;
+            DrawerHost.IsLeftDrawerOpen=false;
             Button item = e.Source as Button;
             if (item != null)
             {
@@ -27,7 +29,7 @@ namespace BankManage
         void MainWindow_SourceInitialized(object sender, System.EventArgs e)
         {
             //默认显示当前页面
-            this.frame1.Source = new Uri("money/OperateRecord.xaml", UriKind.Relative);
+            this.frame1.Source = new Uri("other/WelcomePage.xaml", UriKind.Relative);
             //启动登陆窗体
             LoginForm login = new LoginForm();
             login.ShowDialog();
