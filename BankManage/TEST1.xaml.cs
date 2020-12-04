@@ -13,18 +13,5 @@ namespace BankManage
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            var dialog = new MaterialDesignThemes.Wpf.DialogHost();
-
-            //MaterialDesignThemes.Wpf.DialogHost.Show();
-        }
-
-        
-
-        private void ToggleButton_Click(object sender, RoutedEventArgs e)
-        {
-            tabswitch.IsChecked = DrawerHost.IsLeftDrawerOpen;
-        }
     }
 }

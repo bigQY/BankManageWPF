@@ -24,12 +24,12 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <TextBlock Grid.Column="1" HorizontalAlignment="Center"  Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Grid.ColumnSpan="2" FontSize="24" TextAlignment="Justify">
-            <materialDesign:PackIcon Kind="Bank" Width="44" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0" />欢迎使用银行管理系统
+            <materialDesign:PackIcon Kind="Bank" Width="44" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0" />欢迎使用 中国天地银行 管理系统
         </TextBlock>
         <Button
               Style="{StaticResource MaterialDesignFlatButton}"
              
-              ToolTip="MaterialDesignFlatButton" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center"
+              ToolTip="点击左上角即可展开功能面板" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center"
                 >
             <Button.Content>
                 <StackPanel Orientation="Horizontal">
