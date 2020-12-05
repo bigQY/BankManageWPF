@@ -3,11 +3,43 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+      TextElement.FontWeight="Regular"
+      TextElement.FontSize="13"
+      TextOptions.TextFormattingMode="Ideal"
+      TextOptions.TextRenderingMode="Auto"
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
-	Title="EmployeeBase">
+      d:DesignHeight="322.749" d:DesignWidth="520.379"
+	  Title="EmployeeBase">
 
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="8*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <DataGrid x:Name="employee_DataGrid" Grid.Column="1" Grid.RowSpan="2" Margin="0,0,0,10" ItemsSource="{Binding DataGridContexts}"/>
+        <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button d:LayoutOverrides="Height"  Width="75" Margin="10,0" ToolTip="编辑">
+                <materialDesign:PackIcon Kind="Brush" />
+            </Button>
+            <Button d:LayoutOverrides="Height" Width="75" Margin="10,0" ToolTip="删除">
+                <materialDesign:PackIcon Kind="DeleteForever" />
+            </Button>
+            <Button d:LayoutOverrides="Height" Width="75" Margin="10,0" ToolTip="查看详细信息 ">
+                <materialDesign:PackIcon Kind="AccountDetails" />
+            </Button>
+            <Button d:LayoutOverrides="Height" Width="75" Margin="10,0" ToolTip="添加职员">
+                <materialDesign:PackIcon Kind="AccountMultiplePlus" />
+            </Button>
+        </StackPanel>
         
+
     </Grid>
 </Page>
