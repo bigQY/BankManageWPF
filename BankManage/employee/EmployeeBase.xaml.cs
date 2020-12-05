@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Controls;
@@ -10,6 +11,7 @@ namespace BankManage.employee
     /// </summary>
     public partial class EmployeeBase : Page
     {
+        BankEntities context;
         public List<EmployeeDataGridContext> dataGridContexts = new List<EmployeeDataGridContext>();
         public List<EmployeeDataGridContext> DataGridContexts
         {
@@ -20,7 +22,7 @@ namespace BankManage.employee
         {
             InitializeComponent();
             
-            BankEntities context = new BankEntities();
+            context = new BankEntities();
             var query = from t in context.EmployeeInfo
                         select t;
             foreach( var i in query)
@@ -30,10 +32,57 @@ namespace BankManage.employee
             DataContext = this;
             //this.employee_DataGrid.ItemsSource = query.ToList();
         }
+
+        private void editButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+
+        }
+
+        private void deleteButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            List<EmployeeDataGridContext> deletedDataGridContexts = new List<EmployeeDataGridContext>();
+            foreach (var i in dataGridContexts)
+            {
+                if (i.选择)
+                {
+                    try
+                    {
+                        context.EmployeeInfo.Remove(i.GetEmployeeInfo());
+                        deletedDataGridContexts.Add(i);
+                    }
+                    catch (Exception)
+                    {
+                        throw;
+                    }
+                }
+            }
+            foreach(var i in deletedDataGridContexts)
+            {
+                dataGridContexts.Remove(i);
+            }
+            employee_DataGrid.ItemsSource = null;
+            employee_DataGrid.ItemsSource = dataGridContexts;
+            context.SaveChanges();
+        }
+
+        private void detailButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+
+        }
+
+        private void addEmployerButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+
+        }
     }
 
     public class EmployeeDataGridContext {
         private EmployeeInfo employeeInfo;
+
+        public EmployeeInfo GetEmployeeInfo()
+        {
+            return employeeInfo;
+        }
         public EmployeeDataGridContext(EmployeeInfo  employeeInfo)
         {
             this.employeeInfo = employeeInfo;
