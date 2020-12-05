@@ -110,6 +110,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BankModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="DataBridge.cs" />
     <Compile Include="EmployeeInfo.cs">
       <DependentUpon>BankModel.tt</DependentUpon>
     </Compile>

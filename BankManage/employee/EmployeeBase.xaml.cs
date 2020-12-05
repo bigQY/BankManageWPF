@@ -35,7 +35,21 @@ namespace BankManage.employee
 
         private void editButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
+            putSelectedEmployerToDataBridge();
+            DataBridge.GetInstance().getDictionary().Add("employerOperate", "edit");
+            new EmployeeDetail().Show();
+        }
 
+        private void putSelectedEmployerToDataBridge()
+        {
+            foreach (var i in dataGridContexts)
+            {
+                if (i.选择)
+                {
+                    DataBridge.GetInstance().getDictionary().Add("seletedEmployer", i);
+                    break;
+                }
+            }
         }
 
         private void deleteButton_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -67,11 +81,16 @@ namespace BankManage.employee
 
         private void detailButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
+            putSelectedEmployerToDataBridge();
+            DataBridge.GetInstance().getDictionary().Add("employerOperate", "detail");
+            new EmployeeDetail().Show();
 
         }
 
         private void addEmployerButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
+            DataBridge.GetInstance().getDictionary().Add("employerOperate", "add");
+            new EmployeeDetail().Show();
 
         }
     }

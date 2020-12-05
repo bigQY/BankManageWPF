@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="EmployeeDetail" Height="450" Width="800">
     <Grid>
-        
+        <TextBox x:Name="testbox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+
     </Grid>
 </Window>

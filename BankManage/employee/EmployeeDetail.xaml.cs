@@ -22,6 +22,9 @@ namespace BankManage.employee
         public EmployeeDetail()
         {
             InitializeComponent();
+            object op;
+            DataBridge.GetInstance().getDictionary().TryGetValue("employerOperate", out op);
+            testbox.Text = (string)op;
         }
     }
 }
