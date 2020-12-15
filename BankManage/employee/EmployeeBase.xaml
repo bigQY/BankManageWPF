@@ -57,8 +57,10 @@
                         <TextBox x:Name="detailName" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="100" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Grid.Row="2">
-                        <Label Content="性别" VerticalAlignment="Center" Width="80"/>
-                        <TextBox x:Name="detailSex" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="100"/>
+                        <Label Content="性别" VerticalAlignment="Center" Width="40"/>
+                        <TextBox x:Name="detailSex" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="25"/>
+                        <Label Content="工资" VerticalAlignment="Center" Width="40"/>
+                        <TextBox x:Name="detailSalary" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="75"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Grid.Row="3">
                         <Label Content="身份证号" VerticalAlignment="Center" Width="80"/>
@@ -73,7 +75,15 @@
                         <DatePicker x:Name="detailDate" Width="100"/>
                         
                     </StackPanel>
-                    <Image x:Name="detailPhoto" Grid.Column="1"  Grid.RowSpan="3" />
+                    <Button
+                        Grid.Column="1"  Grid.RowSpan="3"
+                        Style="{StaticResource MaterialDesignIconButton}"
+                        Background="{DynamicResource MaterialDesignTextFieldBoxBackground}"
+                        ToolTip="点击选择新照片" Width="180" Height="180">
+                        <Image
+                            x:Name="detailPhoto"
+                            Source="cs.jpg" Width="180" Height="180" />
+                    </Button>
                 </Grid>
                 <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" >
                     <Button Content="确定" Height="Auto" Width="75" Margin="0,0,20,0" Click="Button_Click_Ok"/>

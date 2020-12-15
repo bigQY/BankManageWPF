@@ -343,6 +343,7 @@
       <DependentUpon>Bank.mdf</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="employee\cs.jpg" />
     <Resource Include="res\cs.jpg" />
   </ItemGroup>
   <ItemGroup />

@@ -21,5 +21,6 @@ namespace BankManage
         public string telphone { get; set; }
         public string idCard { get; set; }
         public byte[] photo { get; set; }
+        public Nullable<decimal> salary { get; set; }
     }
 }

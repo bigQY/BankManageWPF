@@ -127,6 +127,7 @@ namespace BankManage.employee
                 detailPhone.IsEnabled = false;
                 detailIDCard.IsEnabled = false;
                 detailDate.IsEnabled = false;
+                detailSalary.IsEnabled = false;
 
                 dialogHost.IsOpen = true;
 
@@ -151,6 +152,7 @@ namespace BankManage.employee
                 detailPhone.Text = SelectedEmployee.telphone;
                 detailIDCard.Text = SelectedEmployee.idCard;
                 detailDate.SelectedDate = SelectedEmployee.workDate;
+                detailSalary.Text = SelectedEmployee.salary.ToString();
 
                 if (SelectedEmployee.photo != null)
                 {
@@ -232,6 +234,7 @@ namespace BankManage.employee
                     employeeInfo.telphone=detailPhone.Text;
                     employeeInfo.idCard=detailIDCard.Text;
                     employeeInfo.workDate=detailDate.SelectedDate;
+                    employeeInfo.salary = decimal.Parse(detailSalary.Text);
                     context.SaveChanges();
                     break;
                    
@@ -243,7 +246,8 @@ namespace BankManage.employee
                     newEmployeeInfo.telphone = detailPhone.Text;
                     newEmployeeInfo.idCard = detailIDCard.Text;
                     newEmployeeInfo.workDate = detailDate.SelectedDate;
-                    newEmployeeInfo.photo = null;
+                    newEmployeeInfo.photo =new byte[10];
+                    newEmployeeInfo.salary = decimal.Parse(detailSalary.Text);
                     context.EmployeeInfo.Add(newEmployeeInfo);
                     context.SaveChanges();
                     break;
@@ -254,6 +258,7 @@ namespace BankManage.employee
                     detailPhone.IsEnabled = true;
                     detailIDCard.IsEnabled = true;
                     detailDate.IsEnabled = true;
+                    detailSalary.IsEnabled = true;
                     break;
                 case Operation.remove:
                     break;
@@ -276,6 +281,7 @@ namespace BankManage.employee
                     detailPhone.IsEnabled = true;
                     detailIDCard.IsEnabled = true;
                     detailDate.IsEnabled = true;
+                    detailSalary.IsEnabled = true;
                     break;
                 default:
                     break;

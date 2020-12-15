@@ -1,4 +1,4 @@
-﻿// 为模型“D:\01.课程教学\4.C#程序设计【第3版】\0.C#程序设计-2016\06.实验指导及参考程序\BankManager\BankManage\BankManage\BankModel.edmx”启用了 T4 代码生成。
+﻿// 为模型“C:\Users\战神\OneDrive\桌面\文档\C#\实验指导\BankManager\BankManage\BankManage\BankModel.edmx”启用了 T4 代码生成。
 // 要启用旧代码生成功能，请将“代码生成策略”设计器属性的值
 // 更改为“旧的 ObjectContext”。当在设计器中打开该模型时，此属性会出现在
 // “属性”窗口中。

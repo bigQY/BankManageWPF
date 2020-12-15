@@ -24,7 +24,7 @@
                             <ListBoxItem
                                 Content="关于" />
                             <ListBoxItem
-                                Content="退出" />
+                                Content="退出" Selected="ListBoxItem_Selected" />
                         </ListBox>
                     </materialDesign:PopupBox>
                     <StackPanel
@@ -32,9 +32,9 @@
                         <ToggleButton x:Name="tabSwitch"
                             Style="{DynamicResource MaterialDesignHamburgerToggleButton}" Click="ToggleButton_Click"/>
                         <TextBlock
-                        VerticalAlignment="Center"
-                        Margin="16 0 0 0"
-                        Text="银行管理系统" />
+                            VerticalAlignment="Center"
+                            Margin="16 0 0 0"
+                            Text="银行管理系统" />
                     </StackPanel>
                 </DockPanel>
             </materialDesign:ColorZone>
@@ -62,7 +62,7 @@
                     Margin="16">
                     <ScrollViewer VerticalScrollBarVisibility="Visible" Height="580">
                         <StackPanel Width="170"  >
-                            <Expander Header="存款取款" ExpandDirection="Down" IsExpanded="True">
+                            <Expander Header="存款取款" ExpandDirection="Down" >
                                 <StackPanel x:Name="spbody">
                                     <Button
                                             Tag="money/NewAccount.xaml" Click="Button_Click"
@@ -88,33 +88,33 @@
                             <Expander Header="汇总查询">
                                 <StackPanel>
                                     <Button
-                             Tag="query/DayQuery.xaml" Click="Button_Click"
-                             Style="{StaticResource MaterialDesignRaisedButton}"
-                             materialDesign:ButtonAssist.CornerRadius="16"
-                             ToolTip="查看当日的汇总数据"
-                             Content="当日汇总" Margin="10,3" />
+                                         Tag="query/DayQuery.xaml" Click="Button_Click"
+                                         Style="{StaticResource MaterialDesignRaisedButton}"
+                                         materialDesign:ButtonAssist.CornerRadius="16"
+                                         ToolTip="查看当日的汇总数据"
+                                         Content="当日汇总" Margin="10,3" />
                                     <Button
-                             Tag="query/TotalQuery.xaml" Click="Button_Click"
-                             Style="{StaticResource MaterialDesignRaisedButton}"
-                             materialDesign:ButtonAssist.CornerRadius="16"
-                             ToolTip="查看汇总数据"
-                             Content="汇总查询" Margin="10,3" />
+                                         Tag="query/TotalQuery.xaml" Click="Button_Click"
+                                         Style="{StaticResource MaterialDesignRaisedButton}"
+                                         materialDesign:ButtonAssist.CornerRadius="16"
+                                         ToolTip="查看汇总数据"
+                                         Content="汇总查询" Margin="10,3" />
                                 </StackPanel>
                             </Expander>
                             <Expander Header="职员管理">
                                 <StackPanel>
                                     <Button
-                             Tag="employee/EmployeeBase.xaml" Click="Button_Click"
-                             Style="{StaticResource MaterialDesignRaisedButton}"
-                             materialDesign:ButtonAssist.CornerRadius="16"
-                             ToolTip="今天又要开除谁呢"
-                             Content="职员管理" Margin="10,3" />
+                                         Tag="employee/EmployeeBase.xaml" Click="Button_Click"
+                                         Style="{StaticResource MaterialDesignRaisedButton}"
+                                         materialDesign:ButtonAssist.CornerRadius="16"
+                                         ToolTip="今天又要开除谁呢"
+                                         Content="职员管理" Margin="10,3" />
                                     <Button
-                             Tag="employee/ChangePay.xaml" Click="Button_Click"
-                             Style="{StaticResource MaterialDesignRaisedButton}"
-                             materialDesign:ButtonAssist.CornerRadius="16"
-                             ToolTip="万恶的资本主义"
-                             Content="调整工资" Margin="10,3" />
+                                         Tag="employee/ChangePay.xaml" Click="Button_Click"
+                                         Style="{StaticResource MaterialDesignRaisedButton}"
+                                         materialDesign:ButtonAssist.CornerRadius="16"
+                                         ToolTip="万恶的资本主义"
+                                         Content="调整工资" Margin="10,3" />
                                 </StackPanel>
                             </Expander>
                             <Expander Header="其他功能">

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="BankModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="BankModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AccountInfo">
           <Key>
             <PropertyRef Name="accountNo" />
@@ -26,6 +26,7 @@
           <Property Name="telphone" Type="nvarchar" MaxLength="11" />
           <Property Name="idCard" Type="nchar" MaxLength="18" />
           <Property Name="photo" Type="varbinary(max)" />
+          <Property Name="salary" Type="decimal" Precision="18" Scale="4" />
         </EntityType>
         <EntityType Name="LoginInfo">
           <Key>
@@ -59,8 +60,7 @@
           <EntitySet Name="MoneyInfo" EntityType="Self.MoneyInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RateInfo" EntityType="Self.RateInfo" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BankModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -85,6 +85,7 @@
           <Property Name="telphone" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
           <Property Name="idCard" Type="String" MaxLength="18" FixedLength="true" Unicode="true" />
           <Property Name="photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="salary" Type="Decimal" Precision="18" Scale="4" />
         </EntityType>
         <EntityType Name="LoginInfo">
           <Key>
@@ -138,6 +139,7 @@
           <EntitySetMapping Name="EmployeeInfo">
             <EntityTypeMapping TypeName="BankModel.EmployeeInfo">
               <MappingFragment StoreEntitySet="EmployeeInfo">
+                <ScalarProperty Name="salary" ColumnName="salary" />
                 <ScalarProperty Name="EmployeeNo" ColumnName="EmployeeNo" />
                 <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
                 <ScalarProperty Name="sex" ColumnName="sex" />
