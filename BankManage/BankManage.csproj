@@ -340,8 +340,8 @@
       <LastGenOutput>BankModel.cs</LastGenOutput>
     </Content>
     <Content Include="Bank_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>Bank.mdf</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Resource Include="res\cs.jpg" />
   </ItemGroup>

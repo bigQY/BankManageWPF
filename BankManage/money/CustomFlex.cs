@@ -26,7 +26,7 @@ namespace BankManage.money
                 return;
             }
             base.Create(accountNumber, money);
-            this.promisedMoney = promisedMoney;
+            this.promisedMoney = money;
         }
 
         /// <summary>

@@ -24,7 +24,7 @@ namespace BankManage.employee
             InitializeComponent();
             object op;
             DataBridge.GetInstance().getDictionary().TryGetValue("employerOperate", out op);
-            testbox.Text = (string)op;
+           
         }
     }
 }

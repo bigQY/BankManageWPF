@@ -139,5 +139,24 @@ namespace BankManage.common
             }
             return false;
         }
+
+        public static double GetCustomerPromisedMoney(Custom custom)
+        {
+            BankEntities c = new BankEntities();
+            var q = from t in c.MoneyInfo
+                    where t.accountNo == custom.AccountInfo.accountNo
+                    where t.dealType == "零存整取开户"
+                    select t.dealMoney;
+            return q.First();
+        }
+
+        public static IQueryable<EmployeeInfo> GetEmployeeInfos()
+        {
+            BankEntities context = new BankEntities();
+            var query = from t in context.EmployeeInfo
+                        select t;
+            return query;
+        }
+
     }
 }

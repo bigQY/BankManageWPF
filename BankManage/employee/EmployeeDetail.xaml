@@ -6,8 +6,63 @@
         xmlns:local="clr-namespace:BankManage.employee"
         mc:Ignorable="d"
         Title="EmployeeDetail" Height="450" Width="800">
-    <Grid>
-        <TextBox x:Name="testbox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+    <Grid Width="600" Height="400">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="8*"/>
+            <ColumnDefinition Width="*"/>
 
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="*"/>
+
+        </Grid.RowDefinitions>
+        <Grid Grid.Column="1" Grid.Row="1" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+
+
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal" >
+                <Label Content="职工号" VerticalAlignment="Center" Width="80"/>
+                <TextBox x:Name="detailNo" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="100"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="1" >
+                <Label Content="姓名" VerticalAlignment="Center" Width="80"/>
+                <TextBox x:Name="detailName" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="100" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="2">
+                <Label Content="性别" VerticalAlignment="Center" Width="80"/>
+                <TextBox x:Name="detailSex" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="100"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="3">
+                <Label Content="身份证号" VerticalAlignment="Center" Width="80"/>
+                <TextBox x:Name="detailIDCard" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="100"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="4" >
+                <Label Content="电话" VerticalAlignment="Center" Width="80"/>
+                <TextBox x:Name="detailPhone" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="100"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="5">
+                <Label Content="入职日期" VerticalAlignment="Center" Width="80"/>
+                <DatePicker x:Name="detailDate" Width="100"/>
+            </StackPanel>
+            <Image x:Name="detailPhoto" Grid.Column="1"  Grid.RowSpan="3" />
+        </Grid>
+        <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" >
+            <Button Content="确定" Height="Auto" Width="75" Margin="0,0,20,0"/>
+            <Button Content="取消" Height="Auto" Width="75" Margin="20,0,0,0"/>
+        </StackPanel>
     </Grid>
 </Window>

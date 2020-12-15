@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media.Imaging;
+using BankManage.common;
 
 namespace BankManage.employee
 {
@@ -11,6 +15,15 @@ namespace BankManage.employee
     /// </summary>
     public partial class EmployeeBase : Page
     {
+        enum Operation { none,edit,remove,add,detail}
+        Operation selectedOperation = Operation.none;
+        public EmployeeInfo SelectedEmployee
+        {
+            get;
+            set;
+        }
+
+
         BankEntities context;
         public List<EmployeeDataGridContext> dataGridContexts = new List<EmployeeDataGridContext>();
         public List<EmployeeDataGridContext> DataGridContexts
@@ -21,24 +34,48 @@ namespace BankManage.employee
         public EmployeeBase()
         {
             InitializeComponent();
-            
-            context = new BankEntities();
-            var query = from t in context.EmployeeInfo
-                        select t;
-            foreach( var i in query)
+
+            var query = DataOperation.GetEmployeeInfos();
+            foreach (var i in query)
             {
                 dataGridContexts.Add(new EmployeeDataGridContext(i));
             }
             DataContext = this;
+
             //this.employee_DataGrid.ItemsSource = query.ToList();
         }
 
         private void editButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            dialogHost.IsOpen = true;
-            putSelectedEmployerToDataBridge();
-            DataBridge.GetInstance().getDictionary().Add("employerOperate", "edit");
-            new EmployeeDetail().Show();
+
+            context = new BankEntities();
+            string selectedID = "-1";
+            foreach (var i in dataGridContexts)
+            {
+                if (i.选择)
+                {
+                    selectedID = i.职工号;
+                }
+            }
+            if (selectedID.Equals("-1"))
+            {
+                MessageBox.Show("未选择员工");
+            }
+            else
+            {
+                var q = from t in context.EmployeeInfo
+                        where t.EmployeeNo == selectedID
+                        select t;
+                SelectedEmployee = q.First();
+                updateForm();
+                dialogHost.IsOpen = true;
+                selectedOperation = Operation.edit;
+            }
+            
+
+            //putSelectedEmployerToDataBridge();
+            //DataBridge.GetInstance().getDictionary().Add("employerOperate", "edit");
+            //new EmployeeDetail().Show();
         }
 
         private void putSelectedEmployerToDataBridge()
@@ -71,7 +108,7 @@ namespace BankManage.employee
                     }
                 }
             }
-            foreach(var i in deletedDataGridContexts)
+            foreach (var i in deletedDataGridContexts)
             {
                 dataGridContexts.Remove(i);
             }
@@ -94,62 +131,115 @@ namespace BankManage.employee
             new EmployeeDetail().Show();
 
         }
-    }
 
-    public class EmployeeDataGridContext {
-        private EmployeeInfo employeeInfo;
-
-        public EmployeeInfo GetEmployeeInfo()
+        private void updateForm()
         {
-            return employeeInfo;
-        }
-        public EmployeeDataGridContext(EmployeeInfo  employeeInfo)
-        {
-            this.employeeInfo = employeeInfo;
-        }
-
-        public bool 选择
-        {
-            get;
-            set;
-        }
-        public string 职工号
-        {
-            get
+            if (SelectedEmployee != null)
             {
-                return employeeInfo.EmployeeNo;
+                detailNo.Text = SelectedEmployee.EmployeeNo;
+                detailName.Text = SelectedEmployee.EmployeeName;
+                detailSex.Text = SelectedEmployee.sex;
+                detailPhone.Text = SelectedEmployee.telphone;
+                detailIDCard.Text = SelectedEmployee.idCard;
+                detailDate.SelectedDate = SelectedEmployee.workDate;
+
+                if (SelectedEmployee.photo != null)
+                {
+                    BitmapImage bmi = new BitmapImage();
+                    bmi.BeginInit();
+                    MemoryStream ms = new MemoryStream(SelectedEmployee.photo);
+                    bmi.StreamSource = ms;
+                    bmi.EndInit();
+                    detailPhoto.Source = bmi;
+                }
             }
-            set { }
         }
 
-        public string 姓名
+        public class EmployeeDataGridContext
         {
-            get {
-                return employeeInfo.EmployeeName;
-            }
-            set { }
-        }
+            private EmployeeInfo employeeInfo;
 
-        public string 性别
-        {
-            get
+            public EmployeeInfo GetEmployeeInfo()
             {
-                return employeeInfo.sex;
+                return employeeInfo;
             }
-            set { }
-        }
-
-        public string 入职日期
-        {
-            get
+            public EmployeeDataGridContext(EmployeeInfo employeeInfo)
             {
-                DateTime dataTime = (DateTime)employeeInfo.workDate;
-                return dataTime.ToLongDateString();
+                this.employeeInfo = employeeInfo;
             }
-            set { }
+
+            public bool 选择
+            {
+                get;
+                set;
+            }
+            public string 职工号
+            {
+                get
+                {
+                    return employeeInfo.EmployeeNo;
+                }
+                set { }
+            }
+
+            public string 姓名
+            {
+                get
+                {
+                    return employeeInfo.EmployeeName;
+                }
+                set { }
+            }
+
+            public string 性别
+            {
+                get
+                {
+                    return employeeInfo.sex;
+                }
+                set { }
+            }
+
+            public string 入职日期
+            {
+                get
+                {
+                    DateTime dataTime = (DateTime)employeeInfo.workDate;
+                    return dataTime.ToLongDateString();
+                }
+                set { }
+            }
         }
 
+        private void Button_Click_Ok(object sender, RoutedEventArgs e)
+        {
+            switch (selectedOperation)
+            {
+                case Operation.edit:
+                    //TODO 数据合法性检查
+                    EmployeeInfo employeeInfo = context.EmployeeInfo.Find(SelectedEmployee.EmployeeNo);
+                    employeeInfo.EmployeeName=detailName.Text ;
+                    employeeInfo.sex=detailSex.Text ;
+                    employeeInfo.telphone=detailPhone.Text;
+                    employeeInfo.idCard=detailIDCard.Text;
+                    employeeInfo.workDate=detailDate.SelectedDate;
+                    context.SaveChanges();
+                    break;
+                   
+                case Operation.add:
+                case Operation.detail:
+                case Operation.remove:
+                default:
+                    break;
+            }
+            employee_DataGrid.ItemsSource = null;
+            employee_DataGrid.ItemsSource = dataGridContexts;
+            dialogHost.IsOpen = false;
+        }
 
-
+        private void Button_Click_Cancel(object sender, RoutedEventArgs e)
+        {
+            dialogHost.IsOpen = false;
+        }
     }
 }
