@@ -24,7 +24,7 @@ namespace BankManage.employee
         }
 
 
-        BankEntities context;
+        BankEntities context=new BankEntities();
         public List<EmployeeDataGridContext> dataGridContexts = new List<EmployeeDataGridContext>();
         public List<EmployeeDataGridContext> DataGridContexts
         {
@@ -48,7 +48,6 @@ namespace BankManage.employee
         private void editButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
 
-            context = new BankEntities();
             string selectedID = "-1";
             foreach (var i in dataGridContexts)
             {
@@ -70,23 +69,6 @@ namespace BankManage.employee
                 updateForm();
                 dialogHost.IsOpen = true;
                 selectedOperation = Operation.edit;
-            }
-            
-
-            //putSelectedEmployerToDataBridge();
-            //DataBridge.GetInstance().getDictionary().Add("employerOperate", "edit");
-            //new EmployeeDetail().Show();
-        }
-
-        private void putSelectedEmployerToDataBridge()
-        {
-            foreach (var i in dataGridContexts)
-            {
-                if (i.选择)
-                {
-                    DataBridge.GetInstance().getDictionary().Add("seletedEmployer", i);
-                    break;
-                }
             }
         }
 
@@ -119,17 +101,44 @@ namespace BankManage.employee
 
         private void detailButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            putSelectedEmployerToDataBridge();
-            DataBridge.GetInstance().getDictionary().Add("employerOperate", "detail");
-            new EmployeeDetail().Show();
+            string selectedID = "-1";
+            foreach (var i in dataGridContexts)
+            {
+                if (i.选择)
+                {
+                    selectedID = i.职工号;
+                }
+            }
+            if (selectedID.Equals("-1"))
+            {
+                MessageBox.Show("未选择员工");
+            }
+            else
+            {
+                var q = from t in context.EmployeeInfo
+                        where t.EmployeeNo == selectedID
+                        select t;
+                SelectedEmployee = q.First();
+                updateForm();
+                selectedOperation = Operation.detail;
+                detailNo.IsEnabled = false;
+                detailName.IsEnabled = false;
+                detailSex.IsEnabled = false;
+                detailPhone.IsEnabled = false;
+                detailIDCard.IsEnabled = false;
+                detailDate.IsEnabled = false;
 
+                dialogHost.IsOpen = true;
+
+            }
         }
 
         private void addEmployerButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            DataBridge.GetInstance().getDictionary().Add("employerOperate", "add");
-            new EmployeeDetail().Show();
-
+            selectedOperation = Operation.add;
+            SelectedEmployee = new EmployeeInfo();
+            detailNo.IsEnabled = true;
+            dialogHost.IsOpen = true;
         }
 
         private void updateForm()
@@ -216,7 +225,7 @@ namespace BankManage.employee
             switch (selectedOperation)
             {
                 case Operation.edit:
-                    //TODO 数据合法性检查
+                    //TODO 数据合法性检查,否则 报异常
                     EmployeeInfo employeeInfo = context.EmployeeInfo.Find(SelectedEmployee.EmployeeNo);
                     employeeInfo.EmployeeName=detailName.Text ;
                     employeeInfo.sex=detailSex.Text ;
@@ -227,8 +236,27 @@ namespace BankManage.employee
                     break;
                    
                 case Operation.add:
+                    EmployeeInfo newEmployeeInfo = new EmployeeInfo();
+                    newEmployeeInfo.EmployeeNo = detailNo.Text;
+                    newEmployeeInfo.EmployeeName = detailName.Text;
+                    newEmployeeInfo.sex = detailSex.Text;
+                    newEmployeeInfo.telphone = detailPhone.Text;
+                    newEmployeeInfo.idCard = detailIDCard.Text;
+                    newEmployeeInfo.workDate = detailDate.SelectedDate;
+                    newEmployeeInfo.photo = null;
+                    context.EmployeeInfo.Add(newEmployeeInfo);
+                    context.SaveChanges();
+                    break;
                 case Operation.detail:
+                    detailNo.IsEnabled = true;
+                    detailName.IsEnabled = true;
+                    detailSex.IsEnabled = true;
+                    detailPhone.IsEnabled = true;
+                    detailIDCard.IsEnabled = true;
+                    detailDate.IsEnabled = true;
+                    break;
                 case Operation.remove:
+                    break;
                 default:
                     break;
             }
@@ -239,6 +267,19 @@ namespace BankManage.employee
 
         private void Button_Click_Cancel(object sender, RoutedEventArgs e)
         {
+            switch (selectedOperation)
+            {
+                case Operation.detail:
+                    detailNo.IsEnabled = true;
+                    detailName.IsEnabled = true;
+                    detailSex.IsEnabled = true;
+                    detailPhone.IsEnabled = true;
+                    detailIDCard.IsEnabled = true;
+                    detailDate.IsEnabled = true;
+                    break;
+                default:
+                    break;
+            }
             dialogHost.IsOpen = false;
         }
     }
