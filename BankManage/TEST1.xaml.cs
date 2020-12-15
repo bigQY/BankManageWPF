@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls.Primitives;
+using MaterialDesignThemes.Wpf;
 
 namespace BankManage
 {
@@ -11,7 +12,12 @@ namespace BankManage
         public TESTWindow1()
         {
             InitializeComponent();
+            DialogHost.Show("test");
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            DialogHost.Show(new ToggleButton());
+        }
     }
 }

@@ -35,6 +35,7 @@ namespace BankManage.employee
 
         private void editButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
+            dialogHost.IsOpen = true;
             putSelectedEmployerToDataBridge();
             DataBridge.GetInstance().getDictionary().Add("employerOperate", "edit");
             new EmployeeDetail().Show();

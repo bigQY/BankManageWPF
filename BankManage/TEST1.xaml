@@ -13,7 +13,14 @@
         TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
         Title="TESTWindow1" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+    <md:DialogHost>
+        <md:DialogHost.DialogContent>
+            <Button Content="Button" HorizontalAlignment="Left" Margin="218,61,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+
+        </md:DialogHost.DialogContent>
+        <Grid>
+            <Button Content="Button" HorizontalAlignment="Left" Margin="218,61,0,0" VerticalAlignment="Top" Width="75" Command="{x:Static md:DialogHost.OpenDialogCommand}"/>
+        </Grid>
+    </md:DialogHost>
+   
 </Window>

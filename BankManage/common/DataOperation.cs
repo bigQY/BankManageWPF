@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
+using BankManage.money;
 
 namespace BankManage.common
 {
@@ -45,6 +47,7 @@ namespace BankManage.common
                     custom = new CustomFixed();
                     break;
                 case "零存整取":
+                    custom = new CustomFlex();
                     break;
             }
             custom.AccountInfo.accountType = accountType;
@@ -102,6 +105,39 @@ namespace BankManage.common
                      where t.rationType == type
                      select t.rationValue).Single();
             return q.Value;
+        }
+
+        public static DateTime GetLastAutomaticWithdrawalTime(Custom custom)
+        {
+            BankEntities c = new BankEntities();
+            var q = from t in c.MoneyInfo
+                    where t.accountNo == custom.AccountInfo.accountNo
+                    select t.dealDate;
+            return q.First().Date;
+        }
+
+        public static DateTime GetCreateAutomaticWithdrawalTime(Custom custom)
+        {
+            BankEntities c = new BankEntities();
+            var q = from t in c.MoneyInfo
+                    where t.accountNo == custom.AccountInfo.accountNo
+                    where t.dealType=="开户"
+                    select t.dealDate;
+            return q.First().Date;
+        }
+
+        public static bool GetCustomerIsBroken(Custom custom)
+        {
+            BankEntities c = new BankEntities();
+            var q = from t in c.MoneyInfo
+                    where t.accountNo == custom.AccountInfo.accountNo
+                    where t.dealType == "零存整取违规"
+                    select t;
+            if (q.Count() > 0)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }
