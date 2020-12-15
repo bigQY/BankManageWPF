@@ -50,7 +50,19 @@ namespace BankManage
             tabSwitch.IsChecked = DrawerHost.IsLeftDrawerOpen;
         }
 
-        private void ListBoxItem_Selected(object sender, RoutedEventArgs e)
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            //Show Help
+            FrameDrawerHost.IsRightDrawerOpen = true;
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            //Show About
+            FrameDrawerHost.IsBottomDrawerOpen = true;
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
         {
             Close();
         }

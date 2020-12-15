@@ -19,12 +19,9 @@
                           DockPanel.Dock="Right"
                           PlacementMode="BottomAndAlignRightEdges">
                         <ListBox>
-                            <ListBoxItem
-                                Content="帮助" />
-                            <ListBoxItem
-                                Content="关于" />
-                            <ListBoxItem
-                                Content="退出" Selected="ListBoxItem_Selected" />
+                            <Button Click="Button_Click_1" Background="{x:Null}">帮助</Button>
+                            <Button  Background="{x:Null}" Click="Button_Click_2">关于</Button>
+                            <Button  Background="{x:Null}" Click="Button_Click_3">退出</Button>
                         </ListBox>
                     </materialDesign:PopupBox>
                     <StackPanel
@@ -147,11 +144,36 @@
                     </ScrollViewer>
                 </StackPanel>
             </materialDesign:DrawerHost.LeftDrawerContent>
-            <Grid>
-                <DockPanel Grid.ColumnSpan="3" Grid.RowSpan="3">
-                    <Frame Name="frame1" BorderThickness="2" BorderBrush="#FFA6C9FD" NavigationUIVisibility="Hidden" />
-                </DockPanel>
-            </Grid>
+
+            <materialDesign:DrawerHost x:Name="FrameDrawerHost"
+              BorderBrush="{DynamicResource MaterialDesignDivider}" MouseMove="DrawerHost_MouseMove" IsLeftDrawerOpen="False" >
+                <materialDesign:DrawerHost.Style>
+                    <Style
+                      TargetType="materialDesign:DrawerHost"
+                      BasedOn="{StaticResource {x:Type materialDesign:DrawerHost}}">
+                        <Style.Triggers>
+                            <DataTrigger
+                              Binding="{Binding IsChecked, ElementName=BackgroundToggle}"
+                              Value="True">
+                                <Setter
+                                Property="OverlayBackground"
+                                Value="{DynamicResource PrimaryHueMidBrush}" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </materialDesign:DrawerHost.Style>
+                <materialDesign:DrawerHost.RightDrawerContent>
+                    <Label>这是帮助</Label>
+                </materialDesign:DrawerHost.RightDrawerContent>
+                <materialDesign:DrawerHost.BottomDrawerContent>
+                    <Label>这是关于</Label>
+                </materialDesign:DrawerHost.BottomDrawerContent>
+                <Grid>
+                    <DockPanel Grid.ColumnSpan="3" Grid.RowSpan="3">
+                        <Frame Name="frame1" BorderThickness="2" BorderBrush="#FFA6C9FD" NavigationUIVisibility="Hidden" />
+                    </DockPanel>
+                </Grid>
+            </materialDesign:DrawerHost>
         </materialDesign:DrawerHost>
     </DockPanel>
 </Window>
