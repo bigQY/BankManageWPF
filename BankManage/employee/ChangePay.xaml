@@ -15,35 +15,72 @@
 
     <materialDesign:DialogHost x:Name="dialogHost" IsOpen="False">
         <materialDesign:DialogHost.DialogContent>
-            <Grid Width="600" Height="400">
+            <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="8*"/>
+                <ColumnDefinition Width="*"/>
+
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="8*"/>
+                <RowDefinition Height="*"/>
+
+            </Grid.RowDefinitions>
+            <Grid Grid.Column="1" Grid.Row="1" >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="8*"/>
                     <ColumnDefinition Width="*"/>
+
 
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
-                    <RowDefinition Height="8*"/>
                     <RowDefinition Height="*"/>
-
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="0.2*"/>
                 </Grid.RowDefinitions>
-                <Grid Grid.Column="1" Grid.Row="1" >
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
+                <StackPanel Orientation="Horizontal" >
+                    <Label Content="职工号" VerticalAlignment="Center" Width="80"/>
+                    <TextBox x:Name="detailNo" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="100"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Grid.Row="1" >
+                    <Label Content="姓名" VerticalAlignment="Center" Width="80"/>
+                    <TextBox x:Name="detailName" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="100" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Grid.Row="2">
+                    <Label Content="性别" VerticalAlignment="Center" Width="40"/>
+                    <TextBox x:Name="detailSex" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="25"/>
+                    <Label Content="工资" VerticalAlignment="Center" Width="40"/>
+                    <TextBox x:Name="detailSalary" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="75"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Grid.Row="4" Grid.ColumnSpan="2">
+                    <Label Content="身份证号" VerticalAlignment="Center" Width="80"/>
+                    <TextBox x:Name="detailIDCard" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="300"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Grid.Row="3" >
+                    <Label Content="电话" VerticalAlignment="Center" Width="80"/>
+                    <TextBox x:Name="detailPhone" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="120"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="1">
+                    <Label Content="入职日期" VerticalAlignment="Center" Width="80"/>
+                    <DatePicker x:Name="detailDate" Width="100"/>
+                </StackPanel>
 
+                <Button
+                Grid.Column="1"  Grid.RowSpan="3"
+                Style="{StaticResource MaterialDesignIconButton}"
+                Background="{DynamicResource MaterialDesignTextFieldBoxBackground}"
+                ToolTip="点击选择新照片" Width="180" Height="180">
+                    <Image
+                    x:Name="detailPhoto"
+                    Source="cs.jpg" Width="180" Height="180" />
+                </Button>
 
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="auto"/>
-                    </Grid.RowDefinitions>
-                </Grid>
+            </Grid>
             </Grid>
         </materialDesign:DialogHost.DialogContent>
         <Grid>
@@ -57,7 +94,7 @@
                 <RowDefinition Height="8*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <DataGrid x:Name="employee_DataGrid" Grid.Column="1" Grid.RowSpan="2" Margin="0,0,0,10" >
+            <DataGrid x:Name="employee_DataGrid" Grid.Column="1" Grid.RowSpan="2" Margin="0,0,0,10" MouseDoubleClick="employee_DataGrid_MouseDoubleClick" >
                 <DataGrid.Columns>
                 </DataGrid.Columns>
             </DataGrid>

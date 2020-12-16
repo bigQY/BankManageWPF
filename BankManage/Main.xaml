@@ -19,9 +19,9 @@
                           DockPanel.Dock="Right"
                           PlacementMode="BottomAndAlignRightEdges">
                         <ListBox>
-                            <Button Click="Button_Click_1" Background="{x:Null}">帮助</Button>
-                            <Button  Background="{x:Null}" Click="Button_Click_2">关于</Button>
-                            <Button  Background="{x:Null}" Click="Button_Click_3">退出</Button>
+                            <Button Click="Button_Click_1">帮助</Button>
+                            <Button Click="Button_Click_2">关于</Button>
+                            <Button Click="Button_Click_3">退出</Button>
                         </ListBox>
                     </materialDesign:PopupBox>
                     <StackPanel
