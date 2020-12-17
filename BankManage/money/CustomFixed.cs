@@ -11,7 +11,28 @@ namespace BankManage
     /// </summary>
     public class CustomFixed : Custom
     {
-        public int PromisedYear;
+        public int PromisedYear
+        {
+            get
+            {
+                BankEntities bankEntities = new BankEntities();
+                var q = from t in bankEntities.AccountFixed
+                        where t.accountNo == AccountInfo.accountNo
+                        select t.promisedYear;
+                if (q.Count() != 0)
+                {
+                    return q.First();
+                }
+                else
+                {
+                    return -1;
+                }
+            }
+            set
+            {
+
+            }
+        }
         public RateType RType { get; set; }
         /// 开户
         /// </summary>
@@ -19,13 +40,12 @@ namespace BankManage
         /// <param name="money">开户金额</param>
         public void Create(string accountNumber, double money, int promisedYear, string accountType= "定期存款")
         {
-            this.PromisedYear = promisedYear;
             base.Create(accountNumber, money,accountType);
             //定期存款
             if (accountType == "定期存款")
             {
                 AccountFixed account = new AccountFixed();
-                account.promisedYear = PromisedYear;
+                account.promisedYear = promisedYear;
                 account.accountNo = AccountInfo.accountNo;
                 try {
                     context.AccountFixed.Add(account);
