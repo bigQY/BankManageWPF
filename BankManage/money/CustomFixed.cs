@@ -63,7 +63,7 @@ namespace BankManage
                     where t.accountNo == this.AccountInfo.accountNo
                     select t;
             var q2 = from i in bankEntities.MoneyInfo
-                     where i.dealType == "定期存款到期支取"
+                     where i.dealType == "定期存款支取"
                      select i;
             if (q1.Count() > 0)
             {
@@ -73,9 +73,8 @@ namespace BankManage
                     return;
                 }
             }
-            base.Diposit("存款", money);
-            //结算利息
-            base.Diposit("结息", DataOperation.GetRate(RType) * money);
+            base.Diposit("定期存款", money);
+            
         }
 
         /// <summary>
@@ -84,7 +83,36 @@ namespace BankManage
         /// <param name="money">取款金额</param>
         public override void Withdraw(double money)
         {
-            InsertData("定期存款到期支取", -money);
+            if (DateTime.Now.Year - (getAccountCreateTime().Value.Year) < PromisedYear)
+            {
+                MessageBox.Show("存款未到期");
+                //结算利息
+                base.Diposit("定期存款提前支取利息", DataOperation.GetRate(RateType.定期提前支取) * AccountBalance);
+                
+            }
+            else
+            {
+                //结算利息
+                base.Diposit("定期存款结息", DataOperation.GetRate(RType) * AccountBalance);
+                //超期利息
+                base.Diposit("定期存款超期利息", DataOperation.GetRate(RateType.定期超期部分) * AccountBalance);
+            }
+            InsertData("定期存款支取", -AccountBalance);
+        }
+
+        private DateTime? getAccountCreateTime()
+        {
+            BankEntities bankEntities = new BankEntities();
+            var q = from t in bankEntities.MoneyInfo
+                    where (t.dealType == "开户"|| t.dealType == "定期存款")
+                    select t.dealDate;
+            if (q.Count() != 0){
+                return q.First();
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }

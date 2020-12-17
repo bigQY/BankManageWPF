@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Windows;
 
 namespace BankManage
@@ -19,7 +20,27 @@ namespace BankManage
         /// <summary>
         /// 帐户余额
         /// </summary>
-        public double AccountBalance { get; set; }
+        public double AccountBalance {
+            get
+            {
+                BankEntities bankEntities = new BankEntities();
+                var q = from t in bankEntities.MoneyInfo
+                        where t.accountNo == AccountInfo.accountNo
+                        select t.balance;
+                if (q.Count() != 0)
+                {
+                    return q.First();
+                }
+                else
+                {
+                    return -1;
+                }
+            }
+            set
+            {
+
+            }
+        }
         public Custom()
         {
             AccountInfo = new AccountInfo();

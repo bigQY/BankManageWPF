@@ -27,4 +27,9 @@
         定期存款,
         零存整取
     }
+
+    public enum DealType
+    {
+        //TODO
+    }
 }
