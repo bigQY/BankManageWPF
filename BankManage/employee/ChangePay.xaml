@@ -10,7 +10,6 @@
       TextOptions.TextFormattingMode="Ideal"
       TextOptions.TextRenderingMode="Auto"
       mc:Ignorable="d" 
-      d:DesignHeight="322.749" d:DesignWidth="520.379"
 	  Title="工资管理">
 
     <materialDesign:DialogHost x:Name="dialogHost" IsOpen="False">
@@ -21,7 +20,8 @@
                 <ColumnDefinition Width="8*"/>
                 <ColumnDefinition Width="*"/>
 
-            </Grid.ColumnDefinitions>
+
+                </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="8*"/>
@@ -34,7 +34,7 @@
                     <ColumnDefinition Width="*"/>
 
 
-                </Grid.ColumnDefinitions>
+                    </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
@@ -45,42 +45,55 @@
                 </Grid.RowDefinitions>
                 <StackPanel Orientation="Horizontal" >
                     <Label Content="职工号" VerticalAlignment="Center" Width="80"/>
-                    <TextBox x:Name="detailNo" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="100"/>
+                    <TextBox x:Name="detailNo" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="100" IsEnabled="False"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Grid.Row="1" >
                     <Label Content="姓名" VerticalAlignment="Center" Width="80"/>
-                    <TextBox x:Name="detailName" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="100" />
+                    <TextBox x:Name="detailName" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="100" IsEnabled="False" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Grid.Row="2">
                     <Label Content="性别" VerticalAlignment="Center" Width="40"/>
-                    <TextBox x:Name="detailSex" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="25"/>
+                    <TextBox x:Name="detailSex" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="25" IsEnabled="False"/>
                     <Label Content="工资" VerticalAlignment="Center" Width="40"/>
                     <TextBox x:Name="detailSalary" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="75"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Grid.Row="4" Grid.ColumnSpan="2">
                     <Label Content="身份证号" VerticalAlignment="Center" Width="80"/>
-                    <TextBox x:Name="detailIDCard" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="300"/>
+                    <TextBox x:Name="detailIDCard" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="300" IsEnabled="False"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Grid.Row="3" >
                     <Label Content="电话" VerticalAlignment="Center" Width="80"/>
-                    <TextBox x:Name="detailPhone" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="120"/>
+                    <TextBox x:Name="detailPhone" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="120" IsEnabled="False"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="1">
                     <Label Content="入职日期" VerticalAlignment="Center" Width="80"/>
-                    <DatePicker x:Name="detailDate" Width="100"/>
+                    <DatePicker x:Name="detailDate" Width="100" IsEnabled="False"/>
                 </StackPanel>
 
                 <Button
-                Grid.Column="1"  Grid.RowSpan="3"
-                Style="{StaticResource MaterialDesignIconButton}"
-                Background="{DynamicResource MaterialDesignTextFieldBoxBackground}"
-                ToolTip="点击选择新照片" Width="180" Height="180">
+                    Grid.Column="1"  Grid.RowSpan="3"
+                    Style="{StaticResource MaterialDesignIconButton}"
+                    Background="{DynamicResource MaterialDesignTextFieldBoxBackground}"
+                    ToolTip="点击选择新照片" Width="180" Height="180" IsEnabled="False">
                     <Image
-                    x:Name="detailPhoto"
-                    Source="cs.jpg" Width="180" Height="180" />
+                        x:Name="detailPhoto"
+                        Source="cs.jpg" Width="180" Height="180" />
                 </Button>
+                    
 
-            </Grid>
+                </Grid>
+                <!-- checkbox style same as toggle button -->
+                <CheckBox
+                      Style="{StaticResource MaterialDesignActionDarkCheckBox}"
+                      ToolTip="保存" Grid.Row="2" Grid.Column="1" Click="CheckBox_Click">
+                    <materialDesign:PackIcon Kind="ContentSaveEdit" />
+                </CheckBox>
+
+                <Button
+                    Style="{StaticResource MaterialDesignIconForegroundButton}"
+                    ToolTip="MaterialDesignIconForegroundButton" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0" Width="32" Height="32" Click="Button_Click">
+                    <materialDesign:PackIcon Kind="CloseCircleOutline" />
+                </Button>
             </Grid>
         </materialDesign:DialogHost.DialogContent>
         <Grid>
@@ -94,7 +107,7 @@
                 <RowDefinition Height="8*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <DataGrid x:Name="employee_DataGrid" Grid.Column="1" Grid.RowSpan="2" Margin="0,0,0,10" MouseDoubleClick="employee_DataGrid_MouseDoubleClick" >
+            <DataGrid x:Name="employee_DataGrid" Grid.Column="1" Grid.RowSpan="2" Margin="0,0,0,10" MouseDoubleClick="employee_DataGrid_MouseDoubleClick" ColumnWidth="*" >
                 <DataGrid.Columns>
                 </DataGrid.Columns>
             </DataGrid>
