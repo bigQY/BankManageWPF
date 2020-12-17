@@ -5,6 +5,21 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="BankModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AccountFixed">
+          <Key>
+            <PropertyRef Name="accountNo" />
+          </Key>
+          <Property Name="accountNo" Type="nchar" MaxLength="6" Nullable="false" />
+          <Property Name="promisedYear" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AccountFlex">
+          <Key>
+            <PropertyRef Name="accountNo" />
+          </Key>
+          <Property Name="accountNo" Type="nchar" MaxLength="6" Nullable="false" />
+          <Property Name="promisedYear" Type="int" Nullable="false" />
+          <Property Name="promisedMoney" Type="float" Nullable="false" />
+        </EntityType>
         <EntityType Name="AccountInfo">
           <Key>
             <PropertyRef Name="accountNo" />
@@ -53,12 +68,62 @@
           <Property Name="rationType" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="rationValue" Type="float" />
         </EntityType>
+        <Association Name="FK__AccountFi__accou__37A5467C">
+          <End Role="AccountInfo" Type="Self.AccountInfo" Multiplicity="1" />
+          <End Role="AccountFixed" Type="Self.AccountFixed" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="AccountInfo">
+              <PropertyRef Name="accountNo" />
+            </Principal>
+            <Dependent Role="AccountFixed">
+              <PropertyRef Name="accountNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AccountFl__accou__4BAC3F29">
+          <End Role="AccountInfo" Type="Self.AccountInfo" Multiplicity="1" />
+          <End Role="AccountFlex" Type="Self.AccountFlex" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="AccountInfo">
+              <PropertyRef Name="accountNo" />
+            </Principal>
+            <Dependent Role="AccountFlex">
+              <PropertyRef Name="accountNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MoneyInfo__accou__5AEE82B9">
+          <End Role="AccountInfo" Type="Self.AccountInfo" Multiplicity="1" />
+          <End Role="MoneyInfo" Type="Self.MoneyInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountInfo">
+              <PropertyRef Name="accountNo" />
+            </Principal>
+            <Dependent Role="MoneyInfo">
+              <PropertyRef Name="accountNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="BankModelStoreContainer">
+          <EntitySet Name="AccountFixed" EntityType="Self.AccountFixed" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AccountFlex" EntityType="Self.AccountFlex" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AccountInfo" EntityType="Self.AccountInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EmployeeInfo" EntityType="Self.EmployeeInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LoginInfo" EntityType="Self.LoginInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MoneyInfo" EntityType="Self.MoneyInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RateInfo" EntityType="Self.RateInfo" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__AccountFi__accou__37A5467C" Association="Self.FK__AccountFi__accou__37A5467C">
+            <End Role="AccountInfo" EntitySet="AccountInfo" />
+            <End Role="AccountFixed" EntitySet="AccountFixed" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AccountFl__accou__4BAC3F29" Association="Self.FK__AccountFl__accou__4BAC3F29">
+            <End Role="AccountInfo" EntitySet="AccountInfo" />
+            <End Role="AccountFlex" EntitySet="AccountFlex" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MoneyInfo__accou__5AEE82B9" Association="Self.FK__MoneyInfo__accou__5AEE82B9">
+            <End Role="AccountInfo" EntitySet="AccountInfo" />
+            <End Role="MoneyInfo" EntitySet="MoneyInfo" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -73,6 +138,9 @@
           <Property Name="accountName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="accountPass" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="accountType" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AccountFixed" Relationship="BankModel.FK__AccountFi__accou__37A5467C" FromRole="AccountInfo" ToRole="AccountFixed" />
+          <NavigationProperty Name="AccountFlex" Relationship="BankModel.FK__AccountFl__accou__4BAC3F29" FromRole="AccountInfo" ToRole="AccountFlex" />
+          <NavigationProperty Name="MoneyInfo" Relationship="BankModel.FK__MoneyInfo__accou__5AEE82B9" FromRole="AccountInfo" ToRole="MoneyInfo" />
         </EntityType>
         <EntityType Name="EmployeeInfo">
           <Key>
@@ -104,6 +172,7 @@
           <Property Name="dealType" Type="String" MaxLength="8" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="dealMoney" Type="Double" Nullable="false" />
           <Property Name="balance" Type="Double" Nullable="false" />
+          <NavigationProperty Name="AccountInfo" Relationship="BankModel.FK__MoneyInfo__accou__5AEE82B9" FromRole="MoneyInfo" ToRole="AccountInfo" />
         </EntityType>
         <EntityType Name="RateInfo">
           <Key>
@@ -118,7 +187,74 @@
           <EntitySet Name="LoginInfo" EntityType="Self.LoginInfo" />
           <EntitySet Name="MoneyInfo" EntityType="Self.MoneyInfo" />
           <EntitySet Name="RateInfo" EntityType="Self.RateInfo" />
+          <EntitySet Name="AccountFixed" EntityType="BankModel.AccountFixed" />
+          <EntitySet Name="AccountFlex" EntityType="BankModel.AccountFlex" />
+          <AssociationSet Name="FK__AccountFi__accou__37A5467C" Association="BankModel.FK__AccountFi__accou__37A5467C">
+            <End Role="AccountInfo" EntitySet="AccountInfo" />
+            <End Role="AccountFixed" EntitySet="AccountFixed" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AccountFl__accou__4BAC3F29" Association="BankModel.FK__AccountFl__accou__4BAC3F29">
+            <End Role="AccountInfo" EntitySet="AccountInfo" />
+            <End Role="AccountFlex" EntitySet="AccountFlex" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MoneyInfo__accou__5AEE82B9" Association="BankModel.FK__MoneyInfo__accou__5AEE82B9">
+            <End Role="AccountInfo" EntitySet="AccountInfo" />
+            <End Role="MoneyInfo" EntitySet="MoneyInfo" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="AccountFixed">
+          <Key>
+            <PropertyRef Name="accountNo" />
+          </Key>
+          <Property Name="accountNo" Type="String" Nullable="false" MaxLength="6" FixedLength="true" Unicode="true" />
+          <Property Name="promisedYear" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AccountInfo" Relationship="BankModel.FK__AccountFi__accou__37A5467C" FromRole="AccountFixed" ToRole="AccountInfo" />
+        </EntityType>
+        <EntityType Name="AccountFlex">
+          <Key>
+            <PropertyRef Name="accountNo" />
+          </Key>
+          <Property Name="accountNo" Type="String" Nullable="false" MaxLength="6" FixedLength="true" Unicode="true" />
+          <Property Name="promisedYear" Type="Int32" Nullable="false" />
+          <Property Name="promisedMoney" Type="Double" Nullable="false" />
+          <NavigationProperty Name="AccountInfo" Relationship="BankModel.FK__AccountFl__accou__4BAC3F29" FromRole="AccountFlex" ToRole="AccountInfo" />
+        </EntityType>
+        <Association Name="FK__AccountFi__accou__37A5467C">
+          <End Type="BankModel.AccountInfo" Role="AccountInfo" Multiplicity="1" />
+          <End Type="BankModel.AccountFixed" Role="AccountFixed" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="AccountInfo">
+              <PropertyRef Name="accountNo" />
+            </Principal>
+            <Dependent Role="AccountFixed">
+              <PropertyRef Name="accountNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AccountFl__accou__4BAC3F29">
+          <End Type="BankModel.AccountInfo" Role="AccountInfo" Multiplicity="1" />
+          <End Type="BankModel.AccountFlex" Role="AccountFlex" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="AccountInfo">
+              <PropertyRef Name="accountNo" />
+            </Principal>
+            <Dependent Role="AccountFlex">
+              <PropertyRef Name="accountNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MoneyInfo__accou__5AEE82B9">
+          <End Type="BankModel.AccountInfo" Role="AccountInfo" Multiplicity="1" />
+          <End Type="BankModel.MoneyInfo" Role="MoneyInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountInfo">
+              <PropertyRef Name="accountNo" />
+            </Principal>
+            <Dependent Role="MoneyInfo">
+              <PropertyRef Name="accountNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -175,6 +311,23 @@
               <MappingFragment StoreEntitySet="RateInfo">
                 <ScalarProperty Name="rationType" ColumnName="rationType" />
                 <ScalarProperty Name="rationValue" ColumnName="rationValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AccountFixed">
+            <EntityTypeMapping TypeName="BankModel.AccountFixed">
+              <MappingFragment StoreEntitySet="AccountFixed">
+                <ScalarProperty Name="promisedYear" ColumnName="promisedYear" />
+                <ScalarProperty Name="accountNo" ColumnName="accountNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AccountFlex">
+            <EntityTypeMapping TypeName="BankModel.AccountFlex">
+              <MappingFragment StoreEntitySet="AccountFlex">
+                <ScalarProperty Name="promisedMoney" ColumnName="promisedMoney" />
+                <ScalarProperty Name="promisedYear" ColumnName="promisedYear" />
+                <ScalarProperty Name="accountNo" ColumnName="accountNo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

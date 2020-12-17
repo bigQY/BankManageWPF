@@ -8,6 +8,7 @@ namespace BankManage.money
     /// <summary>
     /// Withdraw.xaml 的交互逻辑
     /// </summary>
+    /// TODO 账户检查，并且设置定期取款金额
     public partial class Withdraw : Page
     {
         public Withdraw()

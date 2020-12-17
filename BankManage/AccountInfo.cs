@@ -14,10 +14,19 @@ namespace BankManage
     
     public partial class AccountInfo
     {
+        public AccountInfo()
+        {
+            this.MoneyInfo = new HashSet<MoneyInfo>();
+        }
+    
         public string accountNo { get; set; }
         public string IdCard { get; set; }
         public string accountName { get; set; }
         public string accountPass { get; set; }
         public string accountType { get; set; }
+    
+        public virtual AccountFixed AccountFixed { get; set; }
+        public virtual AccountFlex AccountFlex { get; set; }
+        public virtual ICollection<MoneyInfo> MoneyInfo { get; set; }
     }
 }

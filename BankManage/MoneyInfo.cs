@@ -20,5 +20,7 @@ namespace BankManage
         public string dealType { get; set; }
         public double dealMoney { get; set; }
         public double balance { get; set; }
+    
+        public virtual AccountInfo AccountInfo { get; set; }
     }
 }

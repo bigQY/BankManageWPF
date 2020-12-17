@@ -30,5 +30,7 @@ namespace BankManage
         public DbSet<LoginInfo> LoginInfo { get; set; }
         public DbSet<MoneyInfo> MoneyInfo { get; set; }
         public DbSet<RateInfo> RateInfo { get; set; }
+        public DbSet<AccountFixed> AccountFixed { get; set; }
+        public DbSet<AccountFlex> AccountFlex { get; set; }
     }
 }

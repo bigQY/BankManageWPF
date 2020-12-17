@@ -26,13 +26,14 @@ namespace BankManage
             MoneyInfo = new MoneyInfo();
         }
 
-        BankEntities context = new BankEntities();
+        protected BankEntities context = new BankEntities();
         /// 开户
         /// </summary>
         /// <param name="accountNumber">帐号</param>
         /// <param name="money">开户金额</param>
-        public virtual void Create(string accountNumber, double money)
+        public virtual void Create(string accountNumber, double money,string accountType="活期存款")
         {
+            this.AccountInfo.accountType = accountType;
             this.AccountBalance = money;
             bool success = false;
             //插入到数据库
@@ -52,6 +53,8 @@ namespace BankManage
                 this.MoneyInfo.accountNo = accountNumber;
                 InsertData("开户", money);
             }
+            
+
         }
 
         /// <summary>
