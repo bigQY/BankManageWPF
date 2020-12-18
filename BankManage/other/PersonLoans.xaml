@@ -9,6 +9,13 @@
       Title="PersonLoans">
 
     <Grid>
-        
+        <Label Content="账户：" HorizontalAlignment="Left" Margin="47,33,0,0" VerticalAlignment="Top" Height="36" Width="115" FontSize="18"/>
+        <Label Content="密码" HorizontalAlignment="Left" Margin="47,92,0,0" VerticalAlignment="Top" Height="36" Width="115" FontSize="18"/>
+        <Label Content="贷款金额" HorizontalAlignment="Left" Margin="47,148,0,0" VerticalAlignment="Top" Height="36" Width="115" FontSize="18"/>
+        <Label Content="贷款期限" HorizontalAlignment="Left" Margin="47,204,0,0" VerticalAlignment="Top" Height="36" Width="115" FontSize="18"/>
+        <TextBox HorizontalAlignment="Left" Height="36" Margin="199,33,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="503" RenderTransformOrigin="0.385,1.493" FontSize="18"/>
+        <TextBox HorizontalAlignment="Left" Height="36" Margin="199,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="503" RenderTransformOrigin="0.385,1.493" FontSize="18"/>
+        <TextBox HorizontalAlignment="Left" Height="36" Margin="199,148,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="503" RenderTransformOrigin="0.385,1.493" FontSize="18"/>
+        <TextBox HorizontalAlignment="Left" Height="36" Margin="199,204,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="503" RenderTransformOrigin="0.385,1.493" FontSize="18"/>
     </Grid>
 </Page>
