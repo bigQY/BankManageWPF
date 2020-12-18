@@ -5,56 +5,91 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="500" d:DesignWidth="800" Title="NewAccount">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
 
-        </Grid.RowDefinitions>
-        <materialDesign:Card>
-            <Grid Grid.Row="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="8*" ></ColumnDefinition>
-                <ColumnDefinition Width="*" ></ColumnDefinition>
-                </Grid.ColumnDefinitions>
+    <materialDesign:DialogHost x:Name="DialogHost" IsOpen="False" Margin="1,0,-1,0" >
+        <materialDesign:DialogHost.DialogContent  >
+            <materialDesign:Card Margin="20" Width="350" Height="200" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width=".1*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width=".1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Button Content="确定" Grid.Column="2" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center" Width="75" Click="Button_Click"/>
+                    <Label Content="承诺存款年限" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center"/>
+                    
+                    <ComboBox x:Name="promiseYear" Grid.Column="2"  Grid.Row="1" VerticalAlignment="Center" Grid.ColumnSpan="2">
+                        <ComboBoxItem Content="1年"/>
+                        <ComboBoxItem Content="3年"/>
+                        <ComboBoxItem Content="5年"/>
+                    </ComboBox>
+                    <Label x:Name="promiseMoneyLable" Content="承诺每月存款金额" Grid.Column="1" HorizontalAlignment="Center"  Grid.Row="2" VerticalAlignment="Center"/>
+                    <TextBox x:Name="promiseMoneyText" Grid.ColumnSpan="2" Grid.Column="2"  Grid.Row="2" VerticalAlignment="Center" IsEnabled="False"/>
+                    <Label Content="存款合同" Grid.Column="2" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
+                </Grid>
+            </materialDesign:Card>
+        </materialDesign:DialogHost.DialogContent>
+        <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
-            <TextBlock Text="开户" FontSize="20" TextAlignment="Center" Grid.Row="0" Grid.ColumnSpan="3" ></TextBlock>
-            <TextBlock Margin="7"  Grid.Row="1"><materialDesign:PackIcon Kind="AccountMultipleOutline" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center" /></TextBlock>
-            <TextBox materialDesign:HintAssist.Hint="账号" Name="txtAccountNo" Margin="5" Grid.Column="1"  Grid.Row="1" VerticalAlignment="Center" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
-            <TextBlock Margin="7"  Grid.Row="2"><materialDesign:PackIcon Kind="RenameBox" Width="40" Height="40" /></TextBlock>
-            <TextBox VerticalAlignment="Center" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:HintAssist.Hint="账户名" Name="txtAccountName" Margin="5" Grid.Column="1"  Grid.Row="2"></TextBox>
-            <TextBlock Margin="7"  Grid.Row="3"><materialDesign:PackIcon Kind="BadgeAccountHorizontalOutline" Width="40" Height="40" /></TextBlock>
-            <TextBox VerticalAlignment="Center" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:HintAssist.Hint="身份证号" Name="txtIDCard" Margin="5" Grid.Column="1"  Grid.Row="3" Height="42"></TextBox>
-            <TextBlock Margin="7"  Grid.Row="4"><materialDesign:PackIcon Kind="Lock" Width="40" Height="40" /></TextBlock>
-            <PasswordBox VerticalAlignment="Center" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" materialDesign:HintAssist.Hint="密码" Name="txtPass" Margin="5" Grid.Column="1"  Grid.Row="4"></PasswordBox>
-            <TextBlock Margin="7"  Grid.Row="5">开户类型：</TextBlock>
-            <ComboBox  Grid.Row="5" Grid.Column="1" Name="comboBoxAccountType" SelectionChanged="comboBoxAccountType_SelectionChanged"></ComboBox>
-                <TextBlock   Margin="7"  Grid.Row="6"><materialDesign:PackIcon Kind="CashUsd" Width="40" Height="40" /></TextBlock>
-            <TextBox VerticalAlignment="Center" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:HintAssist.Hint="开户金额" Name="txtMoney" Margin="5" Grid.Column="1"  Grid.Row="6"></TextBox>
-            <StackPanel Grid.Row="7" HorizontalAlignment="Center" Grid.ColumnSpan="2" Orientation="Horizontal" >
-                <Button Name="btnOk"  Width="50" Margin="10,10,2,10" Padding="3" Click="btnOk_Click">确定</Button>
-                <Button Name="btnCancel"  Width="50" Margin="2,10,10,10" Padding="3" Click="btnCancel_Click">取消</Button>
-            </StackPanel>
-                <materialDesign:PackIcon x:Name="err_1" Kind="CloseCircle" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Red" Width="30" Height="30" />
-                <materialDesign:PackIcon x:Name="err_2" Kind="CloseCircle" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Red" Width="30" Height="30" />
-                <materialDesign:PackIcon x:Name="err_3" Kind="CloseCircle" Grid.Row="3" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Red" Width="30" Height="30" />
-                <materialDesign:PackIcon x:Name="err_4" Kind="CloseCircle" Grid.Row="4" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Red" Width="30" Height="30" />
-                <materialDesign:PackIcon x:Name="err_6" Kind="CloseCircle" Grid.Row="6" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Red" Width="30" Height="30" />
+            <materialDesign:Card>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="8*" ></ColumnDefinition>
+                        <ColumnDefinition Width="*" ></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="开户" FontSize="20" TextAlignment="Center" Grid.Row="0" Grid.ColumnSpan="3" ></TextBlock>
+                    <TextBlock Margin="7"  Grid.Row="1"><materialDesign:PackIcon Kind="AccountMultipleOutline" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center" /></TextBlock>
+                    <TextBox materialDesign:HintAssist.Hint="账号" Name="txtAccountNo" Margin="5" Grid.Column="1"  Grid.Row="1" VerticalAlignment="Center" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
+                    <TextBlock Margin="7"  Grid.Row="2"><materialDesign:PackIcon Kind="RenameBox" Width="40" Height="40" /></TextBlock>
+                    <TextBox VerticalAlignment="Center" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:HintAssist.Hint="账户名" Name="txtAccountName" Margin="5" Grid.Column="1"  Grid.Row="2"></TextBox>
+                    <TextBlock Margin="7"  Grid.Row="3"><materialDesign:PackIcon Kind="BadgeAccountHorizontalOutline" Width="40" Height="40" /></TextBlock>
+                    <TextBox VerticalAlignment="Center" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:HintAssist.Hint="身份证号" Name="txtIDCard" Margin="5" Grid.Column="1"  Grid.Row="3" Height="42"></TextBox>
+                    <TextBlock Margin="7"  Grid.Row="4"><materialDesign:PackIcon Kind="Lock" Width="40" Height="40" /></TextBlock>
+                    <PasswordBox VerticalAlignment="Center" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" materialDesign:HintAssist.Hint="密码" Name="txtPass" Margin="5" Grid.Column="1"  Grid.Row="4"></PasswordBox>
+                    <TextBlock Margin="7"  Grid.Row="5">开户类型：</TextBlock>
+                    <ComboBox  Grid.Row="5" Grid.Column="1" Name="comboBoxAccountType" SelectionChanged="comboBoxAccountType_SelectionChanged"></ComboBox>
+                    <TextBlock   Margin="7"  Grid.Row="6"><materialDesign:PackIcon Kind="CashUsd" Width="40" Height="40" /></TextBlock>
+                    <TextBox VerticalAlignment="Center" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:HintAssist.Hint="开户金额" Name="txtMoney" Margin="5" Grid.Column="1"  Grid.Row="6"></TextBox>
+                    <StackPanel Grid.Row="7" HorizontalAlignment="Center" Grid.ColumnSpan="2" Orientation="Horizontal" >
+                        <Button Name="btnOk"  Width="50" Margin="10,10,2,10" Padding="3" Click="btnOk_Click">确定</Button>
+                        <Button Name="btnCancel"  Width="50" Margin="2,10,10,10" Padding="3" Click="btnCancel_Click">取消</Button>
+                    </StackPanel>
+                    <materialDesign:PackIcon x:Name="err_1" Kind="CloseCircle" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Red" Width="30" Height="30" />
+                    <materialDesign:PackIcon x:Name="err_2" Kind="CloseCircle" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Red" Width="30" Height="30" />
+                    <materialDesign:PackIcon x:Name="err_3" Kind="CloseCircle" Grid.Row="3" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Red" Width="30" Height="30" />
+                    <materialDesign:PackIcon x:Name="err_4" Kind="CloseCircle" Grid.Row="4" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Red" Width="30" Height="30" />
+                    <materialDesign:PackIcon x:Name="err_6" Kind="CloseCircle" Grid.Row="6" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Red" Width="30" Height="30" />
 
+                </Grid>
+            </materialDesign:Card>
+            <Grid Grid.Row="1">
+                <Frame x:Name="frame2" ></Frame>
             </Grid>
-        </materialDesign:Card>
-        <Grid Grid.Row="1">
-            <Frame x:Name="frame2" ></Frame>
         </Grid>
-    </Grid>
+    </materialDesign:DialogHost>
+
+
+    
 </Page>
