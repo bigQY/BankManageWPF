@@ -106,7 +106,11 @@ namespace BankManage.common
                      select t.rationValue).Single();
             return q.Value;
         }
-
+        /// <summary>
+        /// 获得账户上一次交易发生的时间
+        /// </summary>
+        /// <param name="custom">所查询的账户</param>
+        /// <returns>上一次交易发生的时间</returns>
         public static DateTime GetLastAutomaticWithdrawalTime(Custom custom)
         {
             BankEntities c = new BankEntities();
@@ -115,7 +119,11 @@ namespace BankManage.common
                     select t.dealDate;
             return q.First().Date;
         }
-
+        /// <summary>
+        /// 获取账户的开户时间
+        /// </summary>
+        /// <param name="custom">所查询的账户</param>
+        /// <returns>获取账户的开户时间</returns>
         public static DateTime GetCreateAutomaticWithdrawalTime(Custom custom)
         {
             BankEntities c = new BankEntities();
@@ -125,7 +133,11 @@ namespace BankManage.common
                     select t.dealDate;
             return q.First().Date;
         }
-
+        /// <summary>
+        /// 判断零存整取账户是否违规过
+        /// </summary>
+        /// <param name="custom">所查询的账户</param>
+        /// <returns>账户是否违规过</returns>
         public static bool GetCustomerIsBroken(Custom custom)
         {
             BankEntities c = new BankEntities();
@@ -139,23 +151,33 @@ namespace BankManage.common
             }
             return false;
         }
-
-        public static double GetCustomerPromisedMoney(Custom custom)
-        {
-            BankEntities c = new BankEntities();
-            var q = from t in c.MoneyInfo
-                    where t.accountNo == custom.AccountInfo.accountNo
-                    where t.dealType == "零存整取开户"
-                    select t.dealMoney;
-            return q.First();
-        }
-
+        /// <summary>
+        /// 获取全部员工信息
+        /// </summary>
+        /// <returns></returns>
         public static IQueryable<EmployeeInfo> GetEmployeeInfos()
         {
             BankEntities context = new BankEntities();
             var query = from t in context.EmployeeInfo
                         select t;
             return query;
+        }
+        /// <summary>
+        /// 检查是否以存在同样AccountNo的账户
+        /// </summary>
+        /// <param name="accountNo">所检查的账户AccountNo</param>
+        /// <returns></returns>
+        public static bool CheckAccountNo(string accountNo)
+        {
+            BankEntities c = new BankEntities();
+            var q = from t in c.AccountInfo
+                    where t.accountNo == accountNo
+                    select t;
+            if (q.Count() != 0)
+            {
+                return false;
+            }
+            return true;
         }
 
     }

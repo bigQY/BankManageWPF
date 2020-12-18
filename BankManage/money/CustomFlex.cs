@@ -67,8 +67,7 @@ namespace BankManage.money
         {
             if (promisedYear < 1)
             {
-                //TODO 提示
-                return;
+                MessageBox.Show("存款年限太短");
             }
             base.Create(accountNumber, money);
 

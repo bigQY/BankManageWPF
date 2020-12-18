@@ -8,7 +8,7 @@ namespace BankManage
         /// </summary>
         /// <param name="accountNumber">帐号</param>
         /// <param name="money">开户金额</param>
-        public override void Create(string accountNumber, double money)
+        public void Create(string accountNumber, double money)
         {
             base.Create(accountNumber, money);
             base.Diposit("结息", DataOperation.GetRate(RateType.活期) * money);

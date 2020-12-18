@@ -18,7 +18,7 @@ namespace BankManage
         /// </summary>
         public MoneyInfo MoneyInfo { get; set; }
         /// <summary>
-        /// 帐户余额
+        /// 帐户余额(不可设置，只能从数据库读入)
         /// </summary>
         public double AccountBalance {
             get
@@ -54,8 +54,6 @@ namespace BankManage
         /// <param name="money">开户金额</param>
         public virtual void Create(string accountNumber, double money,string accountType="活期存款")
         {
-            this.AccountInfo.accountType = accountType;
-            //this.AccountBalance = money;
             bool success = false;
             //插入到数据库
             try
@@ -71,6 +69,7 @@ namespace BankManage
             }
             if (success)
             {
+                this.AccountInfo.accountType = accountType;
                 this.MoneyInfo.accountNo = accountNumber;
                 InsertData(accountType+"开户", money);
             }
@@ -92,7 +91,6 @@ namespace BankManage
             else
             {
                 //修改余额
-                ///AccountBalance += money;
                 InsertData(genType, money);
             }
         }
@@ -122,7 +120,6 @@ namespace BankManage
         /// <param name="money">取款金额</param>
         public virtual void Withdraw(double money)
         {
-            //AccountBalance -= money;
             InsertData("取款", -money);
         }
 
@@ -138,7 +135,7 @@ namespace BankManage
             MoneyInfo.dealDate = DateTime.Now;
             MoneyInfo.dealType = genType;
             MoneyInfo.dealMoney = money;
-            //MoneyInfo.balance = AccountBalance;
+            MoneyInfo.balance += money;
             try
             {
                 context.MoneyInfo.Add(MoneyInfo);
