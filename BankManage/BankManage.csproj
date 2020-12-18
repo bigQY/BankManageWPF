@@ -117,6 +117,21 @@
       <DependentUpon>BankModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="money\CustomFlex.cs" />
+    <Compile Include="other\BankReportLoss.xaml.cs">
+      <DependentUpon>BankReportLoss.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="other\EducationLoans.xaml.cs">
+      <DependentUpon>EducationLoans.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="other\FirmLoans.xaml.cs">
+      <DependentUpon>FirmLoans.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="other\PersonLoans.xaml.cs">
+      <DependentUpon>PersonLoans.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="other\StudentShortTermLoans.xaml.cs">
+      <DependentUpon>StudentShortTermLoans.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TEST1.xaml.cs">
       <DependentUpon>TEST1.xaml</DependentUpon>
     </Compile>
@@ -209,6 +224,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="other\BankReportLoss.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="other\ChangeAccount.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -216,6 +235,22 @@
     <Page Include="other\ChangeOperate.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="other\EducationLoans.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="other\FirmLoans.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="other\PersonLoans.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="other\StudentShortTermLoans.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="other\WelcomePage.xaml">
       <SubType>Designer</SubType>
