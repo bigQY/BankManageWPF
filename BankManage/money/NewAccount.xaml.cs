@@ -42,17 +42,77 @@ namespace BankManage.money
         {
             if (checkInput())
             {
-                Custom custom = DataOperation.CreateCustom(comboBoxAccountType.SelectedItem.ToString());
-                custom.AccountInfo.accountNo = this.txtAccountNo.Text;
-                custom.AccountInfo.IdCard = this.txtIDCard.Text;
-                custom.AccountInfo.accountName = this.txtAccountName.Text;
-                custom.AccountInfo.accountPass = this.txtPass.Password;
-                custom.Create(this.txtAccountNo.Text, double.Parse(this.txtMoney.Text), comboBoxAccountType.SelectedItem.ToString());
-                OperateRecord page = new OperateRecord();
-                NavigationService ns = NavigationService.GetNavigationService(this);
-                ns.Navigate(page);
+                if ((comboBoxAccountType.SelectedItem.ToString().Equals("活期存款") || promiseYear.SelectedIndex != -1))
+                {
+                    int y = (1 + 2 * promiseYear.SelectedIndex);
+                    switch (comboBoxAccountType.SelectedItem.ToString())
+                    {
+                        case "活期存款":
+                            CustomChecking custom = (CustomChecking)DataOperation.CreateCustom("活期存款");
+                            custom.AccountInfo.accountNo = this.txtAccountNo.Text;
+                            custom.AccountInfo.IdCard = this.txtIDCard.Text;
+                            custom.AccountInfo.accountName = this.txtAccountName.Text;
+                            custom.AccountInfo.accountPass = this.txtPass.Password;
+                            custom.Create(this.txtAccountNo.Text, double.Parse(this.txtMoney.Text), comboBoxAccountType.SelectedItem.ToString());
+                            
+                            break;
+                        case "定期存款":
+                            CustomFixed customFixed = (CustomFixed)DataOperation.CreateCustom("定期存款");
+                            customFixed.AccountInfo.accountNo = this.txtAccountNo.Text;
+                            customFixed.AccountInfo.IdCard = this.txtIDCard.Text;
+                            customFixed.AccountInfo.accountName = this.txtAccountName.Text;
+                            customFixed.AccountInfo.accountPass = this.txtPass.Password;
+                            customFixed.Create(this.txtAccountNo.Text, double.Parse(this.txtMoney.Text), y, comboBoxAccountType.SelectedItem.ToString());
+                            break;
+                        case "零存整取":
+                            promiseMoneyText.Text = txtMoney.Text;
+                            CustomFlex customFlex = (CustomFlex)DataOperation.CreateCustom("零存整取");
+                            customFlex.AccountInfo.accountNo = this.txtAccountNo.Text;
+                            customFlex.AccountInfo.IdCard = this.txtIDCard.Text;
+                            customFlex.AccountInfo.accountName = this.txtAccountName.Text;
+                            customFlex.AccountInfo.accountPass = this.txtPass.Password;
+                            customFlex.Create(this.txtAccountNo.Text, double.Parse(this.txtMoney.Text), int.Parse(promiseMoneyText.Text), y);
+                            break;
+                    }
+                    OperateRecord page = new OperateRecord();
+                    NavigationService ns = NavigationService.GetNavigationService(this);
+                    ns.Navigate(page);
+                }
+                else
+                {
+                    DialogHost.IsOpen = true;
+                }
+                //TODO IF写的太多了，需要优化
+                /*if (comboBoxAccountType.SelectedItem.ToString().Equals("活期存款") || promiseYear.SelectedIndex != -1)
+                {
+
+                    Custom custom = DataOperation.CreateCustom(comboBoxAccountType.SelectedItem.ToString());
+                    custom.AccountInfo.accountNo = this.txtAccountNo.Text;
+                    custom.AccountInfo.IdCard = this.txtIDCard.Text;
+                    custom.AccountInfo.accountName = this.txtAccountName.Text;
+                    custom.AccountInfo.accountPass = this.txtPass.Password;
+                    custom.Create(this.txtAccountNo.Text, double.Parse(this.txtMoney.Text), comboBoxAccountType.SelectedItem.ToString());
+                    OperateRecord page = new OperateRecord();
+                    NavigationService ns = NavigationService.GetNavigationService(this);
+                    ns.Navigate(page);
+
+                }
+                else
+                {
+                    if (comboBoxAccountType.SelectedItem.ToString().Equals("定期存款"))
+                    {
+                        promiseMoneyText.Visibility = Visibility.Hidden;
+                        promiseMoneyLable.Visibility = Visibility.Hidden;
+                    }
+                    else
+                    {
+                        promiseMoneyText.Visibility = Visibility.Visible;
+                        promiseMoneyLable.Visibility = Visibility.Visible;
+                        promiseMoneyText.Text = txtMoney.Text;
+                    }
+                    DialogHost.IsOpen = true;
+                }*/
             }
-            
         }
         //取消开户
         private void btnCancel_Click(object sender, RoutedEventArgs e)
@@ -69,6 +129,7 @@ namespace BankManage.money
 
         private void comboBoxAccountType_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            promiseYear.SelectedIndex = -1;
             string s = comboBoxAccountType.SelectedItem.ToString();
             using (BankEntities c = new BankEntities())
             {
@@ -174,6 +235,11 @@ namespace BankManage.money
                 return false;//校验码验证  
             }
             return true;//符合GB11643-1999标准  
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            DialogHost.IsOpen = false;
         }
     }
 }

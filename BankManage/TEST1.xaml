@@ -13,14 +13,32 @@
         TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
         Title="TESTWindow1" Height="450" Width="800">
-    <md:DialogHost>
-        <md:DialogHost.DialogContent>
-            <Button Content="Button" HorizontalAlignment="Left" Margin="218,61,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-
-        </md:DialogHost.DialogContent>
-        <Grid>
-            <Button Content="Button" HorizontalAlignment="Left" Margin="218,61,0,0" VerticalAlignment="Top" Width="75" Command="{x:Static md:DialogHost.OpenDialogCommand}"/>
+        <materialDesign:Card Margin="20">
+            <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Button Content="确定" Grid.Column="2" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center" Width="75"/>
+            <Label Content="承诺存款年限" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center"/>
+            <Label x:Name="promiseMoneyLable" Content="承诺每月存款金额" Grid.Column="1" HorizontalAlignment="Center"  Grid.Row="2" VerticalAlignment="Center"/>
+            <ComboBox x:Name="promiseYear" Grid.Column="2"  Grid.Row="1" VerticalAlignment="Center" Grid.ColumnSpan="2">
+                <ComboBoxItem Content="1年"/>
+                <ComboBoxItem Content="3年"/>
+                <ComboBoxItem Content="5年"/>
+            </ComboBox>
+            <TextBox x:Name="promiseMoneyText" Grid.ColumnSpan="2" Grid.Column="2"  Grid.Row="2" VerticalAlignment="Center"/>
+            <Label Content="Label" Grid.Column="2" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
         </Grid>
-    </md:DialogHost>
+        </materialDesign:Card>
    
 </Window>
