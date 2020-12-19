@@ -116,6 +116,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BankModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="money\bank\BankCustom.cs" />
     <Compile Include="money\CustomFlex.cs" />
     <Compile Include="other\BankReportLoss.xaml.cs">
       <DependentUpon>BankReportLoss.xaml</DependentUpon>

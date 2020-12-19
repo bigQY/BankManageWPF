@@ -22,6 +22,7 @@ namespace BankManage
                 BankEntities c = new BankEntities();
                 var q = from t in c.MoneyInfo
                         where t.accountNo == AccountInfo.accountNo
+                        orderby t.dealDate
                         select t;
                 if (q.Count() > 0)
                     return q.First();
