@@ -16,21 +16,17 @@ namespace BankManage
         /// <summary>
         /// 存款发生信息
         /// </summary>
-        public MoneyInfo MoneyInfo { 
-            get 
+        public MoneyInfo MoneyInfo {
+            get
             {
-                if (AccountInfo != null)
-                {
-                    BankEntities c = new BankEntities();
-                    var q = from t in c.MoneyInfo
-                            where t.accountNo == AccountInfo.accountNo
-                            select t;
+                BankEntities c = new BankEntities();
+                var q = from t in c.MoneyInfo
+                        where t.accountNo == AccountInfo.accountNo
+                        select t;
+                if (q.Count() > 0)
                     return q.First();
-                }
                 else
-                {
-                    return null;
-                }
+                    return new MoneyInfo();
             }
             set { }
         }
@@ -88,7 +84,7 @@ namespace BankManage
                 this.AccountInfo.accountType = accountType;
                 InsertData(accountType+"开户", money);
             }
-            
+
 
         }
 
