@@ -16,7 +16,21 @@ namespace BankManage
         /// <summary>
         /// 存款发生信息
         /// </summary>
-        public MoneyInfo MoneyInfo { get; set; }
+        public MoneyInfo MoneyInfo {
+            get
+            {
+                BankEntities c = new BankEntities();
+                var q = from t in c.MoneyInfo
+                        where t.accountNo == AccountInfo.accountNo
+                        orderby t.dealDate
+                        select t;
+                if (q.Count() > 0)
+                    return q.First();
+                else
+                    return new MoneyInfo();
+            }
+            set { }
+        }
         /// <summary>
         /// 帐户余额(不可设置，只能从数据库读入)
         /// </summary>
@@ -44,7 +58,6 @@ namespace BankManage
         public Custom()
         {
             AccountInfo = new AccountInfo();
-            MoneyInfo = new MoneyInfo();
         }
 
         protected BankEntities context = new BankEntities();
@@ -70,10 +83,9 @@ namespace BankManage
             if (success)
             {
                 this.AccountInfo.accountType = accountType;
-                this.MoneyInfo.accountNo = accountNumber;
                 InsertData(accountType+"开户", money);
             }
-            
+
 
         }
 
@@ -130,15 +142,21 @@ namespace BankManage
         /// <param name="money">发生金额</param>
         public void InsertData(string genType, double money)
         {
-
-            MoneyInfo.accountNo = this.AccountInfo.accountNo;
+            MoneyInfo newMoneyInfo = new MoneyInfo();
+            newMoneyInfo.accountNo= AccountInfo.accountNo; 
+            newMoneyInfo.dealDate = DateTime.Now;
+            newMoneyInfo.dealType = genType;
+            newMoneyInfo.dealMoney = money;
+            newMoneyInfo.balance = MoneyInfo.balance+money;
+            /*MoneyInfo.accountNo = this.AccountInfo.accountNo;
             MoneyInfo.dealDate = DateTime.Now;
             MoneyInfo.dealType = genType;
             MoneyInfo.dealMoney = money;
-            MoneyInfo.balance += money;
+            MoneyInfo.balance += money;*/
+
             try
             {
-                context.MoneyInfo.Add(MoneyInfo);
+                context.MoneyInfo.Add(newMoneyInfo);
                 context.SaveChanges();
             }
             catch

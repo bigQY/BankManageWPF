@@ -24,6 +24,7 @@ namespace BankManage
         public string accountName { get; set; }
         public string accountPass { get; set; }
         public string accountType { get; set; }
+        public double accountBalance { get; set; }
     
         public virtual AccountFixed AccountFixed { get; set; }
         public virtual AccountFlex AccountFlex { get; set; }

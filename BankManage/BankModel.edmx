@@ -29,6 +29,7 @@
           <Property Name="accountName" Type="nvarchar" MaxLength="20" />
           <Property Name="accountPass" Type="nvarchar" MaxLength="20" />
           <Property Name="accountType" Type="nvarchar" MaxLength="8" />
+          <Property Name="accountBalance" Type="float" Nullable="false" />
         </EntityType>
         <EntityType Name="EmployeeInfo">
           <Key>
@@ -141,6 +142,7 @@
           <NavigationProperty Name="AccountFixed" Relationship="BankModel.FK__AccountFi__accou__37A5467C" FromRole="AccountInfo" ToRole="AccountFixed" />
           <NavigationProperty Name="AccountFlex" Relationship="BankModel.FK__AccountFl__accou__4BAC3F29" FromRole="AccountInfo" ToRole="AccountFlex" />
           <NavigationProperty Name="MoneyInfo" Relationship="BankModel.FK__MoneyInfo__accou__5AEE82B9" FromRole="AccountInfo" ToRole="MoneyInfo" />
+          <Property Name="accountBalance" Type="Double" Nullable="false" />
         </EntityType>
         <EntityType Name="EmployeeInfo">
           <Key>
@@ -264,6 +266,7 @@
           <EntitySetMapping Name="AccountInfo">
             <EntityTypeMapping TypeName="BankModel.AccountInfo">
               <MappingFragment StoreEntitySet="AccountInfo">
+                <ScalarProperty Name="accountBalance" ColumnName="accountBalance" />
                 <ScalarProperty Name="accountNo" ColumnName="accountNo" />
                 <ScalarProperty Name="IdCard" ColumnName="IdCard" />
                 <ScalarProperty Name="accountName" ColumnName="accountName" />
