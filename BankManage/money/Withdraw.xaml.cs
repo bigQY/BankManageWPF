@@ -18,13 +18,7 @@ namespace BankManage.money
         //取款
         private void btnOk_Click(object sender, RoutedEventArgs e)
         {
-            Custom custom = DataOperation.GetCustom(this.txtAccount.Text);
-            if (custom.AccountInfo.accountPass != this.txtPassword.Password)
-            {
-                MessageBox.Show("密码不正确");
-                return;
-            }
-            custom.Withdraw(double.Parse(this.txtmount.Text));
+           
             OperateRecord page = new OperateRecord();
             NavigationService ns = NavigationService.GetNavigationService(this);
             ns.Navigate(page);
@@ -35,6 +29,16 @@ namespace BankManage.money
             OperateRecord page = new OperateRecord();
             NavigationService ns = NavigationService.GetNavigationService(this);
             ns.Navigate(page);
+        }
+
+        private void checkAccountBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnOK_Click_1(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
