@@ -65,7 +65,6 @@ namespace BankManage.money
                             customFixed.Create(this.txtAccountNo.Text, double.Parse(this.txtMoney.Text), y, comboBoxAccountType.SelectedItem.ToString());
                             break;
                         case "零存整取":
-                            promiseMoneyText.Text = txtMoney.Text;
                             CustomFlex customFlex = (CustomFlex)DataOperation.CreateCustom("零存整取");
                             customFlex.AccountInfo.accountNo = this.txtAccountNo.Text;
                             customFlex.AccountInfo.IdCard = this.txtIDCard.Text;
@@ -80,6 +79,17 @@ namespace BankManage.money
                 }
                 else
                 {
+                    if (comboBoxAccountType.SelectedItem.ToString().Equals("定期存款"))
+                    {
+                        promiseMoneyLable.Visibility = Visibility.Hidden;
+                        promiseMoneyText.Visibility = Visibility.Hidden;
+                    }
+                    else
+                    {
+                        promiseMoneyLable.Visibility = Visibility.Visible;
+                        promiseMoneyText.Visibility = Visibility.Visible;
+                        promiseMoneyText.Text = txtMoney.Text;
+                    }
                     DialogHost.IsOpen = true;
                 }
                 //TODO IF写的太多了，需要优化

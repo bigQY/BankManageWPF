@@ -132,6 +132,9 @@
     <Compile Include="other\StudentShortTermLoans.xaml.cs">
       <DependentUpon>StudentShortTermLoans.xaml</DependentUpon>
     </Compile>
+    <Compile Include="query\AdvanceQuery.xaml.cs">
+      <DependentUpon>AdvanceQuery.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TEST1.xaml.cs">
       <DependentUpon>TEST1.xaml</DependentUpon>
     </Compile>
@@ -253,6 +256,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="other\WelcomePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="query\AdvanceQuery.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -28,5 +28,10 @@ namespace BankManage.query
                         select t;
             datagrid1.ItemsSource = query.ToList();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

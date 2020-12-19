@@ -78,6 +78,7 @@ namespace BankManage
         /// </summary>
         public override void Diposit(string genType, double money)
         {
+            //TODO 以在存款界面做验证，尝试将下列代码删除
             BankEntities bankEntities = new BankEntities();
             var q1 = from t in bankEntities.MoneyInfo
                     where t.accountNo == this.AccountInfo.accountNo

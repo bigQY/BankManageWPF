@@ -11,7 +11,7 @@ namespace BankManage.money
     /// <summary>
     /// 零存整取用户类
     /// </summary>
-    class CustomFlex:Custom
+    public class CustomFlex:Custom
     {
         int PromisedYear
         {
@@ -69,7 +69,7 @@ namespace BankManage.money
             {
                 MessageBox.Show("存款年限太短");
             }
-            base.Create(accountNumber, money);
+            base.Create(accountNumber, money,"零存整取");
 
             //零存整取
 
@@ -108,7 +108,7 @@ namespace BankManage.money
         /// <summary>
         ///存款 
         /// </summary>
-        public void Diposit(string genType)
+        public void Diposit()
         {
             
             if (isBroken())
