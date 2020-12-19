@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using BankManage.money;
+using BankManage.money.bank;
 
 namespace BankManage.common
 {
@@ -28,6 +29,12 @@ namespace BankManage.common
                     return "";
                 }
             }
+        }
+
+        public static BankCustom GetBankCustom(string accountNo)
+        {
+            BankEntities bankEntities = new BankEntities();
+            return new BankCustom(bankEntities.AccountInfo.Find(accountNo));
         }
 
         /// <summary>
@@ -180,15 +187,16 @@ namespace BankManage.common
         /// <summary>
         /// 获得账户上一次交易发生的时间
         /// </summary>
-        /// <param name="custom">所查询的账户</param>
+        /// <param name="accountNo">所查询的账户</param>
         /// <returns>上一次交易发生的时间</returns>
-        public static DateTime GetLastAutomaticWithdrawalTime(Custom custom)
+        public static DateTime GetLastAutomaticWithdrawalTime(string accountNo)
         {
             BankEntities c = new BankEntities();
             var q = from t in c.MoneyInfo
-                    where t.accountNo == custom.AccountInfo.accountNo
+                    where t.accountNo == accountNo
+                    orderby t.dealDate
                     select t.dealDate;
-            return q.First().Date;
+            return q.Last();
         }
         /// <summary>
         /// 获取账户的开户时间

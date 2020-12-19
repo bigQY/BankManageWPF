@@ -172,10 +172,10 @@ namespace BankManage.money
 
         private bool isBroken()
         {
-            if(DateTime.Now.Month - DataOperation.GetLastAutomaticWithdrawalTime(this).Month >= 2)
+            /*if(DateTime.Now.Month - DataOperation.GetLastAutomaticWithdrawalTime(this).Month >= 2)
             {
                 return true;
-            }
+            }*/
             return false;
         }
 

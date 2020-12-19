@@ -57,7 +57,7 @@
                 IsActive="False">
                 <materialDesign:SnackbarMessage x:Name="error_message"
                     Content="错误"
-                    ActionContent="确定" />
+                    ActionContent="确定" ActionClick="error_message_ActionClick" />
             </materialDesign:Snackbar>
         </Grid>
     </Grid>

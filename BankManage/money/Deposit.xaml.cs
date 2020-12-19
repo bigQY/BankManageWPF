@@ -5,6 +5,7 @@ using BankManage.common;
 using System.Windows.Threading;
 using System;
 using System.Linq;
+using BankManage.money.bank;
 
 namespace BankManage.money
 {
@@ -22,7 +23,18 @@ namespace BankManage.money
         //存款
         private void btnOk_Click(object sender, RoutedEventArgs e)
         {
+            double money = double.Parse(txtmount.Text);
             string accountNo = txtAccount.Text;
+            string accountType;
+            BankCustom bankCustom = DataOperation.GetBankCustom(accountNo);
+            accountType = bankCustom.account.accountType;
+            txtAccountType.Text = accountType;
+            bankCustom.deposit(accountType, money);
+            OperateRecord page = new OperateRecord();
+            NavigationService ns = NavigationService.GetNavigationService(this);
+            ns.Navigate(page);
+
+            /*string accountNo = txtAccount.Text;
             string accountPass = txtAccountPass.Text;
             string accountType = txtAccountType.Text;
             switch (accountType)
@@ -59,10 +71,11 @@ namespace BankManage.money
                     break;
             }
 
-            
-            OperateRecord page = new OperateRecord();
-            NavigationService ns = NavigationService.GetNavigationService(this);
-            ns.Navigate(page);
+            */
+
+
+
+
         }
         //取消存款
         private void btnCancel_Click(object sender, RoutedEventArgs e)
@@ -78,62 +91,43 @@ namespace BankManage.money
             string accountNo = txtAccount.Text;
             string accountPass = txtAccountPass.Text;
 
-            string accountType = DataOperation.GetAccountType(accountNo);
-            if (accountType.Equals("NONE"))
-            {
-                showError("未查找到相关账号");
-            }
-            else
-            {
-                if (DataOperation.CheckAccountPassword(accountNo, accountPass))
-                {
-                    txtAccountType.Text = accountType;
-                    if (accountType.Equals("定期存款"))
-                    {
-                        BankEntities bankEntities = new BankEntities();
-                        var q1 = from t in bankEntities.MoneyInfo
-                                 where t.accountNo == accountNo
-                                 select t;
-                        var q2 = from i in bankEntities.MoneyInfo
-                                 where i.dealType == "定期存款支取"
-                                 select i;
-                        if (q1.Count() > 0)
-                        {
-                            if (q2.Count() == 0)
-                            {
-                                showError("您还有一个未支取的定期存款");
-                            }
-                            else
-                            {
-                                txtmount.IsEnabled = true;
-                                btnOk.IsEnabled = true;
-                            }
-                        }
-                    }
-                    else if (accountType.Equals("零存整取"))
-                    {
-                        BankEntities bankEntities = new BankEntities();
-                        var q = from t in bankEntities.AccountFlex
-                                where t.accountNo == accountNo
-                                select t.promisedMoney;
-                        if (q.Count() == 1)
-                        {
-                            txtmount.Text = q.First() + "";
-                            btnOk.IsEnabled = true;
-                        }
+            string accountType;
 
+            if (DataOperation.CheckAccountPassword(accountNo, accountPass))
+            {
+                BankCustom bankCustom = DataOperation.GetBankCustom(accountNo);
+                accountType = bankCustom.account.accountType;
+                txtAccountType.Text = accountType;
+                if (accountType.Equals("定期存款"))
+                {
+
+                    if (bankCustom.account.accountBalance != 0)
+                    {
+                        showError("您还有一个未支取的定期存款");
                     }
                     else
                     {
                         txtmount.IsEnabled = true;
                         btnOk.IsEnabled = true;
                     }
+
+                }
+                else if (accountType.Equals("零存整取"))
+                {
+                    txtmount.Text = bankCustom.account.AccountFlex.promisedMoney + "";
+                    btnOk.IsEnabled = true;
                 }
                 else
                 {
-                    showError("密码错误");
+                    txtmount.IsEnabled = true;
+                    btnOk.IsEnabled = true;
                 }
             }
+            else
+            {
+                showError("账号或密码错误");
+            }
+
         }
 
         private void showError(string message)
@@ -154,6 +148,11 @@ namespace BankManage.money
         private void closeError()
         {
             error_message_body.IsActive = false;
+        }
+
+        private void error_message_ActionClick(object sender, RoutedEventArgs e)
+        {
+            closeError();
         }
     }
 }
