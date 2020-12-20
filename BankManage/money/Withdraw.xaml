@@ -6,95 +6,62 @@
       mc:Ignorable="d"  
       d:DesignHeight="600" d:DesignWidth="800"
 	Title="Withdraw">
-    <materialDesign:DialogHost x:Name="dialogHost" IsOpen="False">
-        <materialDesign:DrawerHost>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <Label Content="取款" Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="2" FontSize="24" FontWeight="Bold"/>
-                <Image Grid.ColumnSpan="3"  Grid.Row="3" Grid.RowSpan="3"  Source="fiat-money.png"/>
-                <TextBox x:Name="txtAccountNo"
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label Content="取款" Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="2" FontSize="24" FontWeight="Bold"/>
+        <Image Grid.ColumnSpan="3"  Grid.Row="3" Grid.RowSpan="3"  Source="fiat-money.png"/>
+        <TextBox x:Name="txtAccountNo"
               materialDesign:HintAssist.Hint="账号"
               Style="{StaticResource MaterialDesignFloatingHintTextBox}"
               VerticalAlignment="Center" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="4" />
-                <TextBox x:Name="txtAccountPass"
+        <TextBox x:Name="txtAccountPass"
               materialDesign:HintAssist.Hint="密码"
               Style="{StaticResource MaterialDesignFloatingHintTextBox}"
               VerticalAlignment="Center" Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="4" />
-                <Button x:Name="checkAccountBtn" Grid.ColumnSpan="2" Content="检查账号" Grid.Column="7" HorizontalAlignment="Center"  Grid.Row="2" VerticalAlignment="Center" Height="30" Click="checkAccountBtn_Click"/>
-                <TextBox x:Name="txtAccountType"
+        <Button x:Name="checkAccountBtn" Grid.ColumnSpan="2" Content="检查账号" Grid.Column="7" HorizontalAlignment="Center"  Grid.Row="3" VerticalAlignment="Center" Height="30" Click="checkAccountBtn_Click"/>
+        <TextBox x:Name="txtAccountType"
               materialDesign:HintAssist.Hint="账户类型"
               Style="{StaticResource MaterialDesignFloatingHintTextBox}"
               VerticalAlignment="Center" Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="4" IsEnabled="False" />
-                <TextBox x:Name="txtAccountBalancee"
+        <TextBox x:Name="txtAccountBalancee"
               materialDesign:HintAssist.Hint="账户余额"
               Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-              VerticalAlignment="Center" Grid.Row="5" Grid.Column="3" Grid.ColumnSpan="2" IsEnabled="False" />
-                <TextBox x:Name="txtAccountLX"
-              materialDesign:HintAssist.Hint="利息"
-              Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-              VerticalAlignment="Center" Grid.Row="5" Grid.Column="5" Grid.ColumnSpan="2" IsEnabled="False" Visibility="Hidden" />
-                <TextBox x:Name="txtMount"
+              VerticalAlignment="Center" Grid.Row="5" Grid.Column="3" Grid.ColumnSpan="4" IsEnabled="False" />
+        <TextBox x:Name="txtMount"
               materialDesign:HintAssist.Hint="取款金额"
               Style="{StaticResource MaterialDesignFloatingHintTextBox}"
               VerticalAlignment="Center" Grid.Row="6" Grid.Column="3" Grid.ColumnSpan="4" />
-                <Button x:Name="btnOK" Grid.ColumnSpan="2" Content="取款" Grid.Column="4" HorizontalAlignment="Center" Grid.Row="7" VerticalAlignment="Center" Width="75" Click="btnOK_Click_1"/>
-                <!-- long hand form for setting the message -->
-                <materialDesign:Snackbar
-            x:Name="error_message_body"
-            IsActive="False" Grid.Row="8" Grid.Column="2" Grid.ColumnSpan="6"
-            Grid.RowSpan="2">
-                    <materialDesign:SnackbarMessage x:Name="error_message"
-                Content="ERROR" 
-                ActionContent="确定" ActionClick="error_message_ActionClick"/>
-                </materialDesign:Snackbar>
-            </Grid>
-        </materialDesign:DrawerHost>
-        <materialDesign:DialogHost.DialogContent>
-            <materialDesign:Card Margin="20">
-                <Grid Width="600" Height="300">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <Button x:Name="importantNObtn" Content="取消" Grid.Column="3" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center" Width="75" Click="importantNObtn_Click"/>
-                    <Button x:Name="importantOKbtn" Content="确定" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center" Width="75" Click="importantOKbtn_Click"/>
-                    <Label Content="重要提示" Grid.Column="2" HorizontalAlignment="Center"  VerticalAlignment="Center" FontSize="24" FontWeight="Bold"/>
-                    <TextBlock x:Name="importantMessage" Grid.Column="1" Grid.Row="1" TextWrapping="Wrap" Text="警告" Grid.RowSpan="2" Grid.ColumnSpan="3" FontSize="20"/>
-                </Grid>
-            </materialDesign:Card>
-        </materialDesign:DialogHost.DialogContent>
-    </materialDesign:DialogHost>
-    
+        <Button x:Name="btnOK" Grid.ColumnSpan="2" Content="取款" Grid.Column="4" HorizontalAlignment="Center" Grid.Row="7" VerticalAlignment="Center" Width="75" Click="btnOK_Click_1"/>
+        <!-- long hand form for setting the message -->
+        <materialDesign:Snackbar
+              x:Name="error_message_body"
+              IsActive="True" Grid.Row="9" Grid.Column="2" Grid.ColumnSpan="6">
+            <materialDesign:SnackbarMessage x:Name="error_message"
+                Content="ERROR"
+                ActionContent="确定" />
+        </materialDesign:Snackbar>
+    </Grid>
 </Page>

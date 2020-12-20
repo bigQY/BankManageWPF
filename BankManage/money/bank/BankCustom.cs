@@ -153,8 +153,6 @@ namespace BankManage.money.bank
 
         public void InsertData(string genType, double money)
         {
-            ;
-
             MoneyInfo newMoneyInfo = new MoneyInfo();
             newMoneyInfo.accountNo = account.accountNo;
             newMoneyInfo.dealDate = DateTime.Now;
@@ -164,14 +162,13 @@ namespace BankManage.money.bank
             try
             {
                 bankEntities.AccountInfo.Find(account.accountNo).accountBalance+=money;
-                bankEntities.SaveChanges();
                 account = bankEntities.AccountInfo.Find(account.accountNo);
                 bankEntities.MoneyInfo.Add(newMoneyInfo);
                 bankEntities.SaveChanges();
             }
-            catch(Exception e)
+            catch
             {
-                MessageBox.Show("添加交易记录失败："+e.Message);
+                MessageBox.Show("添加交易记录失败：");
             }
 
         }

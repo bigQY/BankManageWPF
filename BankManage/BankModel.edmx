@@ -58,7 +58,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="accountNo" Type="nchar" MaxLength="6" Nullable="false" />
           <Property Name="dealDate" Type="datetime" Nullable="false" />
-          <Property Name="dealType" Type="nvarchar" MaxLength="80" Nullable="false" />
+          <Property Name="dealType" Type="nvarchar" MaxLength="8" Nullable="false" />
           <Property Name="dealMoney" Type="float" Nullable="false" />
           <Property Name="balance" Type="float" Nullable="false" />
         </EntityType>
@@ -171,7 +171,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="accountNo" Type="String" MaxLength="6" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="dealDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="dealType" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="dealType" Type="String" MaxLength="8" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="dealMoney" Type="Double" Nullable="false" />
           <Property Name="balance" Type="Double" Nullable="false" />
           <NavigationProperty Name="AccountInfo" Relationship="BankModel.FK__MoneyInfo__accou__5AEE82B9" FromRole="MoneyInfo" ToRole="AccountInfo" />
