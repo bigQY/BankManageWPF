@@ -2,41 +2,99 @@
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"  xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d"  
+      d:DesignHeight="600" d:DesignWidth="800"
 	Title="Withdraw">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
-        </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"></ColumnDefinition>
-                <ColumnDefinition Width="*" ></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-            </Grid.RowDefinitions>
-            <TextBlock Text="取款" FontSize="20" TextAlignment="Center" Grid.Row="0" Grid.ColumnSpan="2" ></TextBlock>
-            <TextBlock Margin="7"  Grid.Row="1">账号：</TextBlock>
-            <TextBox Name="txtAccount" Margin="5" Grid.Column="1"  Grid.Row="1"></TextBox>
-            <TextBlock Margin="7"  Grid.Row="2">密码：</TextBlock>
-            <PasswordBox Name="txtPassword" Margin="5" Grid.Column="1"  Grid.Row="2"></PasswordBox>
-            <TextBlock Margin="7"  Grid.Row="3">取款金额：</TextBlock>
-            <TextBox Name="txtmount" Margin="5" Grid.Column="1"  Grid.Row="3"></TextBox>
-            <StackPanel Grid.Row="4" HorizontalAlignment="Center" Grid.ColumnSpan="2" Orientation="Horizontal" >
-                <Button Name="btnOk"  Width="50" Margin="10,10,2,10" Padding="3" Click="btnOk_Click">确定</Button>
-                <Button Name="btnCancel"  Width="50" Margin="2,10,10,10" Padding="3" Click="btnCancel_Click">取消</Button>
-            </StackPanel>
-        </Grid>
-        <Grid Grid.Row="1">
-            <Frame x:Name="frame2" ></Frame>
-        </Grid>
-    </Grid>
+    <materialDesign:DialogHost x:Name="dialogHost" IsOpen="False">
+        <materialDesign:DrawerHost>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Label Content="取款" Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="2" FontSize="24" FontWeight="Bold"/>
+                <Image Grid.ColumnSpan="3"  Grid.Row="3" Grid.RowSpan="3"  Source="fiat-money.png"/>
+                <TextBox x:Name="txtAccountNo"
+              materialDesign:HintAssist.Hint="账号"
+              Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+              VerticalAlignment="Center" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="4" />
+                <TextBox x:Name="txtAccountPass"
+              materialDesign:HintAssist.Hint="密码"
+              Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+              VerticalAlignment="Center" Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="4" />
+                <Button x:Name="checkAccountBtn" Grid.ColumnSpan="2" Content="检查账号" Grid.Column="7" HorizontalAlignment="Center"  Grid.Row="2" VerticalAlignment="Center" Height="30" Click="checkAccountBtn_Click"/>
+                <TextBox x:Name="txtAccountType"
+              materialDesign:HintAssist.Hint="账户类型"
+              Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+              VerticalAlignment="Center" Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="4" IsEnabled="False" />
+                <TextBox x:Name="txtAccountBalancee"
+              materialDesign:HintAssist.Hint="账户余额"
+              Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+              VerticalAlignment="Center" Grid.Row="5" Grid.Column="3" Grid.ColumnSpan="2" IsEnabled="False" />
+                <TextBox x:Name="txtAccountLX"
+              materialDesign:HintAssist.Hint="利息"
+              Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+              VerticalAlignment="Center" Grid.Row="5" Grid.Column="5" Grid.ColumnSpan="2" IsEnabled="False" Visibility="Hidden" />
+                <TextBox x:Name="txtMount"
+              materialDesign:HintAssist.Hint="取款金额"
+              Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+              VerticalAlignment="Center" Grid.Row="6" Grid.Column="3" Grid.ColumnSpan="4" />
+                <Button x:Name="btnOK" Grid.ColumnSpan="2" Content="取款" Grid.Column="4" HorizontalAlignment="Center" Grid.Row="7" VerticalAlignment="Center" Width="75" Click="btnOK_Click_1"/>
+                <!-- long hand form for setting the message -->
+                <materialDesign:Snackbar
+            x:Name="error_message_body"
+            IsActive="False" Grid.Row="8" Grid.Column="2" Grid.ColumnSpan="6"
+            Grid.RowSpan="2">
+                    <materialDesign:SnackbarMessage x:Name="error_message"
+                Content="ERROR" 
+                ActionContent="确定" ActionClick="error_message_ActionClick"/>
+                </materialDesign:Snackbar>
+            </Grid>
+        </materialDesign:DrawerHost>
+        <materialDesign:DialogHost.DialogContent>
+            <materialDesign:Card Margin="20">
+                <Grid Width="600" Height="300">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Button x:Name="importantNObtn" Content="取消" Grid.Column="3" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center" Width="75" Click="importantNObtn_Click"/>
+                    <Button x:Name="importantOKbtn" Content="确定" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center" Width="75" Click="importantOKbtn_Click"/>
+                    <Label Content="重要提示" Grid.Column="2" HorizontalAlignment="Center"  VerticalAlignment="Center" FontSize="24" FontWeight="Bold"/>
+                    <TextBlock x:Name="importantMessage" Grid.Column="1" Grid.Row="1" TextWrapping="Wrap" Text="警告" Grid.RowSpan="2" Grid.ColumnSpan="3" FontSize="20"/>
+                </Grid>
+            </materialDesign:Card>
+        </materialDesign:DialogHost.DialogContent>
+    </materialDesign:DialogHost>
+    
 </Page>

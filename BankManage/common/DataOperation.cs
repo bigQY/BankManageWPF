@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using BankManage.money;
+using BankManage.money.bank;
 
 namespace BankManage.common
 {
@@ -28,6 +29,12 @@ namespace BankManage.common
                     return "";
                 }
             }
+        }
+
+        public static BankCustom GetBankCustom(string accountNo)
+        {
+            BankEntities bankEntities = new BankEntities();
+            return new BankCustom(bankEntities.AccountInfo.Find(accountNo));
         }
 
         /// <summary>
@@ -87,8 +94,79 @@ namespace BankManage.common
                      select t;
             if (qt != null && qt.Count() > 0)
             {
-                custom.AccountBalance = qt.Sum(x => x.dealMoney);
+                //custom.AccountBalance = qt.Sum(x => x.dealMoney);
             }
+            return custom;
+        }
+
+        /// <summary>
+        /// 获取定期存款用户
+        /// </summary>
+        /// <param name="accountNumber"></param>
+        /// <returns></returns>
+        public static CustomFixed GetCustomFixed(string acccountNo)
+        {
+            CustomFixed custom = null;
+            BankEntities c = new BankEntities();
+            try
+            {
+                var query = from t in c.AccountInfo
+                            where t.accountNo == acccountNo
+                            select t;
+                if (query.Count() > 0)
+                {
+                    var q = query.Single();
+                    custom = (CustomFixed)CreateCustom(q.accountType);
+                    custom.AccountInfo.accountNo = acccountNo;
+                    custom.AccountInfo.accountName = q.accountName;
+                    custom.AccountInfo.accountPass = q.accountPass;
+                    custom.AccountInfo.IdCard = q.IdCard;
+                }
+            }
+            catch
+            {
+                return null;
+            }
+            /*var qt = from t in c.MoneyInfo
+                     where t.accountNo == acccountNo
+                     select t;
+            if (qt != null && qt.Count() > 0)
+            {
+                //custom.AccountBalance = qt.Sum(x => x.dealMoney);
+            }*/
+            return custom;
+        }
+
+        public static CustomFlex GetCustomFlex(string acccountNo)
+        {
+            CustomFlex custom = null;
+            BankEntities c = new BankEntities();
+            try
+            {
+                var query = from t in c.AccountInfo
+                            where t.accountNo == acccountNo
+                            select t;
+                if (query.Count() > 0)
+                {
+                    var q = query.Single();
+                    custom = (CustomFlex)CreateCustom(q.accountType);
+                    custom.AccountInfo.accountNo = acccountNo;
+                    custom.AccountInfo.accountName = q.accountName;
+                    custom.AccountInfo.accountPass = q.accountPass;
+                    custom.AccountInfo.IdCard = q.IdCard;
+                }
+            }
+            catch
+            {
+                return null;
+            }
+            /*var qt = from t in c.MoneyInfo
+                     where t.accountNo == acccountNo
+                     select t;
+            if (qt != null && qt.Count() > 0)
+            {
+                //custom.AccountBalance = qt.Sum(x => x.dealMoney);
+            }*/
             return custom;
         }
 
@@ -109,15 +187,16 @@ namespace BankManage.common
         /// <summary>
         /// 获得账户上一次交易发生的时间
         /// </summary>
-        /// <param name="custom">所查询的账户</param>
+        /// <param name="accountNo">所查询的账户</param>
         /// <returns>上一次交易发生的时间</returns>
-        public static DateTime GetLastAutomaticWithdrawalTime(Custom custom)
+        public static DateTime GetLastAutomaticWithdrawalTime(string accountNo)
         {
             BankEntities c = new BankEntities();
             var q = from t in c.MoneyInfo
-                    where t.accountNo == custom.AccountInfo.accountNo
+                    where t.accountNo == accountNo
+                    orderby t.dealDate
                     select t.dealDate;
-            return q.First().Date;
+            return q.Last();
         }
         /// <summary>
         /// 获取账户的开户时间
@@ -178,6 +257,44 @@ namespace BankManage.common
                 return false;
             }
             return true;
+        }
+        /// <summary>
+        /// 获取账户的账户类型
+        /// </summary>
+        /// <returns>账户类型或NONE</returns>
+        public static string GetAccountType(string accountNo)
+        {
+            BankEntities c = new BankEntities();
+            var q = from t in c.AccountInfo
+                    where t.accountNo == accountNo
+                    select t.accountType;
+            if (q.Count() != 0)
+            {
+                return q.First();
+            }
+            return "NONE";
+        }
+        /// <summary>
+        /// 检验账号的密码是否正确
+        /// </summary>
+        /// <param name="accountNo"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        public static bool CheckAccountPassword(string accountNo,string password)
+        {
+            BankEntities c = new BankEntities();
+            var q = from t in c.AccountInfo
+                    where t.accountNo == accountNo
+                    select t;
+            if (q.Count() != 0)
+            {
+                AccountInfo accountInfo = q.First();
+                if (accountInfo.accountPass.Equals(password))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
     }

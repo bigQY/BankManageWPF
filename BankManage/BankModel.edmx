@@ -29,6 +29,7 @@
           <Property Name="accountName" Type="nvarchar" MaxLength="20" />
           <Property Name="accountPass" Type="nvarchar" MaxLength="20" />
           <Property Name="accountType" Type="nvarchar" MaxLength="8" />
+          <Property Name="accountBalance" Type="float" Nullable="false" />
         </EntityType>
         <EntityType Name="EmployeeInfo">
           <Key>
@@ -57,7 +58,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="accountNo" Type="nchar" MaxLength="6" Nullable="false" />
           <Property Name="dealDate" Type="datetime" Nullable="false" />
-          <Property Name="dealType" Type="nvarchar" MaxLength="8" Nullable="false" />
+          <Property Name="dealType" Type="nvarchar" MaxLength="80" Nullable="false" />
           <Property Name="dealMoney" Type="float" Nullable="false" />
           <Property Name="balance" Type="float" Nullable="false" />
         </EntityType>
@@ -141,6 +142,7 @@
           <NavigationProperty Name="AccountFixed" Relationship="BankModel.FK__AccountFi__accou__37A5467C" FromRole="AccountInfo" ToRole="AccountFixed" />
           <NavigationProperty Name="AccountFlex" Relationship="BankModel.FK__AccountFl__accou__4BAC3F29" FromRole="AccountInfo" ToRole="AccountFlex" />
           <NavigationProperty Name="MoneyInfo" Relationship="BankModel.FK__MoneyInfo__accou__5AEE82B9" FromRole="AccountInfo" ToRole="MoneyInfo" />
+          <Property Name="accountBalance" Type="Double" Nullable="false" />
         </EntityType>
         <EntityType Name="EmployeeInfo">
           <Key>
@@ -169,7 +171,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="accountNo" Type="String" MaxLength="6" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="dealDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="dealType" Type="String" MaxLength="8" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="dealType" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="dealMoney" Type="Double" Nullable="false" />
           <Property Name="balance" Type="Double" Nullable="false" />
           <NavigationProperty Name="AccountInfo" Relationship="BankModel.FK__MoneyInfo__accou__5AEE82B9" FromRole="MoneyInfo" ToRole="AccountInfo" />
@@ -264,6 +266,7 @@
           <EntitySetMapping Name="AccountInfo">
             <EntityTypeMapping TypeName="BankModel.AccountInfo">
               <MappingFragment StoreEntitySet="AccountInfo">
+                <ScalarProperty Name="accountBalance" ColumnName="accountBalance" />
                 <ScalarProperty Name="accountNo" ColumnName="accountNo" />
                 <ScalarProperty Name="IdCard" ColumnName="IdCard" />
                 <ScalarProperty Name="accountName" ColumnName="accountName" />

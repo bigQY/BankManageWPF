@@ -116,6 +116,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BankModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="money\bank\BankCustom.cs" />
+    <Compile Include="money\bank\BankFixedCustom.cs" />
     <Compile Include="money\CustomFlex.cs" />
     <Compile Include="other\BankReportLoss.xaml.cs">
       <DependentUpon>BankReportLoss.xaml</DependentUpon>
@@ -131,6 +133,9 @@
     </Compile>
     <Compile Include="other\StudentShortTermLoans.xaml.cs">
       <DependentUpon>StudentShortTermLoans.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="query\AdvanceQuery.xaml.cs">
+      <DependentUpon>AdvanceQuery.xaml</DependentUpon>
     </Compile>
     <Compile Include="TEST1.xaml.cs">
       <DependentUpon>TEST1.xaml</DependentUpon>
@@ -253,6 +258,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="other\WelcomePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="query\AdvanceQuery.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -384,6 +393,7 @@
       <DependentUpon>Bank.mdf</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="money\fiat-money.png" />
     <Resource Include="res\2fe572f3ef413736a379008ace245ddd.gif" />
     <Resource Include="employee\cs.jpg" />
     <Resource Include="res\cs.jpg" />
