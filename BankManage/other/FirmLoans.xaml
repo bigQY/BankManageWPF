@@ -3,12 +3,49 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:BankManage.other"
+      xmlns:local="clr-namespace:BankManage.other" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="FirmLoans">
 
-    <Grid>
-        
+    <Grid ShowGridLines="False">
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Label Content="企业贷款服务" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="2" Grid.ColumnSpan="3" FontSize="36"></Label>
+        <materialDesign:PackIcon Kind="CalendarClock" Width="Auto" Grid.Row="4" Height="Auto" VerticalAlignment="Center" HorizontalAlignment="Center" />
+        <materialDesign:PackIcon Kind="CashUsd" Width="Auto" Grid.Row="3" Height="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <materialDesign:PackIcon Kind="AccountKeyOutline" Width="Auto" Grid.Row="2" Height="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <materialDesign:PackIcon Kind="Account"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="Auto" Height="Auto" Grid.Row="1" />
+        <TextBox
+         materialDesign:HintAssist.Hint="账户"
+         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+         VerticalAlignment="Center"  Grid.Column="1" Width="637" Grid.ColumnSpan="5" FontSize="14" Grid.Row="1"  />
+        <PasswordBox VerticalAlignment="Center" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" materialDesign:HintAssist.Hint="密码" Name="txtPass" Margin="5" Grid.Column="1"  Grid.Row="2" Grid.ColumnSpan="5"></PasswordBox>
+        <TextBox
+            materialDesign:HintAssist.Hint="贷款金额"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+            VerticalAlignment="Center"  Grid.ColumnSpan="5" Grid.Row="3" Grid.Column="1" FontSize="14" />
+        <TextBox
+            materialDesign:HintAssist.Hint="贷款期限"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+            VerticalAlignment="Center"  Grid.ColumnSpan="5" Grid.Row="4" Grid.Column="1" FontSize="14" />
+        <Button Content="提交申请" Grid.Row="5" Grid.Column="3"></Button>
+
     </Grid>
 </Page>
