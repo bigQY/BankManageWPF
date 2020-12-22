@@ -8,49 +8,52 @@
 	Title="Deposit">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="9*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width=".5*"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="Auto" ></ColumnDefinition>
+                <ColumnDefinition Width=".3*" ></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
-
                 <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+
             </Grid.RowDefinitions>
-            <TextBlock Text="存款" FontSize="20" TextAlignment="Center" Grid.Row="0" Grid.ColumnSpan="2" ></TextBlock>
+            <TextBlock Text="存款" FontSize="20" TextAlignment="Center" Grid.Row="0" Grid.ColumnSpan="3" ></TextBlock>
             <TextBox
                 Name="txtAccount"
                 materialDesign:HintAssist.Hint="账号"
                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                VerticalAlignment="Center" Grid.Row="1" />
-            <Button Grid.Row="1" Grid.Column="1" Click="Button_Click">检查账号</Button>
+                VerticalAlignment="Center" Grid.Row="1" Grid.Column="1" />
+            <Button Grid.Row="1" Grid.Column="2" Click="Button_Click">检查账号</Button>
             <TextBox
                 Name="txtAccountPass"
                 materialDesign:HintAssist.Hint="密码"
                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                VerticalAlignment="Center" Grid.Row="2"  />
+                VerticalAlignment="Center" Grid.Row="2" Grid.Column="1"  />
             <TextBox
                 Name="txtAccountType"
                 materialDesign:HintAssist.Hint="账号类型"
                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                VerticalAlignment="Center" Grid.Row="3" IsEnabled="False" />
+                VerticalAlignment="Center" Grid.Row="3" IsEnabled="False" Grid.Column="1" />
             <TextBox
                 Name="txtmount"
                 materialDesign:HintAssist.Hint="存款金额"
                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                VerticalAlignment="Center"  Grid.Row="4" IsEnabled="False" />
+                VerticalAlignment="Center"  Grid.Row="4" IsEnabled="False" Grid.Column="1" />
             <StackPanel Grid.Row="5" HorizontalAlignment="Center" Grid.ColumnSpan="2" Orientation="Horizontal" >
                 <Button Name="btnOk"  Width="50" Margin="10,10,2,10" Padding="3" Click="btnOk_Click" IsEnabled="False">确定</Button>
                 <Button Name="btnCancel"  Width="50" Margin="2,10,10,10" Padding="3" Click="btnCancel_Click">取消</Button>
             </StackPanel>
+            <Image  Grid.Row="1" Grid.RowSpan="5" Source="fiat-money.png"/>
         </Grid>
         <Grid Grid.Row="1">
             <materialDesign:Snackbar x:Name="error_message_body"
