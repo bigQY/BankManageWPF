@@ -196,7 +196,7 @@
                     </Style>
                 </materialDesign:DrawerHost.Style>
                 <materialDesign:DrawerHost.RightDrawerContent>
-                    <Label>这是帮助</Label>
+                    <Frame x:Name="helperFrame" Width="600" Height="600"/>
                 </materialDesign:DrawerHost.RightDrawerContent>
                 <materialDesign:DrawerHost.BottomDrawerContent>
                     <Label>这是关于</Label>

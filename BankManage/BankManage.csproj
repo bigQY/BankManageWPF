@@ -104,6 +104,9 @@
     <Compile Include="AccountInfo.cs">
       <DependentUpon>BankModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="BankHelper\NotFoundPageHelper.xaml.cs">
+      <DependentUpon>NotFoundPageHelper.xaml</DependentUpon>
+    </Compile>
     <Compile Include="BankHelper\MainPageHelper.xaml.cs">
       <DependentUpon>MainPageHelper.xaml</DependentUpon>
     </Compile>
@@ -183,6 +186,10 @@
     <Compile Include="other\Welcome.xaml.cs">
       <DependentUpon>Welcome.xaml</DependentUpon>
     </Compile>
+    <Page Include="BankHelper\NotFoundPageHelper.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="BankHelper\MainPageHelper.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

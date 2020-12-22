@@ -23,13 +23,25 @@ namespace BankManage
             Button item = e.Source as Button;
             if (item != null)
             {
+                //内容导航
                 frame1.Source = new Uri(item.Tag.ToString(), UriKind.Relative);
+                //帮助导航
+                switch (item.Tag.ToString())
+                {
+                    case "":
+                        break;
+                    default:
+                        helperFrame.Source = new Uri("BankHelper/NotFoundPageHelper.xaml", UriKind.Relative);
+                        break;
+                }
             }
         }
         void MainWindow_SourceInitialized(object sender, System.EventArgs e)
         {
             //默认显示当前页面
             this.frame1.Source = new Uri("other/WelcomePage.xaml", UriKind.Relative);
+            //对应的帮助界面
+            helperFrame.Source = new Uri("BankHelper/MainPageHelper.xaml", UriKind.Relative);
             //启动登陆窗体
             LoginForm login = new LoginForm();
             login.ShowDialog();
