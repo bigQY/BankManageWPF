@@ -86,6 +86,9 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WpfAnimatedGif, Version=2.0.0.0, Culture=neutral, PublicKeyToken=9e7cd3b544a090dc, processorArchitecture=MSIL">
+      <HintPath>..\packages\WpfAnimatedGif.2.0.0\lib\net40\WpfAnimatedGif.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -100,6 +103,9 @@
     </Compile>
     <Compile Include="AccountInfo.cs">
       <DependentUpon>BankModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BankHelper\MainPageHelper.xaml.cs">
+      <DependentUpon>MainPageHelper.xaml</DependentUpon>
     </Compile>
     <Compile Include="BankModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -177,6 +183,10 @@
     <Compile Include="other\Welcome.xaml.cs">
       <DependentUpon>Welcome.xaml</DependentUpon>
     </Compile>
+    <Page Include="BankHelper\MainPageHelper.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="employee\ChangePay.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

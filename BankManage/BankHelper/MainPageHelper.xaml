@@ -1,0 +1,19 @@
+﻿<Page x:Class="BankManage.BankHelper.MainPageHelper"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:gif="http://wpfanimatedgif.codeplex.com"
+      xmlns:local="clr-namespace:BankManage.BankHelper"
+      mc:Ignorable="d" 
+       d:DesignHeight="600" d:DesignWidth="400"
+      Title="MainPageHelper">
+
+    <Grid>
+        <ScrollViewer >
+            <StackPanel>
+                <Image gif:ImageBehavior.AnimatedSource="C:\Users\战神\OneDrive\桌面\文档\C#\实验指导\BankManager\BankManage\BankManage\res\helpAnimation.gif" />
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>
