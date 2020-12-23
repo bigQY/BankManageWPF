@@ -96,6 +96,12 @@
                                          materialDesign:ButtonAssist.CornerRadius="16"
                                          ToolTip="查看汇总数据"
                                          Content="汇总查询" Margin="10,3" />
+                                    <Button
+                                         Tag="query/AdvanceQuery.xaml" Click="Button_Click"
+                                         Style="{StaticResource MaterialDesignRaisedButton}"
+                                         materialDesign:ButtonAssist.CornerRadius="16"
+                                         ToolTip="查看账号的存款数据"
+                                         Content="存款查询" Margin="10,3" />
                                 </StackPanel>
                             </Expander>
                             <Expander Header="职员管理">

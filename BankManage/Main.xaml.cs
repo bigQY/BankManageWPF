@@ -9,11 +9,13 @@ namespace BankManage
     /// </summary>
     public partial class Main : Window
     {
+        public static Frame frame;
         public Main()
         {
             InitializeComponent();
             this.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             this.SourceInitialized += MainWindow_SourceInitialized;
+            frame = frame1;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -77,6 +79,14 @@ namespace BankManage
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+        /// <summary>
+        /// 返回frame对象，供子页面使用
+        /// </summary>
+        /// <returns></returns>
+        public static Frame GetFrame()
+        {
+            return frame;
         }
     }
 }

@@ -2,6 +2,7 @@
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:BankManage.query"
       mc:Ignorable="d" 
@@ -11,13 +12,61 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="8*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="8*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        <ComboBox x:Name="searchMethod"
+                Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                materialDesign:HintAssist.Hint="匹配方式" Grid.Column="1" VerticalAlignment="Center" SelectedIndex="0" >
+            <ComboBoxItem
+                Content="模糊匹配" />
+            <ComboBoxItem
+                Content="精确匹配" />
+            
+        </ComboBox>
+        <ComboBox x:Name="searchPoint"
+                Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                materialDesign:HintAssist.Hint="查询关键字" Grid.Column="2" VerticalAlignment="Center" SelectedIndex="3">
+            <ComboBoxItem
+                Content="身份证号" />
+            <ComboBoxItem
+                Content="账号" />
+            <ComboBoxItem
+                Content="姓名" />
+            <ComboBoxItem
+                Content="任意关键字" />
+            
+        </ComboBox>
+        <TextBox x:Name="searchText"
+              materialDesign:HintAssist.Hint="查询内容"
+              Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+              VerticalAlignment="Center" Grid.Column="3" Grid.ColumnSpan="5" Margin="10,0,0,0" />
+        <Button x:Name="searchButton" Grid.Column="8" Click="searchButton_Click">查询</Button>
+        <DataGrid x:Name="dataGrid" Grid.Row="1" Grid.RowSpan="6" Grid.Column="1" Grid.ColumnSpan="8" />
+        <materialDesign:Snackbar
+            x:Name="error_message_body"
+            IsActive="False" Grid.Row="8" Grid.Column="2" Grid.ColumnSpan="6"
+            Grid.RowSpan="2">
+            <materialDesign:SnackbarMessage x:Name="error_message"
+                Content="ERROR" 
+                ActionContent="确定" ActionClick="error_message_ActionClick"/>
+        </materialDesign:Snackbar>
     </Grid>
 </Page>

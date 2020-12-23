@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -31,7 +32,7 @@ namespace BankManage.query
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            Main.GetFrame().Source = new Uri("query/AdvanceQuery.xaml", UriKind.Relative); ;
         }
     }
 }
