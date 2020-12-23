@@ -410,6 +410,7 @@
       <DependentUpon>Bank.mdf</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="other\password.png" />
     <Resource Include="money\fiat-money.png" />
     <Resource Include="res\2fe572f3ef413736a379008ace245ddd.gif" />
     <Resource Include="employee\cs.jpg" />
