@@ -120,62 +120,72 @@
                                          Content="调整工资" Margin="10,3" />
                                 </StackPanel>
                             </Expander>
+                            <Expander Header="辅助功能">
+                                <StackPanel>
+                                    <Button
+                                         Tag="other/ChangeAccount.xaml" Click="Button_Click"
+                                         Style="{StaticResource MaterialDesignRaisedButton}"
+                                         materialDesign:ButtonAssist.CornerRadius="16"
+                                         ToolTip="更改指定账户的密码"
+                                         Content="更改账户密码" Margin="10,3" />
+                                    <Button
+                                         Tag="other/ChangeOperate.xaml" Click="Button_Click"
+                                         Style="{StaticResource MaterialDesignRaisedButton}"
+                                         materialDesign:ButtonAssist.CornerRadius="16"
+                                         ToolTip="更改指定操作员的密码"
+                                         Content="更改操作员密码" Margin="10,3" />
+                                </StackPanel>
+                            </Expander>
                             <Expander Header="其他功能">
                                 <StackPanel>
+                                    <Button
+                                         Tag="other/FirmLoans.xaml" Click="Button_Click"
+                                         Style="{StaticResource MaterialDesignRaisedButton}"
+                                         materialDesign:ButtonAssist.CornerRadius="16"
+                                         ToolTip="进行企业贷款服务"
+                                         Content="企业贷款服务" Margin="10,3" />                                    
+                                    <Button
+                                         Tag="other/EducationLoans.xaml" Click="Button_Click"
+                                         Style="{StaticResource MaterialDesignRaisedButton}"
+                                         materialDesign:ButtonAssist.CornerRadius="16"
+                                         ToolTip="进行教育助学贷款服务"
+                                         Content="教育助学贷款服务" Margin="10,3" />
+                                    <Button
+                                         Tag="other/PersonLoans.xaml" Click="Button_Click"
+                                         Style="{StaticResource MaterialDesignRaisedButton}"
+                                         materialDesign:ButtonAssist.CornerRadius="16"
+                                         ToolTip="进行个人贷款服务"
+                                         Content="个人贷款服务" Margin="10,3" />
+                                    <Button
+                                         Tag="other/BankReportLoss.xaml" Click="Button_Click"
+                                         Style="{StaticResource MaterialDesignRaisedButton}"
+                                         materialDesign:ButtonAssist.CornerRadius="16"
+                                         ToolTip="进行银行挂失服务"
+                                         Content="银行挂失服务" Margin="10,3" />
+                                    <Button
+                                         Tag="other/StudentShortTermLoans.xaml" Click="Button_Click"
+                                         Style="{StaticResource MaterialDesignRaisedButton}"
+                                         materialDesign:ButtonAssist.CornerRadius="16"
+                                         ToolTip="进行学生短期借款服务"
+                                         Content="学生短期借款服务" Margin="10,3" />                                    
                                     
-                                    <Button
-                             Tag="other/FirmLoans.xaml" Click="Button_Click"
-                             Style="{StaticResource MaterialDesignRaisedButton}"
-                             materialDesign:ButtonAssist.CornerRadius="16"
-                             ToolTip="进行企业贷款服务"
-                             Content="企业贷款服务" Margin="10,3" />                                    
-                                    <Button
-                             Tag="other/EducationLoans.xaml" Click="Button_Click"
-                             Style="{StaticResource MaterialDesignRaisedButton}"
-                             materialDesign:ButtonAssist.CornerRadius="16"
-                             ToolTip="进行教育助学贷款服务"
-                             Content="教育助学贷款服务" Margin="10,3" />
-                                    <Button
-                             Tag="other/PersonLoans.xaml" Click="Button_Click"
-                             Style="{StaticResource MaterialDesignRaisedButton}"
-                             materialDesign:ButtonAssist.CornerRadius="16"
-                             ToolTip="进行个人贷款服务"
-                             Content="个人贷款服务" Margin="10,3" />
-                                    <Button
-                             Tag="other/BankReportLoss.xaml" Click="Button_Click"
-                             Style="{StaticResource MaterialDesignRaisedButton}"
-                             materialDesign:ButtonAssist.CornerRadius="16"
-                             ToolTip="进行银行挂失服务"
-                             Content="银行挂失服务" Margin="10,3" />
-                                    <Button
-                             Tag="other/StudentShortTermLoans.xaml" Click="Button_Click"
-                             Style="{StaticResource MaterialDesignRaisedButton}"
-                             materialDesign:ButtonAssist.CornerRadius="16"
-                             ToolTip="进行学生短期借款服务"
-                             Content="学生短期借款服务" Margin="10,3" />                                    
-                                    <Button
-                             Tag="other/ChangeAccount.xaml" Click="Button_Click"
-                             Style="{StaticResource MaterialDesignRaisedButton}"
-                             materialDesign:ButtonAssist.CornerRadius="16"
-                             ToolTip="更改指定账户的密码"
-                             Content="更改账户密码" Margin="10,3" />
-                                    <Button
-                             Tag="other/ChangeOperate.xaml" Click="Button_Click"
-                             Style="{StaticResource MaterialDesignRaisedButton}"
-                             materialDesign:ButtonAssist.CornerRadius="16"
-                             ToolTip="更改指定操作员的密码"
-                             Content="更改操作员密码" Margin="10,3" />
                                 </StackPanel>
                             </Expander>
                             <Expander Header="利率设置">
                                 <Button
-                             Tag="rateManage/ratePage.xaml" Click="Button_Click"
-                             Style="{StaticResource MaterialDesignRaisedButton}"
-                             materialDesign:ButtonAssist.CornerRadius="16"
-                             ToolTip="更改管理系统的利率"
-                             Content="利率设置" Margin="10,3" />
+                                     Tag="rateManage/ratePage.xaml" Click="Button_Click"
+                                     Style="{StaticResource MaterialDesignRaisedButton}"
+                                     materialDesign:ButtonAssist.CornerRadius="16"
+                                     ToolTip="更改管理系统的利率"
+                                     Content="利率设置" Margin="10,3" />
                             </Expander>
                             <Expander Header="系统帮助">
+                                <Button
+                                     Tag="BankHelper/HelperWelcome.xaml" Click="Button_Click"
+                                     Style="{StaticResource MaterialDesignRaisedButton}"
+                                     materialDesign:ButtonAssist.CornerRadius="16"
+                                     ToolTip="系统帮助"
+                                     Content="帮助" Margin="10,3" />
                             </Expander>
                             <Expander Header="个人贷款服务">
                             </Expander>
