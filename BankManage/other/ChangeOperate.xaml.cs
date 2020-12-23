@@ -33,12 +33,16 @@ namespace BankManage.other
                     try
                     {
                         context.SaveChanges();
-                        MessageBox.Show("更改密码成功！");
+                        showError("更改密码成功！");
                     }
                     catch
                     {
-                        MessageBox.Show("更改密码失败！");
+                        showError("更改密码失败！");
                     }
+                }
+                else
+                {
+                    showError("账号不存在");
                 }
             }
             else
@@ -59,7 +63,7 @@ namespace BankManage.other
         /// </summary>
         /// <param name="password">密码字符串</param>
         /// <returns></returns>
-        public static int PasswordStrength(string password)
+        private static int PasswordStrength(string password)
         {
             int result = 0;
             //空字符串强度值为0
@@ -132,7 +136,15 @@ namespace BankManage.other
         private void error_message_ActionClick(object sender, RoutedEventArgs e)
         {
             closeError();
-            this.txtPassConf.Clear();
+            if(error_message.Content.ToString().Equals("两次输入的密码不一致"))
+                this.txtPassConf.Clear();
+            if (error_message.Content.ToString().Equals("账号不存在"))
+            {
+                txtAccount.Clear();
+                txtNewPass.Clear();
+                txtPassConf.Clear();
+            }
+       
         }
     }
 }
