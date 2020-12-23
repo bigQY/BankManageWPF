@@ -36,6 +36,8 @@ namespace BankManage
                         helperFrame.Source = new Uri("BankHelper/NotFoundPageHelper.xaml", UriKind.Relative);
                         break;
                 }
+                //关于导航
+                //aboutFrame.Source= new Uri("About/AboutPage.xaml", UriKind.Relative);
             }
         }
         void MainWindow_SourceInitialized(object sender, System.EventArgs e)
@@ -73,7 +75,7 @@ namespace BankManage
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             //Show About
-            FrameDrawerHost.IsBottomDrawerOpen = true;
+            frame1.Source = new Uri("About/AboutPage.xaml", UriKind.Relative);
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)

@@ -215,7 +215,7 @@
                     <Frame x:Name="helperFrame" Width="600" Height="600"/>
                 </materialDesign:DrawerHost.RightDrawerContent>
                 <materialDesign:DrawerHost.BottomDrawerContent>
-                    <Label>这是关于</Label>
+                    <Frame x:Name="aboutFrame" Height="400"/>
                 </materialDesign:DrawerHost.BottomDrawerContent>
                 <Grid>
                     <DockPanel Grid.ColumnSpan="3" Grid.RowSpan="3">

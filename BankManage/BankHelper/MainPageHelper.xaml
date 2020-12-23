@@ -13,7 +13,6 @@
 
     <Grid>
         <ScrollViewer >
-
             <StackPanel>
                 <StackPanel Height="203" VerticalAlignment="Top">
                     <Image gif:ImageBehavior.AnimatedSource="C:\Users\战神\OneDrive\桌面\文档\C#\实验指导\BankManager\BankManage\BankManage\res\helpAnimation.gif" Height="203" />
