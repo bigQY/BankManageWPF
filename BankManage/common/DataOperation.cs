@@ -194,9 +194,9 @@ namespace BankManage.common
             BankEntities c = new BankEntities();
             var q = from t in c.MoneyInfo
                     where t.accountNo == accountNo
-                    orderby t.dealDate
+                    orderby t.dealDate descending
                     select t.dealDate;
-            return q.Last();
+            return q.First();
         }
         /// <summary>
         /// 获取账户的开户时间

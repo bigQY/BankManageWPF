@@ -23,17 +23,68 @@ namespace BankManage.money
         //存款
         private void btnOk_Click(object sender, RoutedEventArgs e)
         {
+            bool success = false;
             double money = double.Parse(txtmount.Text);
             string accountNo = txtAccount.Text;
             string accountType;
             BankCustom bankCustom = DataOperation.GetBankCustom(accountNo);
             accountType = bankCustom.account.accountType;
             txtAccountType.Text = accountType;
-            bankCustom.deposit(accountType, money);
 
-            OperateRecord page = new OperateRecord();
-            NavigationService ns = NavigationService.GetNavigationService(this);
-            ns.Navigate(page);
+            if (accountType.Equals("定期存款"))
+            {
+
+                if (bankCustom.account.accountBalance != 0)
+                {
+                    showError("您还有一个未支取的定期存款");
+                }
+                else
+                {
+                    int i = -1;
+                    if (int.TryParse(txtYear.Text, out i)&&(i==1||i==3||i==5))
+                    {
+                        
+                        BankEntities bankEntities = new BankEntities();
+                        bankCustom.deposit("定期存款",money);
+                        bankEntities.AccountFixed.Find(bankCustom.account.accountNo).promisedYear=i;
+                        bankEntities.SaveChanges();
+                        success = true;
+                    }
+                    else
+                    {
+                        showError("不合法的年份");
+                    }
+                }
+            }
+            else if (accountType.Equals("零存整取"))
+            {
+                txtmount.Text = bankCustom.account.AccountFlex.promisedMoney + "";
+                btnOk.IsEnabled = true;
+                TimeSpan timeSpan = DateTime.Now - DataOperation.GetLastAutomaticWithdrawalTime(accountNo);
+                if (timeSpan.Days < 30)
+                {
+                    showError("本月以存款过");
+                }
+                else
+                {
+                    bankCustom.deposit(accountType, money);
+                    success = true;
+                }
+
+
+            }
+            else
+            {
+                bankCustom.deposit(accountType, money);
+                success = true;
+            }
+            if (success)
+            {
+                OperateRecord page = new OperateRecord();
+                NavigationService ns = NavigationService.GetNavigationService(this);
+                ns.Navigate(page);
+            }
+            
 
         }
         //取消存款
@@ -52,6 +103,9 @@ namespace BankManage.money
 
             string accountType;
 
+            txtYear.Visibility = Visibility.Hidden;
+
+
             if (DataOperation.CheckAccountPassword(accountNo, accountPass))
             {
                 BankCustom bankCustom = DataOperation.GetBankCustom(accountNo);
@@ -66,6 +120,7 @@ namespace BankManage.money
                     }
                     else
                     {
+                        txtYear.Visibility = Visibility.Visible;
                         txtmount.IsEnabled = true;
                         btnOk.IsEnabled = true;
                     }

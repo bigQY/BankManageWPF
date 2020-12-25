@@ -111,6 +111,7 @@ namespace BankManage.money.bank
             {
                 case "活期存款":
                     InsertData(dealType, money);
+                    InsertData("活期存款利息", DataOperation.GetRate(RateType.活期) * money);
                     break;
                 case "定期存款":
                     if (account.accountBalance != 0)
@@ -124,13 +125,18 @@ namespace BankManage.money.bank
                     break;
                 case "零存整取":
                     //TODO timespan
-                    if (DateTime.Now.Month - DataOperation.GetLastAutomaticWithdrawalTime(account.accountNo).Month >= 2)
+                    TimeSpan timeSpan = DateTime.Now - DataOperation.GetLastAutomaticWithdrawalTime(account.accountNo);
+                    if (timeSpan.Days>60)
                     {
                         InsertData("零存整取违规", account.AccountFlex.promisedMoney);
                     }
+                    else if (timeSpan.Days < 30)
+                    {
+                        MessageBox.Show("本月以存款过");
+                    }
                     else
                     {
-                        InsertData("零存整取第" + (DateTime.Now.Month - DataOperation.GetLastAutomaticWithdrawalTime(account.accountNo).Month) + "个月存款", account.AccountFlex.promisedMoney);
+                        InsertData("零存整取第" + timeSpan.Days/30 + "个月存款", account.AccountFlex.promisedMoney);
                     }
                     break;
                     

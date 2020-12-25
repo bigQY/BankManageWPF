@@ -53,6 +53,11 @@
                 materialDesign:HintAssist.Hint="存款金额"
                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                 VerticalAlignment="Center"  Grid.Row="5" Grid.Column="3" Grid.ColumnSpan="4" IsEnabled="False" />
+        <TextBox
+                Name="txtYear"
+                materialDesign:HintAssist.Hint="存款年限"
+                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                VerticalAlignment="Center"  Grid.Row="5" Grid.Column="7" Visibility="Hidden"/>
             <StackPanel Grid.Row="6" HorizontalAlignment="Center" Grid.ColumnSpan="4" Orientation="Horizontal" Grid.Column="3" >
                 <Button Name="btnOk"  Width="50" Margin="10,10,20,10" Padding="3" Click="btnOk_Click" IsEnabled="False">确定</Button>
                 <Button Name="btnCancel"  Width="50" Margin="20,10,10,10" Padding="3" Click="btnCancel_Click">取消</Button>

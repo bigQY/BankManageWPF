@@ -128,17 +128,31 @@ namespace BankManage.money
                                 rateType = RateType.零存整取5年;
                                 break;
                             default:
-                                rateType = RateType.定期1年;
+                                rateType = RateType.活期;
                                 MessageBox.Show("非法的年份");
                                 break;
                         }
+
+                        var qt = from t in bankEntities.MoneyInfo
+                                where t.accountNo == accountNo
+                                where t.dealType=="零存整取违规"
+                                select t.dealDate;
                         double LX = 0;
-                        LX = bankCustom.account.AccountFlex.promisedMoney * bankCustom.account.AccountFlex.promisedYear*12* DataOperation.GetRate(rateType);
-                        LX += (LX + bankCustom.account.accountBalance) * DataOperation.GetRate(RateType.零存整取超期部分) * ((timeSpan.Days - (bankCustom.account.AccountFixed.promisedYear * 365)) / 30);
+                        if (qt.Count() == 0)
+                        {
+                            LX = bankCustom.account.AccountFlex.promisedMoney * bankCustom.account.AccountFlex.promisedYear * 12 * DataOperation.GetRate(rateType);
+                            LX += (LX + bankCustom.account.accountBalance) * DataOperation.GetRate(RateType.零存整取超期部分) * ((timeSpan.Days - (bankCustom.account.AccountFixed.promisedYear * 365)) / 30);
+                           
+                        }
+                        else
+                        {
+                            LX = bankCustom.account.accountBalance *DataOperation.GetRate(RateType.零存整取违规);
+                        }
                         txtAccountLX.Text = LX + "";
-                        bankCustom.InsertData("定期存款利息", LX);
-                        bankCustom.withdraw("定期存款支取", bankCustom.account.accountBalance);
+                        //bankCustom.InsertData("定期存款利息", LX);
+                        //bankCustom.withdraw("定期存款支取", bankCustom.account.accountBalance);
                         txtAccountLX.Visibility = Visibility.Visible;
+
                     }
                 }
                 else
@@ -232,14 +246,28 @@ namespace BankManage.money
                             MessageBox.Show("非法的年份");
                             break;
                     }
+
+                    var qt = from t in bankEntities.MoneyInfo
+                             where t.accountNo == accountNo
+                             where t.dealType == "零存整取违规"
+                             select t.dealDate;
                     double LX = 0;
-                    LX = bankCustom.account.accountBalance * DataOperation.GetRate(rateType);
-                    LX += (LX + bankCustom.account.accountBalance) * DataOperation.GetRate(RateType.定期超期部分) * ((timeSpan.Days - (bankCustom.account.AccountFixed.promisedYear * 365)) / 30);
+                    if (qt.Count() == 0)
+                    {
+                        LX = bankCustom.account.AccountFlex.promisedMoney * bankCustom.account.AccountFlex.promisedYear * 12 * DataOperation.GetRate(rateType);
+                        LX += (LX + bankCustom.account.accountBalance) * DataOperation.GetRate(RateType.零存整取超期部分) * ((timeSpan.Days - (bankCustom.account.AccountFixed.promisedYear * 365)) / 30);
+
+                    }
+                    else
+                    {
+                        LX = bankCustom.account.accountBalance * DataOperation.GetRate(RateType.零存整取违规);
+                    }
                     txtAccountLX.Text = LX + "";
+                    //bankCustom.InsertData("定期存款利息", LX);
+                    //bankCustom.withdraw("定期存款支取", bankCustom.account.accountBalance);
+                    txtAccountLX.Visibility = Visibility.Visible;
                     bankCustom.InsertData("零存整取利息", LX);
                     bankCustom.InsertData("零存整取支取", -bankCustom.account.accountBalance);
-                    txtAccountLX.Visibility = Visibility.Visible;
-
                 }
             }
             else
