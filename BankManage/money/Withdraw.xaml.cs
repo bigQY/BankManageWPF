@@ -168,6 +168,7 @@ namespace BankManage.money
 
         private void btnOK_Click_1(object sender, RoutedEventArgs e)
         {
+            bool success = false;
             string accountNo = txtAccountNo.Text;
             string accountPass = txtAccountPass.Text;
             BankCustom bankCustom = DataOperation.GetBankCustom(accountNo);
@@ -212,6 +213,7 @@ namespace BankManage.money
                     bankCustom.InsertData("定期存款利息", LX);
                     bankCustom.InsertData("定期存款支取", -bankCustom.account.accountBalance);
                     txtAccountLX.Visibility = Visibility.Visible;
+                    success = true;
                 }
             }
             else if (accountType.Equals("零存整取"))
@@ -268,12 +270,22 @@ namespace BankManage.money
                     txtAccountLX.Visibility = Visibility.Visible;
                     bankCustom.InsertData("零存整取利息", LX);
                     bankCustom.InsertData("零存整取支取", -bankCustom.account.accountBalance);
+                    success = true;
                 }
             }
             else
             {
                 bankCustom.withdraw("取款", double.Parse(txtMount.Text));
             }
+
+
+            if (success)
+            {
+                OperateRecord page = new OperateRecord();
+                NavigationService ns = NavigationService.GetNavigationService(this);
+                ns.Navigate(page);
+            }
+           
         }
 
         private void showError(string message)
@@ -316,6 +328,10 @@ namespace BankManage.money
                 bankCustom.InsertData("定期存款提前支取", -bankCustom.account.accountBalance);
             }
             dialogHost.IsOpen = false;
+            OperateRecord page = new OperateRecord();
+            NavigationService ns = NavigationService.GetNavigationService(this);
+            ns.Navigate(page);
+
         }
 
         private void importantNObtn_Click(object sender, RoutedEventArgs e)
