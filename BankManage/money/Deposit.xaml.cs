@@ -30,51 +30,10 @@ namespace BankManage.money
             accountType = bankCustom.account.accountType;
             txtAccountType.Text = accountType;
             bankCustom.deposit(accountType, money);
+
             OperateRecord page = new OperateRecord();
             NavigationService ns = NavigationService.GetNavigationService(this);
             ns.Navigate(page);
-
-            /*string accountNo = txtAccount.Text;
-            string accountPass = txtAccountPass.Text;
-            string accountType = txtAccountType.Text;
-            switch (accountType)
-            {
-                case "活期存款":
-                    Custom custom = DataOperation.GetCustom(this.txtAccount.Text);
-                    if (custom == null)
-                    {
-                        MessageBox.Show("帐号不存在！");
-                        return;
-                    }
-                    //custom.MoneyInfo.accountNo = txtAccount.Text;
-                    custom.Diposit("存款", double.Parse(this.txtmount.Text));
-                    break;
-                case "定期存款":
-                    CustomFixed custom1 = DataOperation.GetCustomFixed(txtAccount.Text);
-                    if (custom1 == null)
-                    {
-                        MessageBox.Show("帐号不存在！");
-                        return;
-                    }
-                    //custom1.MoneyInfo.accountNo = txtAccount.Text;
-                    custom1.Diposit("存款", double.Parse(this.txtmount.Text));
-                    break;
-                case "零存整取":
-                    CustomFlex custom2 = DataOperation.GetCustomFlex(txtAccount.Text);
-                    if (custom2 == null)
-                    {
-                        MessageBox.Show("帐号不存在！");
-                        return;
-                    }
-                    //custom2.MoneyInfo.accountNo = txtAccount.Text;
-                    custom2.Diposit();
-                    break;
-            }
-
-            */
-
-
-
 
         }
         //取消存款

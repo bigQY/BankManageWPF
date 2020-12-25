@@ -7,58 +7,64 @@
       d:DesignHeight="600" d:DesignWidth="800"
 	Title="Deposit">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="Auto" ></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
-
-                <RowDefinition Height="*"></RowDefinition>
-            </Grid.RowDefinitions>
-            <TextBlock Text="存款" FontSize="20" TextAlignment="Center" Grid.Row="0" Grid.ColumnSpan="2" ></TextBlock>
+        <TextBlock Text="存款" FontSize="24" TextAlignment="Center" Grid.Row="0" Grid.ColumnSpan="10" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" ></TextBlock>
             <TextBox
                 Name="txtAccount"
                 materialDesign:HintAssist.Hint="账号"
                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                VerticalAlignment="Center" Grid.Row="1" />
-            <Button Grid.Row="1" Grid.Column="1" Click="Button_Click">检查账号</Button>
+                VerticalAlignment="Center" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="4" />
+            <Button Grid.Row="2" Grid.Column="7" Click="Button_Click">检查账号</Button>
             <TextBox
                 Name="txtAccountPass"
                 materialDesign:HintAssist.Hint="密码"
                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                VerticalAlignment="Center" Grid.Row="2"  />
+                VerticalAlignment="Center" Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="4"  />
             <TextBox
                 Name="txtAccountType"
                 materialDesign:HintAssist.Hint="账号类型"
                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                VerticalAlignment="Center" Grid.Row="3" IsEnabled="False" />
+                VerticalAlignment="Center" Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="4" IsEnabled="False" />
             <TextBox
                 Name="txtmount"
                 materialDesign:HintAssist.Hint="存款金额"
                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                VerticalAlignment="Center"  Grid.Row="4" IsEnabled="False" />
-            <StackPanel Grid.Row="5" HorizontalAlignment="Center" Grid.ColumnSpan="2" Orientation="Horizontal" >
-                <Button Name="btnOk"  Width="50" Margin="10,10,2,10" Padding="3" Click="btnOk_Click" IsEnabled="False">确定</Button>
-                <Button Name="btnCancel"  Width="50" Margin="2,10,10,10" Padding="3" Click="btnCancel_Click">取消</Button>
+                VerticalAlignment="Center"  Grid.Row="5" Grid.Column="3" Grid.ColumnSpan="4" IsEnabled="False" />
+            <StackPanel Grid.Row="6" HorizontalAlignment="Center" Grid.ColumnSpan="4" Orientation="Horizontal" Grid.Column="3" >
+                <Button Name="btnOk"  Width="50" Margin="10,10,20,10" Padding="3" Click="btnOk_Click" IsEnabled="False">确定</Button>
+                <Button Name="btnCancel"  Width="50" Margin="20,10,10,10" Padding="3" Click="btnCancel_Click">取消</Button>
             </StackPanel>
-        </Grid>
-        <Grid Grid.Row="1">
             <materialDesign:Snackbar x:Name="error_message_body"
-                IsActive="False">
+                IsActive="False" Grid.Row="9" Grid.Column="2" Grid.ColumnSpan="6">
                 <materialDesign:SnackbarMessage x:Name="error_message"
                     Content="错误"
                     ActionContent="确定" ActionClick="error_message_ActionClick" />
             </materialDesign:Snackbar>
-        </Grid>
+        <Image Grid.ColumnSpan="3"  Grid.Row="3" Grid.RowSpan="3"  Source="fiat-money.png"/>
+
     </Grid>
+      
 </Page>

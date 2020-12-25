@@ -170,16 +170,6 @@ namespace BankManage.money
                 {
                     importantMessage.Text = "您的定期存款目前还未到期，您确定要将其取出吗？";
                     dialogHost.IsOpen = true;
-                    /*if (importantDecide)
-                    {
-                        //提取取款计算利息
-                        double LX = 0;
-                        LX = bankCustom.account.accountBalance * DataOperation.GetRate(RateType.定期提前支取);
-                        txtAccountLX.Text = LX + "";
-                        txtAccountLX.Visibility = Visibility.Visible;
-                        bankCustom.InsertData("定期存款提前支取利息", LX);
-                        bankCustom.withdraw("定期存款提前支取", bankCustom.account.accountBalance);
-                    }*/
                 }
                 else if (timeSpan.Days >= bankCustom.account.AccountFixed.promisedYear * 365)
                 {
