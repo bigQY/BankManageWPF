@@ -88,6 +88,24 @@
           <Property Name="accountNo" Type="nchar" MaxLength="6" Nullable="false" />
           <Property Name="graduateDate" Type="datetime" Nullable="false" />
         </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“C:\USERS\战神\ONEDRIVE\桌面\文档\C#\实验指导\BANKMANAGER\BANKMANAGE\BANKMANAGE\BANK.MDF.dbo.OperateRecordView”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="OperateRecordView">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="accountNo" />
+            <PropertyRef Name="dealDate" />
+            <PropertyRef Name="dealType" />
+            <PropertyRef Name="dealMoney" />
+            <PropertyRef Name="balance" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="accountNo" Type="nchar" MaxLength="6" Nullable="false" />
+          <Property Name="dealDate" Type="datetime" Nullable="false" />
+          <Property Name="dealType" Type="nvarchar" MaxLength="80" Nullable="false" />
+          <Property Name="dealMoney" Type="float" Nullable="false" />
+          <Property Name="balance" Type="float" Nullable="false" />
+        </EntityType>
         <Association Name="FK__AccountFi__accou__37A5467C">
           <End Role="AccountInfo" Type="Self.AccountInfo" Multiplicity="1" />
           <End Role="AccountFixed" Type="Self.AccountFixed" Multiplicity="0..1" />
@@ -158,6 +176,16 @@
           <EntitySet Name="MoneyInfo" EntityType="Self.MoneyInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RateInfo" EntityType="Self.RateInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StudentLoan" EntityType="Self.StudentLoan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OperateRecordView" EntityType="Self.OperateRecordView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[OperateRecordView].[Id] AS [Id], 
+[OperateRecordView].[accountNo] AS [accountNo], 
+[OperateRecordView].[dealDate] AS [dealDate], 
+[OperateRecordView].[dealType] AS [dealType], 
+[OperateRecordView].[dealMoney] AS [dealMoney], 
+[OperateRecordView].[balance] AS [balance]
+FROM [dbo].[OperateRecordView] AS [OperateRecordView]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK__AccountFi__accou__37A5467C" Association="Self.FK__AccountFi__accou__37A5467C">
             <End Role="AccountInfo" EntitySet="AccountInfo" />
             <End Role="AccountFixed" EntitySet="AccountFixed" />
@@ -268,6 +296,7 @@
             <End Role="AccountInfo" EntitySet="AccountInfo" />
             <End Role="StudentLoan" EntitySet="StudentLoan" />
           </AssociationSet>
+          <EntitySet Name="OperateRecordView" EntityType="BankModel.OperateRecordView" />
         </EntityContainer>
         <EntityType Name="AccountFixed">
           <Key>
@@ -367,6 +396,22 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="OperateRecordView">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="accountNo" />
+            <PropertyRef Name="dealDate" />
+            <PropertyRef Name="dealType" />
+            <PropertyRef Name="dealMoney" />
+            <PropertyRef Name="balance" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="accountNo" Type="String" Nullable="false" MaxLength="6" FixedLength="true" Unicode="true" />
+          <Property Name="dealDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="dealType" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="dealMoney" Type="Double" Nullable="false" />
+          <Property Name="balance" Type="Double" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -460,6 +505,18 @@
             <EntityTypeMapping TypeName="BankModel.StudentLoan">
               <MappingFragment StoreEntitySet="StudentLoan">
                 <ScalarProperty Name="graduateDate" ColumnName="graduateDate" />
+                <ScalarProperty Name="accountNo" ColumnName="accountNo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OperateRecordView">
+            <EntityTypeMapping TypeName="BankModel.OperateRecordView">
+              <MappingFragment StoreEntitySet="OperateRecordView">
+                <ScalarProperty Name="balance" ColumnName="balance" />
+                <ScalarProperty Name="dealMoney" ColumnName="dealMoney" />
+                <ScalarProperty Name="dealType" ColumnName="dealType" />
+                <ScalarProperty Name="dealDate" ColumnName="dealDate" />
                 <ScalarProperty Name="accountNo" ColumnName="accountNo" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>

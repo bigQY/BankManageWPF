@@ -149,6 +149,9 @@
     <Compile Include="money\bank\BankCustom.cs" />
     <Compile Include="money\bank\BankFixedCustom.cs" />
     <Compile Include="money\CustomFlex.cs" />
+    <Compile Include="OperateRecordView.cs">
+      <DependentUpon>BankModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="other\BankReportLoss.xaml.cs">
       <DependentUpon>BankReportLoss.xaml</DependentUpon>
     </Compile>

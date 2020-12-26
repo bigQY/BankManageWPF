@@ -12,7 +12,10 @@ namespace BankManage.money
         {
             InitializeComponent();
             BankEntities context = new BankEntities();
-            var query = from t in context.MoneyInfo
+            /*var query = from t in context.MoneyInfo
+                        select t;
+            this.datagrid1.ItemsSource = query.ToList();*/
+            var query = from t in context.OperateRecordView
                         select t;
             this.datagrid1.ItemsSource = query.ToList();
         }
