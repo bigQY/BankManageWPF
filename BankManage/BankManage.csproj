@@ -134,6 +134,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BankModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="MainSettings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>MainSettings.settings</DependentUpon>
+    </Compile>
     <Compile Include="money\bank\BankCustom.cs" />
     <Compile Include="money\bank\BankFixedCustom.cs" />
     <Compile Include="money\CustomFlex.cs" />
@@ -155,7 +160,7 @@
     <Compile Include="other\ThemePickerPage.xaml.cs">
       <DependentUpon>ThemePickerPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PaletteSelector.xaml.cs">
+    <Compile Include="BankController\PaletteSelector.xaml.cs">
       <DependentUpon>PaletteSelector.xaml</DependentUpon>
     </Compile>
     <Compile Include="query\AdvanceQuery.xaml.cs">
@@ -309,7 +314,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="PaletteSelector.xaml">
+    <Page Include="BankController\PaletteSelector.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -391,6 +396,10 @@
     </EntityDeploy>
     <None Include="BankModel.edmx.diagram">
       <DependentUpon>BankModel.edmx</DependentUpon>
+    </None>
+    <None Include="MainSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>MainSettings.Designer.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

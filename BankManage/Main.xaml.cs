@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Threading;
 using MaterialDesignColors;
 using MaterialDesignThemes.Wpf;
@@ -22,6 +23,7 @@ namespace BankManage
             this.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             this.SourceInitialized += MainWindow_SourceInitialized;
             frame = frame1;
+            loadSetting();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -150,6 +152,46 @@ namespace BankManage
             
         }
 
+        private void loadSetting()
+        {
+            MainSettings mainSettings = MainSettings.Default;
+            var paletteHelper = new PaletteHelper();
+            ITheme theme = paletteHelper.GetTheme();
+            switch (mainSettings.主题)
+            {
+                case "玉红":
+                    theme.SetPrimaryColor(Color.FromRgb(192, 72, 81));
+                    break;
+                case "靛青":
+                    theme.SetPrimaryColor(Color.FromRgb(22, 97, 171));
+                    break;
+                case "竹绿":
+                    theme.SetPrimaryColor(Color.FromRgb(27, 167, 132));
+                    break;
+                case "新禾绿":
+                    theme.SetPrimaryColor(Color.FromRgb(210, 177, 22));
+                    break;
+                case "河豚灰":
+                    theme.SetPrimaryColor(Color.FromRgb(57, 55, 51));
+                    break;
+                case "美人焦橙":
+                    theme.SetPrimaryColor(Color.FromRgb(250, 126, 35));
+                    break;
+                case "榴子红":
+                    theme.SetPrimaryColor(Color.FromRgb(241, 144, 140));
+                    break;
+                case "钢青":
+                    theme.SetPrimaryColor(Color.FromRgb(20, 35, 52));
+                    break;
+                case "默认":
+                    theme.SetPrimaryColor(Color.FromRgb(130, 58, 183));
+                    break;
+
+                default:
+                    break;
+            }
+            paletteHelper.SetTheme(theme);
+        }
         private void 派萌很生气(object sender, EventArgs e)
         {
             var paletteHelper = new PaletteHelper();

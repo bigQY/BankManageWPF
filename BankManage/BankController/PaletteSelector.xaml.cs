@@ -78,6 +78,9 @@ namespace BankManage
                 default:
                     break;
             }
+            MainSettings mainSettings = MainSettings.Default;
+            MainSettings.Default.主题 = item.Tag.ToString();
+            mainSettings.Save();
             paletteHelper.SetTheme(theme);
 
         }
