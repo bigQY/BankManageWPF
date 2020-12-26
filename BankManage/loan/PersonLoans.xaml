@@ -43,17 +43,17 @@
         <TextBox x:Name="txtAccount"
          materialDesign:HintAssist.Hint="账户"
          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-         VerticalAlignment="Center"  Grid.Column="4" Grid.ColumnSpan="3" FontSize="14" Grid.Row="2"  />
+         VerticalAlignment="Center"  Grid.Column="4" Grid.ColumnSpan="3" FontSize="14" Grid.Row="2"  TextChanged="TextBox_TextChanged"/>
         <PasswordBox VerticalAlignment="Center" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" materialDesign:HintAssist.Hint="密码" Name="txtPass" Grid.Column="4"  Grid.Row="3" Grid.ColumnSpan="3"/>
 
         <TextBox x:Name="txtMount"
          materialDesign:HintAssist.Hint="贷款金额"
          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-         VerticalAlignment="Center"  Grid.Column="4" Grid.ColumnSpan="3" FontSize="14" Grid.Row="4"  />
+         VerticalAlignment="Center"  Grid.Column="4" Grid.ColumnSpan="3" FontSize="14" Grid.Row="4"  TextChanged="TextBox_TextChanged"/>
 
         <ComboBox x:Name="selectedYear"
             materialDesign:HintAssist.Hint="贷款年限"
-            Grid.ColumnSpan="3" Grid.Row="5" Grid.Column="4" FontSize="14">
+            Grid.ColumnSpan="3" Grid.Row="5" Grid.Column="4" FontSize="14" SelectionChanged="selectedYear_SelectionChanged" >
             <ComboBoxItem
                 Content="1年" />
             <ComboBoxItem
@@ -67,9 +67,15 @@
          materialDesign:HintAssist.Hint="利息"
          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
          VerticalAlignment="Center"  Grid.Column="4" Grid.ColumnSpan="3" FontSize="14" Grid.Row="6" IsEnabled="False"  />
-        <Button x:Name="btnSubmit" Content="提交申请" Grid.Row="7" Grid.Column="4" Grid.ColumnSpan="3" HorizontalAlignment="Center"></Button>
+        <Button x:Name="btnSubmit" Content="提交申请" Grid.Row="7" Grid.Column="4" Grid.ColumnSpan="3" HorizontalAlignment="Center" Click="btnSubmit_Click" IsEnabled="False"></Button>
         <Image Grid.ColumnSpan="3" HorizontalAlignment="Center" Height="100" Grid.Row="2" Grid.RowSpan="4" VerticalAlignment="Center" Width="100" Source="loan.png"/>
         <Label Content="兴旺千业财富，" Grid.Column="7" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Grid.RowSpan="2" Grid.ColumnSpan="3" FontSize="24" FontWeight="Bold"/>
         <Label Content="贷动美好未来。" Grid.Column="7" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Center" Grid.RowSpan="2" Grid.ColumnSpan="3" FontSize="24" FontWeight="Bold"/>
+        <materialDesign:Snackbar x:Name="error_message_body"
+                IsActive="False" Grid.Row="9" Grid.Column="2" Grid.ColumnSpan="6">
+            <materialDesign:SnackbarMessage x:Name="error_message"
+                    Content="错误"
+                    ActionContent="确定" ActionClick="error_message_ActionClick" />
+        </materialDesign:Snackbar>
     </Grid>
 </Page>
