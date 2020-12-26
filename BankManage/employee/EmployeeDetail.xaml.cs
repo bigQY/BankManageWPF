@@ -26,5 +26,10 @@ namespace BankManage.employee
             DataBridge.GetInstance().getDictionary().TryGetValue("employerOperate", out op);
            
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

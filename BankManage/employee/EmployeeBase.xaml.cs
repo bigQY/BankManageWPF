@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows;
@@ -15,6 +15,7 @@ namespace BankManage.employee
     /// </summary>
     public partial class EmployeeBase : Page
     {
+        byte[] pic;
         enum Operation { none,edit,remove,add,detail}
         Operation selectedOperation = Operation.none;
         public EmployeeInfo SelectedEmployee
@@ -235,6 +236,8 @@ namespace BankManage.employee
                     employeeInfo.idCard=detailIDCard.Text;
                     employeeInfo.workDate=detailDate.SelectedDate;
                     employeeInfo.salary = decimal.Parse(detailSalary.Text);
+                    if(pic!=null)
+                        employeeInfo.photo = pic;
                     context.SaveChanges();
                     break;
                    
@@ -248,6 +251,8 @@ namespace BankManage.employee
                     newEmployeeInfo.workDate = detailDate.SelectedDate;
                     newEmployeeInfo.photo =new byte[10];
                     newEmployeeInfo.salary = decimal.Parse(detailSalary.Text);
+                    if (pic != null)
+                        newEmployeeInfo.photo = pic;
                     context.EmployeeInfo.Add(newEmployeeInfo);
                     context.SaveChanges();
                     break;
@@ -287,6 +292,26 @@ namespace BankManage.employee
                     break;
             }
             dialogHost.IsOpen = false;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            //选择照片
+            Microsoft.Win32.OpenFileDialog ofd = new Microsoft.Win32.OpenFileDialog();
+            ofd.DefaultExt = ".jpg";
+            ofd.Filter = "图像文件|*.jpg";
+            if (ofd.ShowDialog() == true)
+            {
+                FileStream fileStream = new FileStream(ofd.FileName,FileMode.Open,FileAccess.Read);
+                BinaryReader reader = new BinaryReader(fileStream);
+
+                pic = reader.ReadBytes((int)fileStream.Length);
+                System.Drawing.Image img = System.Drawing.Image.FromStream(fileStream);
+                Bitmap bmp = new System.Drawing.Bitmap(img);
+                IntPtr hBitmap = bmp.GetHbitmap();
+                System.Windows.Media.ImageSource WpfBitmap = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(hBitmap, IntPtr.Zero, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
+                detailPhoto.Source = WpfBitmap;
+            }
         }
     }
 }

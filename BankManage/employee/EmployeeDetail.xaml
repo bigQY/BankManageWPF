@@ -65,7 +65,7 @@
                 Grid.Column="1"  Grid.RowSpan="3"
                 Style="{StaticResource MaterialDesignIconButton}"
                 Background="{DynamicResource MaterialDesignTextFieldBoxBackground}"
-                ToolTip="点击选择新照片" Width="180" Height="180">
+                ToolTip="点击选择新照片" Width="180" Height="180" Click="Button_Click">
                 <Image
                     x:Name="detailPhoto"
                     Source="cs.jpg" Width="180" Height="180" />
