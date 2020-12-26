@@ -17,6 +17,8 @@ namespace BankManage
         public AccountInfo()
         {
             this.MoneyInfo = new HashSet<MoneyInfo>();
+            this.LoanInfo = new HashSet<LoanInfo>();
+            this.StudentLoan = new HashSet<StudentLoan>();
         }
     
         public string accountNo { get; set; }
@@ -29,5 +31,7 @@ namespace BankManage
         public virtual AccountFixed AccountFixed { get; set; }
         public virtual AccountFlex AccountFlex { get; set; }
         public virtual ICollection<MoneyInfo> MoneyInfo { get; set; }
+        public virtual ICollection<LoanInfo> LoanInfo { get; set; }
+        public virtual ICollection<StudentLoan> StudentLoan { get; set; }
     }
 }

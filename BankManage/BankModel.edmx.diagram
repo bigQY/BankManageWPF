@@ -5,16 +5,20 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="6e4aca9103154649bf6fbe0bf2397e51" Name="Diagram1">
-        <EntityTypeShape EntityType="BankModel.AccountInfo" Width="1.5" PointX="2.625" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="BankModel.EmployeeInfo" Width="1.5" PointX="9.25" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BankModel.LoginInfo" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BankModel.MoneyInfo" Width="1.5" PointX="4.75" PointY="3.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="BankModel.RateInfo" Width="1.5" PointX="6.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BankModel.AccountFixed" Width="1.5" PointX="0.75" PointY="3.875" />
-        <EntityTypeShape EntityType="BankModel.AccountFlex" Width="1.5" PointX="2.625" PointY="3.875" />
+        <EntityTypeShape EntityType="BankModel.AccountInfo" Width="1.5" PointX="2.5" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="BankModel.EmployeeInfo" Width="1.5" PointX="8.25" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BankModel.LoginInfo" Width="1.5" PointX="6.5" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BankModel.MoneyInfo" Width="1.5" PointX="4.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BankModel.RateInfo" Width="1.5" PointX="6.5" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BankModel.AccountFixed" Width="1.5" PointX="0.5" PointY="5.375" />
+        <EntityTypeShape EntityType="BankModel.AccountFlex" Width="1.5" PointX="2.375" PointY="5.375" />
         <AssociationConnector Association="BankModel.FK__AccountFi__accou__37A5467C" />
         <AssociationConnector Association="BankModel.FK__AccountFl__accou__4BAC3F29" />
         <AssociationConnector Association="BankModel.FK__MoneyInfo__accou__5AEE82B9" />
+        <EntityTypeShape EntityType="BankModel.LoanInfo" Width="1.5" PointX="0.75" PointY="2" />
+        <EntityTypeShape EntityType="BankModel.StudentLoan" Width="1.5" PointX="4.25" PointY="2" />
+        <AssociationConnector Association="BankModel.FK__LoanInfo__accoun__02FC7413" />
+        <AssociationConnector Association="BankModel.FK__StudentLo__accou__160F4887" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

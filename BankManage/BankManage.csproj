@@ -135,6 +135,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BankModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="LoanInfo.cs">
+      <DependentUpon>BankModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="loan\Repayment.xaml.cs">
       <DependentUpon>Repayment.xaml</DependentUpon>
     </Compile>
@@ -169,6 +172,9 @@
     </Compile>
     <Compile Include="query\AdvanceQuery.xaml.cs">
       <DependentUpon>AdvanceQuery.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StudentLoan.cs">
+      <DependentUpon>BankModel.tt</DependentUpon>
     </Compile>
     <Compile Include="TEST1.xaml.cs">
       <DependentUpon>TEST1.xaml</DependentUpon>

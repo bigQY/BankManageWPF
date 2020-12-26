@@ -44,6 +44,17 @@
           <Property Name="photo" Type="varbinary(max)" />
           <Property Name="salary" Type="decimal" Precision="18" Scale="4" />
         </EntityType>
+        <EntityType Name="LoanInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="accountNo" Type="nchar" MaxLength="6" Nullable="false" />
+          <Property Name="loanDate" Type="datetime" Nullable="false" />
+          <Property Name="loanType" Type="nvarchar" MaxLength="80" Nullable="false" />
+          <Property Name="loanMoney" Type="float" Nullable="false" />
+          <Property Name="loanYear" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="LoginInfo">
           <Key>
             <PropertyRef Name="Bno" />
@@ -69,6 +80,14 @@
           <Property Name="rationType" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="rationValue" Type="float" />
         </EntityType>
+        <EntityType Name="StudentLoan">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="accountNo" Type="nchar" MaxLength="6" Nullable="false" />
+          <Property Name="graduateDate" Type="datetime" Nullable="false" />
+        </EntityType>
         <Association Name="FK__AccountFi__accou__37A5467C">
           <End Role="AccountInfo" Type="Self.AccountInfo" Multiplicity="1" />
           <End Role="AccountFixed" Type="Self.AccountFixed" Multiplicity="0..1" />
@@ -93,6 +112,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__LoanInfo__accoun__02FC7413">
+          <End Role="AccountInfo" Type="Self.AccountInfo" Multiplicity="1" />
+          <End Role="LoanInfo" Type="Self.LoanInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountInfo">
+              <PropertyRef Name="accountNo" />
+            </Principal>
+            <Dependent Role="LoanInfo">
+              <PropertyRef Name="accountNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__MoneyInfo__accou__5AEE82B9">
           <End Role="AccountInfo" Type="Self.AccountInfo" Multiplicity="1" />
           <End Role="MoneyInfo" Type="Self.MoneyInfo" Multiplicity="*" />
@@ -105,14 +136,28 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__StudentLo__accou__160F4887">
+          <End Role="AccountInfo" Type="Self.AccountInfo" Multiplicity="1" />
+          <End Role="StudentLoan" Type="Self.StudentLoan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountInfo">
+              <PropertyRef Name="accountNo" />
+            </Principal>
+            <Dependent Role="StudentLoan">
+              <PropertyRef Name="accountNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="BankModelStoreContainer">
           <EntitySet Name="AccountFixed" EntityType="Self.AccountFixed" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AccountFlex" EntityType="Self.AccountFlex" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AccountInfo" EntityType="Self.AccountInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EmployeeInfo" EntityType="Self.EmployeeInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LoanInfo" EntityType="Self.LoanInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LoginInfo" EntityType="Self.LoginInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MoneyInfo" EntityType="Self.MoneyInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RateInfo" EntityType="Self.RateInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentLoan" EntityType="Self.StudentLoan" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__AccountFi__accou__37A5467C" Association="Self.FK__AccountFi__accou__37A5467C">
             <End Role="AccountInfo" EntitySet="AccountInfo" />
             <End Role="AccountFixed" EntitySet="AccountFixed" />
@@ -121,9 +166,17 @@
             <End Role="AccountInfo" EntitySet="AccountInfo" />
             <End Role="AccountFlex" EntitySet="AccountFlex" />
           </AssociationSet>
+          <AssociationSet Name="FK__LoanInfo__accoun__02FC7413" Association="Self.FK__LoanInfo__accoun__02FC7413">
+            <End Role="AccountInfo" EntitySet="AccountInfo" />
+            <End Role="LoanInfo" EntitySet="LoanInfo" />
+          </AssociationSet>
           <AssociationSet Name="FK__MoneyInfo__accou__5AEE82B9" Association="Self.FK__MoneyInfo__accou__5AEE82B9">
             <End Role="AccountInfo" EntitySet="AccountInfo" />
             <End Role="MoneyInfo" EntitySet="MoneyInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StudentLo__accou__160F4887" Association="Self.FK__StudentLo__accou__160F4887">
+            <End Role="AccountInfo" EntitySet="AccountInfo" />
+            <End Role="StudentLoan" EntitySet="StudentLoan" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -143,6 +196,8 @@
           <NavigationProperty Name="AccountFlex" Relationship="BankModel.FK__AccountFl__accou__4BAC3F29" FromRole="AccountInfo" ToRole="AccountFlex" />
           <NavigationProperty Name="MoneyInfo" Relationship="BankModel.FK__MoneyInfo__accou__5AEE82B9" FromRole="AccountInfo" ToRole="MoneyInfo" />
           <Property Name="accountBalance" Type="Double" Nullable="false" />
+          <NavigationProperty Name="LoanInfo" Relationship="BankModel.FK__LoanInfo__accoun__02FC7413" FromRole="AccountInfo" ToRole="LoanInfo" />
+          <NavigationProperty Name="StudentLoan" Relationship="BankModel.FK__StudentLo__accou__160F4887" FromRole="AccountInfo" ToRole="StudentLoan" />
         </EntityType>
         <EntityType Name="EmployeeInfo">
           <Key>
@@ -203,6 +258,16 @@
             <End Role="AccountInfo" EntitySet="AccountInfo" />
             <End Role="MoneyInfo" EntitySet="MoneyInfo" />
           </AssociationSet>
+          <EntitySet Name="LoanInfo" EntityType="BankModel.LoanInfo" />
+          <EntitySet Name="StudentLoan" EntityType="BankModel.StudentLoan" />
+          <AssociationSet Name="FK__LoanInfo__accoun__02FC7413" Association="BankModel.FK__LoanInfo__accoun__02FC7413">
+            <End Role="AccountInfo" EntitySet="AccountInfo" />
+            <End Role="LoanInfo" EntitySet="LoanInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StudentLo__accou__160F4887" Association="BankModel.FK__StudentLo__accou__160F4887">
+            <End Role="AccountInfo" EntitySet="AccountInfo" />
+            <End Role="StudentLoan" EntitySet="StudentLoan" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="AccountFixed">
           <Key>
@@ -253,6 +318,51 @@
               <PropertyRef Name="accountNo" />
             </Principal>
             <Dependent Role="MoneyInfo">
+              <PropertyRef Name="accountNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="LoanInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="accountNo" Type="String" Nullable="false" MaxLength="6" FixedLength="true" Unicode="true" />
+          <Property Name="loanDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="loanType" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="loanMoney" Type="Double" Nullable="false" />
+          <Property Name="loanYear" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AccountInfo" Relationship="BankModel.FK__LoanInfo__accoun__02FC7413" FromRole="LoanInfo" ToRole="AccountInfo" />
+        </EntityType>
+        <EntityType Name="StudentLoan">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="accountNo" Type="String" Nullable="false" MaxLength="6" FixedLength="true" Unicode="true" />
+          <Property Name="graduateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="AccountInfo" Relationship="BankModel.FK__StudentLo__accou__160F4887" FromRole="StudentLoan" ToRole="AccountInfo" />
+        </EntityType>
+        <Association Name="FK__LoanInfo__accoun__02FC7413">
+          <End Type="BankModel.AccountInfo" Role="AccountInfo" Multiplicity="1" />
+          <End Type="BankModel.LoanInfo" Role="LoanInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountInfo">
+              <PropertyRef Name="accountNo" />
+            </Principal>
+            <Dependent Role="LoanInfo">
+              <PropertyRef Name="accountNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StudentLo__accou__160F4887">
+          <End Type="BankModel.AccountInfo" Role="AccountInfo" Multiplicity="1" />
+          <End Type="BankModel.StudentLoan" Role="StudentLoan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountInfo">
+              <PropertyRef Name="accountNo" />
+            </Principal>
+            <Dependent Role="StudentLoan">
               <PropertyRef Name="accountNo" />
             </Dependent>
           </ReferentialConstraint>
@@ -331,6 +441,27 @@
                 <ScalarProperty Name="promisedMoney" ColumnName="promisedMoney" />
                 <ScalarProperty Name="promisedYear" ColumnName="promisedYear" />
                 <ScalarProperty Name="accountNo" ColumnName="accountNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LoanInfo">
+            <EntityTypeMapping TypeName="BankModel.LoanInfo">
+              <MappingFragment StoreEntitySet="LoanInfo">
+                <ScalarProperty Name="loanYear" ColumnName="loanYear" />
+                <ScalarProperty Name="loanMoney" ColumnName="loanMoney" />
+                <ScalarProperty Name="loanType" ColumnName="loanType" />
+                <ScalarProperty Name="loanDate" ColumnName="loanDate" />
+                <ScalarProperty Name="accountNo" ColumnName="accountNo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentLoan">
+            <EntityTypeMapping TypeName="BankModel.StudentLoan">
+              <MappingFragment StoreEntitySet="StudentLoan">
+                <ScalarProperty Name="graduateDate" ColumnName="graduateDate" />
+                <ScalarProperty Name="accountNo" ColumnName="accountNo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
