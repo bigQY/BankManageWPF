@@ -155,6 +155,9 @@
     <Compile Include="other\ThemePickerPage.xaml.cs">
       <DependentUpon>ThemePickerPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PaletteSelector.xaml.cs">
+      <DependentUpon>PaletteSelector.xaml</DependentUpon>
+    </Compile>
     <Compile Include="query\AdvanceQuery.xaml.cs">
       <DependentUpon>AdvanceQuery.xaml</DependentUpon>
     </Compile>
@@ -303,6 +306,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="other\WelcomePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PaletteSelector.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

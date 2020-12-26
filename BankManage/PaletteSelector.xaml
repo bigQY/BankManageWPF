@@ -1,0 +1,231 @@
+﻿<UserControl x:Class="BankManage.PaletteSelector"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+            xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:BankManage"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+
+            <materialDesign:Card
+              Background="#c04851"
+              Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"
+              Padding="8"
+              UniformCornerRadius="6" Margin="10">
+                <DockPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock
+                            TextWrapping="Wrap"
+                            Text="玉红" VerticalAlignment="Center" FontSize="36" FontWeight="Bold" FontFamily="STXinwei" />
+                    </StackPanel>
+                    <Button
+                    Tag="玉红"
+                      Style="{StaticResource MaterialDesignIconForegroundButton}"
+                      ToolTip="MaterialDesignIconForegroundButton" DockPanel.Dock="Right" HorizontalAlignment="Right" Click="Button_Click">
+                        <materialDesign:PackIcon Kind="Check" />
+                    </Button>
+                </DockPanel>
+            </materialDesign:Card>
+
+            <materialDesign:Card
+              Background="#1661ab"
+              Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"
+              Padding="8"
+              UniformCornerRadius="6" Margin="10" Grid.Column="1">
+                <DockPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock
+                            TextWrapping="Wrap"
+                            Text="靛青" VerticalAlignment="Center" FontSize="36" FontWeight="Bold" FontFamily="STXinwei" />
+                    </StackPanel>
+                    <Button
+                    Tag="靛青"
+                      Style="{StaticResource MaterialDesignIconForegroundButton}"
+                      ToolTip="MaterialDesignIconForegroundButton" DockPanel.Dock="Right" HorizontalAlignment="Right" Click="Button_Click">
+                        <materialDesign:PackIcon Kind="Check" />
+                    </Button>
+                </DockPanel>
+            </materialDesign:Card>
+
+            <materialDesign:Card
+              Background="#1ba784"
+              Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"
+              Padding="8"
+              UniformCornerRadius="6" Margin="10" Grid.Row="1">
+                <DockPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock
+                            TextWrapping="Wrap"
+                            Text="竹绿" VerticalAlignment="Center" FontSize="36" FontWeight="Bold" FontFamily="STXinwei" />
+                    </StackPanel>
+                    <Button
+                    Tag="竹绿"
+                      Style="{StaticResource MaterialDesignIconForegroundButton}"
+                      ToolTip="MaterialDesignIconForegroundButton" DockPanel.Dock="Right" HorizontalAlignment="Right" Click="Button_Click">
+                        <materialDesign:PackIcon Kind="Check" />
+                    </Button>
+                </DockPanel>
+            </materialDesign:Card>
+
+
+            <materialDesign:Card
+              Background="#d2b116"
+              Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"
+              Padding="8"
+              UniformCornerRadius="6" Margin="10" Grid.Row="1" Grid.Column="1">
+                <DockPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock
+                            TextWrapping="Wrap"
+                            Text="新禾绿" VerticalAlignment="Center" FontSize="36" FontWeight="Bold" FontFamily="STXinwei" />
+                    </StackPanel>
+                    <Button
+                    Tag="新禾绿"
+                      Style="{StaticResource MaterialDesignIconForegroundButton}"
+                      ToolTip="MaterialDesignIconForegroundButton" DockPanel.Dock="Right" HorizontalAlignment="Right" Click="Button_Click">
+                        <materialDesign:PackIcon Kind="Check" />
+                    </Button>
+                </DockPanel>
+            </materialDesign:Card>
+
+
+            <materialDesign:Card
+              Background="#393733"
+              Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"
+              Padding="8"
+              UniformCornerRadius="6" Margin="10" Grid.Row="2">
+                <DockPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock
+                            TextWrapping="Wrap"
+                            Text="河豚灰" VerticalAlignment="Center" FontSize="36" FontWeight="Bold" FontFamily="STXinwei" />
+                    </StackPanel>
+                    <Button
+                    Tag="河豚灰"
+                      Style="{StaticResource MaterialDesignIconForegroundButton}"
+                      ToolTip="MaterialDesignIconForegroundButton" DockPanel.Dock="Right" HorizontalAlignment="Right" Click="Button_Click">
+                        <materialDesign:PackIcon Kind="Check" />
+                    </Button>
+                </DockPanel>
+            </materialDesign:Card>
+
+
+            <materialDesign:Card
+              Background="#fa7e23"
+              Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"
+              Padding="8"
+              UniformCornerRadius="6" Margin="10" Grid.Row="2" Grid.Column="1">
+                <DockPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock
+                            TextWrapping="Wrap"
+                            Text="美人焦橙" VerticalAlignment="Center" FontSize="36" FontWeight="Bold" FontFamily="STXinwei" />
+                    </StackPanel>
+                    <Button
+                    Tag="美人焦橙"
+                      Style="{StaticResource MaterialDesignIconForegroundButton}"
+                      ToolTip="MaterialDesignIconForegroundButton" DockPanel.Dock="Right" HorizontalAlignment="Right" Click="Button_Click">
+                        <materialDesign:PackIcon Kind="Check" />
+                    </Button>
+                </DockPanel>
+            </materialDesign:Card>
+
+            <materialDesign:Card
+              Background="#f1908c"
+              Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"
+              Padding="8"
+              UniformCornerRadius="6" Margin="10" Grid.Row="3">
+                <DockPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock
+                            TextWrapping="Wrap"
+                            Text="榴子红" VerticalAlignment="Center" FontSize="36" FontWeight="Bold" FontFamily="STXinwei" />
+                    </StackPanel>
+                    <Button
+                    Tag="榴子红"
+                      Style="{StaticResource MaterialDesignIconForegroundButton}"
+                      ToolTip="MaterialDesignIconForegroundButton" DockPanel.Dock="Right" HorizontalAlignment="Right" Click="Button_Click">
+                        <materialDesign:PackIcon Kind="Check" />
+                    </Button>
+                </DockPanel>
+            </materialDesign:Card>
+
+            <materialDesign:Card
+              Background="#142334"
+              Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"
+              Padding="8"
+              UniformCornerRadius="6" Margin="10" Grid.Row="3" Grid.Column="1">
+                <DockPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock
+                            TextWrapping="Wrap"
+                            Text="钢青" VerticalAlignment="Center" FontSize="36" FontWeight="Bold" FontFamily="STXinwei" />
+                    </StackPanel>
+                    <Button
+                    Tag="钢青"
+                      Style="{StaticResource MaterialDesignIconForegroundButton}"
+                      ToolTip="MaterialDesignIconForegroundButton" DockPanel.Dock="Right" HorizontalAlignment="Right" Click="Button_Click">
+                        <materialDesign:PackIcon Kind="Check" />
+                    </Button>
+                </DockPanel>
+            </materialDesign:Card>
+
+            <materialDesign:Card
+              Background="#673ab7"
+              Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"
+              Padding="8"
+              UniformCornerRadius="6" Margin="10" Grid.Row="4">
+                <DockPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock
+                            TextWrapping="Wrap"
+                            Text="默认" VerticalAlignment="Center" FontSize="36" FontWeight="Bold" FontFamily="STXinwei" />
+                    </StackPanel>
+                    <Button
+                    Tag="默认"
+                      Style="{StaticResource MaterialDesignIconForegroundButton}"
+                      ToolTip="MaterialDesignIconForegroundButton" DockPanel.Dock="Right" HorizontalAlignment="Right" Click="Button_Click">
+                        <materialDesign:PackIcon Kind="Check" />
+                    </Button>
+                </DockPanel>
+            </materialDesign:Card>
+
+            <materialDesign:Card
+              Background="#c04851"
+              Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"
+              Padding="8"
+              UniformCornerRadius="6" Margin="10" Grid.Row="4" Grid.Column="1">
+                <DockPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock
+                            TextWrapping="Wrap"
+                            Text="自定义" VerticalAlignment="Center" FontSize="36" FontWeight="Bold" FontFamily="STXinwei" />
+                    </StackPanel>
+                    <Button
+                    Tag="自定义"
+                      Style="{StaticResource MaterialDesignIconForegroundButton}"
+                      ToolTip="MaterialDesignIconForegroundButton" DockPanel.Dock="Right" HorizontalAlignment="Right" Click="Button_Click">
+                        <materialDesign:PackIcon Kind="Check" />
+                    </Button>
+                </DockPanel>
+            </materialDesign:Card>
+
+            
+
+        </Grid>
+</UserControl>
