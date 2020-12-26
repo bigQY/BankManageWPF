@@ -135,6 +135,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BankModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="loan\Repayment.xaml.cs">
+      <DependentUpon>Repayment.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainSettings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -146,16 +149,16 @@
     <Compile Include="other\BankReportLoss.xaml.cs">
       <DependentUpon>BankReportLoss.xaml</DependentUpon>
     </Compile>
-    <Compile Include="other\EducationLoans.xaml.cs">
+    <Compile Include="loan\EducationLoans.xaml.cs">
       <DependentUpon>EducationLoans.xaml</DependentUpon>
     </Compile>
-    <Compile Include="other\FirmLoans.xaml.cs">
+    <Compile Include="loan\FirmLoans.xaml.cs">
       <DependentUpon>FirmLoans.xaml</DependentUpon>
     </Compile>
-    <Compile Include="other\PersonLoans.xaml.cs">
+    <Compile Include="loan\PersonLoans.xaml.cs">
       <DependentUpon>PersonLoans.xaml</DependentUpon>
     </Compile>
-    <Compile Include="other\StudentShortTermLoans.xaml.cs">
+    <Compile Include="loan\StudentShortTermLoans.xaml.cs">
       <DependentUpon>StudentShortTermLoans.xaml</DependentUpon>
     </Compile>
     <Compile Include="other\ThemePickerPage.xaml.cs">
@@ -243,6 +246,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="loan\Repayment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="LoginForm.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -291,19 +298,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="other\EducationLoans.xaml">
+    <Page Include="loan\EducationLoans.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="other\FirmLoans.xaml">
+    <Page Include="loan\FirmLoans.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="other\PersonLoans.xaml">
+    <Page Include="loan\PersonLoans.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="other\StudentShortTermLoans.xaml">
+    <Page Include="loan\StudentShortTermLoans.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -438,6 +445,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="loan\loan.png" />
     <None Include="about\LICENSE\1.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
