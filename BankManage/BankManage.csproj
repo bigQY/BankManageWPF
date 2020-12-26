@@ -116,6 +116,9 @@
     <Compile Include="BankHelper\MainPageHelper.xaml.cs">
       <DependentUpon>MainPageHelper.xaml</DependentUpon>
     </Compile>
+    <Compile Include="BankHelper\Page1.xaml.cs">
+      <DependentUpon>Page1.xaml</DependentUpon>
+    </Compile>
     <Compile Include="BankModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -148,6 +151,9 @@
     </Compile>
     <Compile Include="other\StudentShortTermLoans.xaml.cs">
       <DependentUpon>StudentShortTermLoans.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="other\ThemePickerPage.xaml.cs">
+      <DependentUpon>ThemePickerPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="query\AdvanceQuery.xaml.cs">
       <DependentUpon>AdvanceQuery.xaml</DependentUpon>
@@ -205,6 +211,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="BankHelper\MainPageHelper.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BankHelper\Page1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -285,6 +295,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="other\StudentShortTermLoans.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="other\ThemePickerPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -413,6 +427,7 @@
     <None Include="about\LICENSE\2.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Resource Include="1608970858732.png" />
     <Content Include="Bank.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

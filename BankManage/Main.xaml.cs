@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Threading;
+using MaterialDesignColors;
+using MaterialDesignThemes.Wpf;
 
 namespace BankManage
 {
@@ -9,7 +12,10 @@ namespace BankManage
     /// </summary>
     public partial class Main : Window
     {
+        int clickCount = 0;
+
         public static Frame frame;
+
         public Main()
         {
             InitializeComponent();
@@ -30,7 +36,8 @@ namespace BankManage
                 //帮助导航
                 switch (item.Tag.ToString())
                 {
-                    case "":
+                    case "money/NewAccount.xaml":
+                        helperFrame.Source = new Uri("BankHelper/Page1.xaml", UriKind.Relative);
                         break;
                     default:
                         helperFrame.Source = new Uri("BankHelper/NotFoundPageHelper.xaml", UriKind.Relative);
@@ -89,6 +96,71 @@ namespace BankManage
         public static Frame GetFrame()
         {
             return frame;
+        }
+
+        private void PackIcon_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+
+            var paletteHelper = new PaletteHelper();
+            //Retrieve the app's existing theme
+            ITheme theme = paletteHelper.GetTheme();
+
+            //Change the base theme to Dark
+            theme.SetBaseTheme(Theme.Dark);
+            //or theme.SetBaseTheme(Theme.Light);
+
+            //Change all of the primary colors to Red
+            //theme.SetPrimaryColor(Colors.Red);
+
+            //Change all of the secondary colors to Blue
+            //theme.SetSecondaryColor(Colors.Blue);
+
+            //You can also change a single color on the theme, and optionally set the corresponding foreground color
+            //theme.PrimaryMid = new ColorPair(Colors.Brown, Colors.White);
+
+            //Change the app's current theme
+            paletteHelper.SetTheme(theme);
+        }
+
+        private void ToggleButton_Click_1(object sender, RoutedEventArgs e)
+        {
+            var paletteHelper = new PaletteHelper();
+            ITheme theme = paletteHelper.GetTheme();
+            if(darkModeSwitch.IsChecked.Value)
+                theme.SetBaseTheme(Theme.Dark);
+            else
+            {
+                theme.SetBaseTheme(Theme.Light);
+            }
+            paletteHelper.SetTheme(theme);
+        }
+
+        private void Image_MouseRightButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            clickCount++;
+            if (clickCount >= 10)
+            {
+                evalWorld.IsActive = true;
+                DispatcherTimer dispatcherTimer = new DispatcherTimer();
+                dispatcherTimer.Interval = TimeSpan.FromMilliseconds(321);
+                dispatcherTimer.Tick += 派萌很生气;
+                dispatcherTimer.Start();
+            }
+            
+            
+        }
+
+        private void 派萌很生气(object sender, EventArgs e)
+        {
+            var paletteHelper = new PaletteHelper();
+            ITheme theme = paletteHelper.GetTheme();
+            if (DateTime.Now.Millisecond%2==0)
+                theme.SetBaseTheme(Theme.Dark);
+            else
+            {
+                theme.SetBaseTheme(Theme.Light);
+            }
+            paletteHelper.SetTheme(theme);
         }
     }
 }

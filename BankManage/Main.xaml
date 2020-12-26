@@ -15,8 +15,13 @@
                   Mode="PrimaryMid"
                   Padding="16">
                 <DockPanel>
+                    <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
+                        <Button
+                            Style="{StaticResource MaterialDesignIconForegroundButton}" Width="32" Height="32"
+                             Tag="other/ThemePickerPage.xaml" Click="Button_Click">
+                            <materialDesign:PackIcon Kind="PaletteOutline" />
+                        </Button>
                     <materialDesign:PopupBox
-                          DockPanel.Dock="Right"
                           PlacementMode="BottomAndAlignRightEdges">
                         <ListBox>
                             <Button Click="Button_Click_1">帮助</Button>
@@ -24,6 +29,8 @@
                             <Button Click="Button_Click_3">退出</Button>
                         </ListBox>
                     </materialDesign:PopupBox>
+                    </StackPanel>
+
                     <StackPanel
                         Orientation="Horizontal">
                         <ToggleButton x:Name="tabSwitch"
@@ -55,142 +62,158 @@
                 </Style>
             </materialDesign:DrawerHost.Style>
             <materialDesign:DrawerHost.LeftDrawerContent>
-                <StackPanel
-                    Margin="16">
-                    <ScrollViewer VerticalScrollBarVisibility="Visible" Height="580">
-                        <StackPanel Width="170"  >
-                            <Expander Header="存款取款" ExpandDirection="Down" >
-                                <StackPanel x:Name="spbody">
-                                    <Button
+                <StackPanel>
+                    <ScrollViewer VerticalScrollBarVisibility="Visible" Height="550" Margin="0,5,0,0">
+                        <StackPanel>
+                            <StackPanel>
+                                <Image Source="1608970858732.png" Width="300" AutomationProperties.HelpText="cover" MouseRightButtonDown="Image_MouseRightButtonDown" />
+                                <materialDesign:Snackbar
+                                      x:Name="evalWorld"
+                                      Message="派萌很生气,派萌要闪瞎你"
+                                      IsActive="False" />
+                            </StackPanel>
+                            <StackPanel  Margin="16">
+                                <Expander Header="存款取款" ExpandDirection="Down" >
+                                    <StackPanel x:Name="spbody">
+                                        <Button
                                             Tag="money/NewAccount.xaml" Click="Button_Click"
                                               Style="{StaticResource MaterialDesignRaisedButton}"
                                               materialDesign:ButtonAssist.CornerRadius="16"
                                               ToolTip="创建一个新账户"
                                               Content="开户" Margin="10,3" />
-                                    <Button
+                                        <Button
                                             Tag="money/Deposit.xaml" Click="Button_Click"
                                               Style="{StaticResource MaterialDesignRaisedButton}"
                                               materialDesign:ButtonAssist.CornerRadius="16"
                                               ToolTip="存款"
                                               Content="存款" Margin="10,3" />
 
-                                    <Button
+                                        <Button
                                             Tag="money/Withdraw.xaml" Click="Button_Click"
                                               Style="{StaticResource MaterialDesignRaisedButton}"
                                               materialDesign:ButtonAssist.CornerRadius="16"
                                               ToolTip="取款"
                                               Content="取款" Margin="10,3" />
-                                </StackPanel>
-                            </Expander>
-                            <Expander Header="汇总查询">
-                                <StackPanel>
-                                    <Button
+                                    </StackPanel>
+                                </Expander>
+                                <Expander Header="汇总查询">
+                                    <StackPanel>
+                                        <Button
                                          Tag="query/DayQuery.xaml" Click="Button_Click"
                                          Style="{StaticResource MaterialDesignRaisedButton}"
                                          materialDesign:ButtonAssist.CornerRadius="16"
                                          ToolTip="查看当日的汇总数据"
                                          Content="当日汇总" Margin="10,3" />
-                                    <Button
+                                        <Button
                                          Tag="query/TotalQuery.xaml" Click="Button_Click"
                                          Style="{StaticResource MaterialDesignRaisedButton}"
                                          materialDesign:ButtonAssist.CornerRadius="16"
                                          ToolTip="查看汇总数据"
                                          Content="汇总查询" Margin="10,3" />
-                                    <Button
+                                        <Button
                                          Tag="query/AdvanceQuery.xaml" Click="Button_Click"
                                          Style="{StaticResource MaterialDesignRaisedButton}"
                                          materialDesign:ButtonAssist.CornerRadius="16"
                                          ToolTip="查看账号的存款数据"
                                          Content="存款查询" Margin="10,3" />
-                                </StackPanel>
-                            </Expander>
-                            <Expander Header="职员管理">
-                                <StackPanel>
-                                    <Button
+                                    </StackPanel>
+                                </Expander>
+                                <Expander Header="职员管理">
+                                    <StackPanel>
+                                        <Button
                                          Tag="employee/EmployeeBase.xaml" Click="Button_Click"
                                          Style="{StaticResource MaterialDesignRaisedButton}"
                                          materialDesign:ButtonAssist.CornerRadius="16"
                                          ToolTip="今天又要开除谁呢"
                                          Content="职员管理" Margin="10,3" />
-                                    <Button
+                                        <Button
                                          Tag="employee/ChangePay.xaml" Click="Button_Click"
                                          Style="{StaticResource MaterialDesignRaisedButton}"
                                          materialDesign:ButtonAssist.CornerRadius="16"
                                          ToolTip="万恶的资本主义"
                                          Content="调整工资" Margin="10,3" />
-                                </StackPanel>
-                            </Expander>
-                            <Expander Header="辅助功能">
-                                <StackPanel>
-                                    <Button
+                                    </StackPanel>
+                                </Expander>
+                                <Expander Header="辅助功能">
+                                    <StackPanel>
+                                        <Button
                                          Tag="other/ChangeAccount.xaml" Click="Button_Click"
                                          Style="{StaticResource MaterialDesignRaisedButton}"
                                          materialDesign:ButtonAssist.CornerRadius="16"
                                          ToolTip="更改指定账户的密码"
                                          Content="更改账户密码" Margin="10,3" />
-                                    <Button
+                                        <Button
                                          Tag="other/ChangeOperate.xaml" Click="Button_Click"
                                          Style="{StaticResource MaterialDesignRaisedButton}"
                                          materialDesign:ButtonAssist.CornerRadius="16"
                                          ToolTip="更改指定操作员的密码"
                                          Content="更改操作员密码" Margin="10,3" />
-                                </StackPanel>
-                            </Expander>
-                            <Expander Header="其他功能">
-                                <StackPanel>
-                                    <Button
+                                    </StackPanel>
+                                </Expander>
+                                <Expander Header="其他功能">
+                                    <StackPanel>
+                                        <Button
                                          Tag="other/FirmLoans.xaml" Click="Button_Click"
                                          Style="{StaticResource MaterialDesignRaisedButton}"
                                          materialDesign:ButtonAssist.CornerRadius="16"
                                          ToolTip="进行企业贷款服务"
-                                         Content="企业贷款服务" Margin="10,3" />                                    
-                                    <Button
+                                         Content="企业贷款服务" Margin="10,3" />
+                                        <Button
                                          Tag="other/EducationLoans.xaml" Click="Button_Click"
                                          Style="{StaticResource MaterialDesignRaisedButton}"
                                          materialDesign:ButtonAssist.CornerRadius="16"
                                          ToolTip="进行教育助学贷款服务"
                                          Content="教育助学贷款服务" Margin="10,3" />
-                                    <Button
+                                        <Button
                                          Tag="other/PersonLoans.xaml" Click="Button_Click"
                                          Style="{StaticResource MaterialDesignRaisedButton}"
                                          materialDesign:ButtonAssist.CornerRadius="16"
                                          ToolTip="进行个人贷款服务"
                                          Content="个人贷款服务" Margin="10,3" />
-                                    <Button
+                                        <Button
                                          Tag="other/BankReportLoss.xaml" Click="Button_Click"
                                          Style="{StaticResource MaterialDesignRaisedButton}"
                                          materialDesign:ButtonAssist.CornerRadius="16"
                                          ToolTip="进行银行挂失服务"
                                          Content="银行挂失服务" Margin="10,3" />
-                                    <Button
+                                        <Button
                                          Tag="other/StudentShortTermLoans.xaml" Click="Button_Click"
                                          Style="{StaticResource MaterialDesignRaisedButton}"
                                          materialDesign:ButtonAssist.CornerRadius="16"
                                          ToolTip="进行学生短期借款服务"
-                                         Content="学生短期借款服务" Margin="10,3" />                                    
-                                    
-                                </StackPanel>
-                            </Expander>
-                            <Expander Header="利率设置">
-                                <Button
+                                         Content="学生短期借款服务" Margin="10,3" />
+
+                                    </StackPanel>
+                                </Expander>
+                                <Expander Header="利率设置">
+                                    <Button
                                      Tag="rateManage/ratePage.xaml" Click="Button_Click"
                                      Style="{StaticResource MaterialDesignRaisedButton}"
                                      materialDesign:ButtonAssist.CornerRadius="16"
                                      ToolTip="更改管理系统的利率"
                                      Content="利率设置" Margin="10,3" />
-                            </Expander>
-                            <Expander Header="系统帮助">
-                                <Button
+                                </Expander>
+                                <Expander Header="系统帮助">
+                                    <Button
                                      Tag="BankHelper/HelperWelcome.xaml" Click="Button_Click"
                                      Style="{StaticResource MaterialDesignRaisedButton}"
                                      materialDesign:ButtonAssist.CornerRadius="16"
                                      ToolTip="系统帮助"
                                      Content="帮助" Margin="10,3" />
-                            </Expander>
-                            <Expander Header="个人贷款服务">
-                            </Expander>
+                                </Expander>
+                                <Expander Header="个人贷款服务">
+                                </Expander>
+                            </StackPanel>
                         </StackPanel>
                     </ScrollViewer>
+                    <StackPanel Orientation="Horizontal" Height="40" Margin="16,1,16,16">
+                        <materialDesign:PackIcon Kind="AccountCircle" VerticalAlignment="Center" Width="32" Height="32" />
+                        <Label HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,0,0">Administrator</Label>
+                        <materialDesign:PackIcon Kind="WeatherNight" Width="32" Height="32" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="107,0,0,0" />
+                        <ToggleButton x:Name="darkModeSwitch"
+                              Style="{StaticResource MaterialDesignSwitchToggleButton}"
+                              ToolTip="夜间模式开关" Click="ToggleButton_Click_1"/>
+                    </StackPanel>
                 </StackPanel>
             </materialDesign:DrawerHost.LeftDrawerContent>
 
