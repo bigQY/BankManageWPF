@@ -61,5 +61,11 @@
         <Image Grid.ColumnSpan="3" HorizontalAlignment="Center" Height="100" Grid.Row="2" Grid.RowSpan="4" VerticalAlignment="Center" Width="100" Source="loan.png"/>
         <Label Content="助学贷款制度好，" Grid.Column="7" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Grid.RowSpan="2" Grid.ColumnSpan="3" FontSize="24" FontWeight="Bold"/>
         <Label Content="优惠政策很可靠。" Grid.Column="7" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Center" Grid.RowSpan="2" Grid.ColumnSpan="3" FontSize="24" FontWeight="Bold"/>
+        <materialDesign:Snackbar x:Name="error_message_body"
+                IsActive="False" Grid.Row="9" Grid.Column="2" Grid.ColumnSpan="6">
+            <materialDesign:SnackbarMessage x:Name="error_message"
+                    Content="错误"
+                    ActionContent="确定" ActionClick="error_message_ActionClick" />
+        </materialDesign:Snackbar>
     </Grid>
 </Page>

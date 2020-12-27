@@ -63,7 +63,15 @@ namespace BankManage.loan
                 }
 
                 TimeSpan timeSpan = DateTime.Now - bankCustom.account.LoanInfo.FirstOrDefault().loanDate;
-                double LX =bankCustom.account.LoanInfo.FirstOrDefault().loanMoney * DataOperation.GetRate(rate)*timeSpan.Days/30;
+                double LX;
+                if (txtAccountType.Text.Equals("助学贷款")){
+                    timeSpan = DateTime.Now - bankCustom.account.StudentLoan.FirstOrDefault().graduateDate;
+                    if (timeSpan.Days <= 0)
+                    {
+                        LX = bankCustom.account.LoanInfo.FirstOrDefault().loanMoney;
+                    }
+                }
+                LX =(bankCustom.account.LoanInfo.FirstOrDefault().loanMoney * DataOperation.GetRate(rate)*timeSpan.Days/30)+ bankCustom.account.LoanInfo.FirstOrDefault().loanMoney;
                 txtAccountMount.Text = LX + "";
                 btnOK.IsEnabled = true;
             }
