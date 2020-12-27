@@ -3,12 +3,66 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:local="clr-namespace:BankManage.loan"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Repayment">
 
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+
+        </Grid.RowDefinitions>
+        <Label Content="还款" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="3" Grid.ColumnSpan="4" FontSize="36" Grid.RowSpan="2"></Label>
+        <Image Grid.ColumnSpan="3" HorizontalAlignment="Center"  Grid.Row="3" Grid.RowSpan="3" VerticalAlignment="Center"  Source="payback.png"/>
+        <TextBox
+              x:Name="txtAccountNo"
+              materialDesign:HintAssist.Hint="账号"
+              Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+              VerticalAlignment="Center" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="4"/>
+        <PasswordBox
+              x:Name="txtAccountPass"
+              materialDesign:HintAssist.Hint="密码"
+              Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
+              VerticalAlignment="Center" Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="4"/>
+        <TextBox
+              x:Name="txtAccountType"
+              materialDesign:HintAssist.Hint="贷款类型"
+              Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+              VerticalAlignment="Center" Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="4" IsEnabled="False"/>
+        <TextBox
+              x:Name="txtAccountMount"
+              materialDesign:HintAssist.Hint="应还金额"
+              Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+              VerticalAlignment="Center" Grid.Row="5" Grid.Column="3" Grid.ColumnSpan="4" IsEnabled="False"/>
+        <Button x:Name="btnCheck" Grid.Row="2" Grid.Column="7" Grid.ColumnSpan="2" Click="btnCheck_Click">检查账号</Button>
+        <Button x:Name="btnOK" Grid.Row="6" Grid.Column="4" Grid.ColumnSpan="2" Click="btnOK_Click" IsEnabled="False">确定还款</Button>
+        <materialDesign:Snackbar x:Name="error_message_body"
+                IsActive="False" Grid.Row="9" Grid.Column="2" Grid.ColumnSpan="6">
+            <materialDesign:SnackbarMessage x:Name="error_message"
+                    Content="错误"
+                    ActionContent="确定" ActionClick="error_message_ActionClick" />
+        </materialDesign:Snackbar>
     </Grid>
 </Page>

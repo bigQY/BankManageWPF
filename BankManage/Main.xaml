@@ -208,6 +208,12 @@
                                          materialDesign:ButtonAssist.CornerRadius="16"
                                          ToolTip="进行学生短期借款服务"
                                          Content="学生短期借款服务" Margin="10,3" />
+                                        <Button
+                                         Tag="loan/Repayment.xaml" Click="Button_Click"
+                                         Style="{StaticResource MaterialDesignRaisedButton}"
+                                         materialDesign:ButtonAssist.CornerRadius="16"
+                                         ToolTip="还款"
+                                         Content="还款" Margin="10,3" />
                                     </StackPanel>
                                 </Expander>
                             </StackPanel>

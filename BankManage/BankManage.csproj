@@ -454,6 +454,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="loan\payback.png" />
     <Resource Include="loan\loan.png" />
     <None Include="about\LICENSE\1.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
