@@ -20,6 +20,8 @@
         <AssociationConnector Association="BankModel.FK__LoanInfo__accoun__02FC7413" />
         <AssociationConnector Association="BankModel.FK__StudentLo__accou__160F4887" />
         <EntityTypeShape EntityType="BankModel.OperateRecordView" Width="1.5" PointX="8.25" PointY="4.625" />
+        <EntityTypeShape EntityType="BankModel.BlackList" Width="1.5" PointX="4.25" PointY="7.875" />
+        <AssociationConnector Association="BankModel.FK__BlackList__accou__3C34F16F" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

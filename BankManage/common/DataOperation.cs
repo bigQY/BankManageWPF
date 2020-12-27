@@ -283,6 +283,14 @@ namespace BankManage.common
         public static bool CheckAccountPassword(string accountNo,string password)
         {
             BankEntities c = new BankEntities();
+            var qb = from t in c.BlackList
+                     where t.accountNo == accountNo
+                     select t;
+            if (qb.Count() != 0)
+            {
+                return false;
+            }
+
             var q = from t in c.AccountInfo
                     where t.accountNo == accountNo
                     select t;
@@ -295,6 +303,39 @@ namespace BankManage.common
                 }
             }
             return false;
+        }
+        /// <summary>
+        ///  封禁指定账号
+        /// </summary>
+        /// <param name="accountNo">封禁的账号</param>
+        /// <param name="tag">封禁原因</param>
+        public static void BlackAccount(string accountNo, string tag)
+        {
+            BankEntities c = new BankEntities();
+            BlackList blackList = new BlackList();
+            blackList.accountNo = accountNo;
+            blackList.banReason = tag;
+            c.BlackList.Add(blackList);
+            c.SaveChanges();
+        }
+        /// <summary>
+        /// 解封指定账号
+        /// </summary>
+        /// <param name="accountNo">解封的账号</param>
+        /// <param name="password">解封账号的密码</param>
+        public static void UnBlackAccount(string accountNo, string password)
+        {
+            BankEntities c = new BankEntities();
+
+            var q = from t in c.AccountInfo
+                    where t.accountNo == accountNo
+                    select t;
+            if (q.Count() != 0)
+            {
+                c.BlackList.Remove(
+                    c.BlackList.Find(accountNo)
+                    );
+            }
         }
 
     }

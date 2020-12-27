@@ -35,5 +35,6 @@ namespace BankManage
         public DbSet<LoanInfo> LoanInfo { get; set; }
         public DbSet<StudentLoan> StudentLoan { get; set; }
         public DbSet<OperateRecordView> OperateRecordView { get; set; }
+        public DbSet<BlackList> BlackList { get; set; }
     }
 }

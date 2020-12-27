@@ -31,6 +31,14 @@
           <Property Name="accountType" Type="nvarchar" MaxLength="8" />
           <Property Name="accountBalance" Type="float" Nullable="false" />
         </EntityType>
+        <EntityType Name="BlackList">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="accountNo" Type="nchar" MaxLength="6" Nullable="false" />
+          <Property Name="banReason" Type="nchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="EmployeeInfo">
           <Key>
             <PropertyRef Name="EmployeeNo" />
@@ -130,6 +138,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__BlackList__accou__3C34F16F">
+          <End Role="AccountInfo" Type="Self.AccountInfo" Multiplicity="1" />
+          <End Role="BlackList" Type="Self.BlackList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountInfo">
+              <PropertyRef Name="accountNo" />
+            </Principal>
+            <Dependent Role="BlackList">
+              <PropertyRef Name="accountNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__LoanInfo__accoun__02FC7413">
           <End Role="AccountInfo" Type="Self.AccountInfo" Multiplicity="1" />
           <End Role="LoanInfo" Type="Self.LoanInfo" Multiplicity="*" />
@@ -170,6 +190,7 @@
           <EntitySet Name="AccountFixed" EntityType="Self.AccountFixed" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AccountFlex" EntityType="Self.AccountFlex" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AccountInfo" EntityType="Self.AccountInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BlackList" EntityType="Self.BlackList" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EmployeeInfo" EntityType="Self.EmployeeInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LoanInfo" EntityType="Self.LoanInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LoginInfo" EntityType="Self.LoginInfo" Schema="dbo" store:Type="Tables" />
@@ -193,6 +214,10 @@ FROM [dbo].[OperateRecordView] AS [OperateRecordView]</DefiningQuery>
           <AssociationSet Name="FK__AccountFl__accou__4BAC3F29" Association="Self.FK__AccountFl__accou__4BAC3F29">
             <End Role="AccountInfo" EntitySet="AccountInfo" />
             <End Role="AccountFlex" EntitySet="AccountFlex" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BlackList__accou__3C34F16F" Association="Self.FK__BlackList__accou__3C34F16F">
+            <End Role="AccountInfo" EntitySet="AccountInfo" />
+            <End Role="BlackList" EntitySet="BlackList" />
           </AssociationSet>
           <AssociationSet Name="FK__LoanInfo__accoun__02FC7413" Association="Self.FK__LoanInfo__accoun__02FC7413">
             <End Role="AccountInfo" EntitySet="AccountInfo" />
@@ -226,6 +251,7 @@ FROM [dbo].[OperateRecordView] AS [OperateRecordView]</DefiningQuery>
           <Property Name="accountBalance" Type="Double" Nullable="false" />
           <NavigationProperty Name="LoanInfo" Relationship="BankModel.FK__LoanInfo__accoun__02FC7413" FromRole="AccountInfo" ToRole="LoanInfo" />
           <NavigationProperty Name="StudentLoan" Relationship="BankModel.FK__StudentLo__accou__160F4887" FromRole="AccountInfo" ToRole="StudentLoan" />
+          <NavigationProperty Name="BlackList" Relationship="BankModel.FK__BlackList__accou__3C34F16F" FromRole="AccountInfo" ToRole="BlackList" />
         </EntityType>
         <EntityType Name="EmployeeInfo">
           <Key>
@@ -297,6 +323,11 @@ FROM [dbo].[OperateRecordView] AS [OperateRecordView]</DefiningQuery>
             <End Role="StudentLoan" EntitySet="StudentLoan" />
           </AssociationSet>
           <EntitySet Name="OperateRecordView" EntityType="BankModel.OperateRecordView" />
+          <EntitySet Name="BlackList" EntityType="BankModel.BlackList" />
+          <AssociationSet Name="FK__BlackList__accou__3C34F16F" Association="BankModel.FK__BlackList__accou__3C34F16F">
+            <End Role="AccountInfo" EntitySet="AccountInfo" />
+            <End Role="BlackList" EntitySet="BlackList" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="AccountFixed">
           <Key>
@@ -412,6 +443,27 @@ FROM [dbo].[OperateRecordView] AS [OperateRecordView]</DefiningQuery>
           <Property Name="dealMoney" Type="Double" Nullable="false" />
           <Property Name="balance" Type="Double" Nullable="false" />
         </EntityType>
+        <EntityType Name="BlackList">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="accountNo" Type="String" Nullable="false" MaxLength="6" FixedLength="true" Unicode="true" />
+          <Property Name="banReason" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="AccountInfo" Relationship="BankModel.FK__BlackList__accou__3C34F16F" FromRole="BlackList" ToRole="AccountInfo" />
+        </EntityType>
+        <Association Name="FK__BlackList__accou__3C34F16F">
+          <End Type="BankModel.AccountInfo" Role="AccountInfo" Multiplicity="1" />
+          <End Type="BankModel.BlackList" Role="BlackList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountInfo">
+              <PropertyRef Name="accountNo" />
+            </Principal>
+            <Dependent Role="BlackList">
+              <PropertyRef Name="accountNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -517,6 +569,15 @@ FROM [dbo].[OperateRecordView] AS [OperateRecordView]</DefiningQuery>
                 <ScalarProperty Name="dealMoney" ColumnName="dealMoney" />
                 <ScalarProperty Name="dealType" ColumnName="dealType" />
                 <ScalarProperty Name="dealDate" ColumnName="dealDate" />
+                <ScalarProperty Name="accountNo" ColumnName="accountNo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BlackList">
+            <EntityTypeMapping TypeName="BankModel.BlackList">
+              <MappingFragment StoreEntitySet="BlackList">
+                <ScalarProperty Name="banReason" ColumnName="banReason" />
                 <ScalarProperty Name="accountNo" ColumnName="accountNo" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
