@@ -34,7 +34,7 @@
             <Grid.RowDefinitions>
                <RowDefinition Height="Auto"></RowDefinition>
             </Grid.RowDefinitions>
-            <DataGrid Grid.Row="0" AutoGenerateColumns="False" Background="#FFDDFBF9" Name="datagrid1" CanUserAddRows="False" CanUserDeleteRows="False" >
+            <DataGrid Grid.Row="0" AutoGenerateColumns="False" Name="datagrid1" CanUserAddRows="False" CanUserDeleteRows="False" >
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="账号" Binding="{Binding accountNo}" Width="60" />
                     <DataGridTemplateColumn Header="处理时间" Width="150"

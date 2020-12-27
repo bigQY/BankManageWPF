@@ -6,7 +6,9 @@
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
 	Title="ratePage">
-    <StackPanel>
+    <ScrollViewer>
+
+        <StackPanel>
         <DataGrid Name="dataGrid1" AutoGenerateColumns="False"
                 Background="#FFDDFBF9">
             <DataGrid.Columns>
@@ -16,4 +18,5 @@
         </DataGrid>
         <Button Content="保存" Width="70" Margin="0 10 0 0" Click="Button_Click_1" />
     </StackPanel>
+    </ScrollViewer>
 </Page>

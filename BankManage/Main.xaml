@@ -257,6 +257,14 @@
                     <DockPanel Grid.ColumnSpan="3" Grid.RowSpan="3">
                         <Frame Name="frame1" BorderThickness="2" BorderBrush="#FFA6C9FD" NavigationUIVisibility="Hidden" />
                     </DockPanel>
+                    <Button
+                        Tag="other/WelcomePage.xaml"
+                        Click="Button_Click"
+                      Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
+                      HorizontalAlignment="Right"
+                      ToolTip="MaterialDesignFloatingActionMiniButton" VerticalAlignment="Bottom" Margin="0,0,20,20">
+                        <materialDesign:PackIcon Kind="HomeOutline" />
+                    </Button>
                 </Grid>
             </materialDesign:DrawerHost>
         </materialDesign:DrawerHost>
