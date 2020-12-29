@@ -195,12 +195,6 @@
                                          ToolTip="进行个人贷款服务"
                                          Content="个人贷款服务" Margin="10,3" />
                                         <Button
-                                         Tag="loan/BankReportLoss.xaml" Click="Button_Click"
-                                         Style="{StaticResource MaterialDesignRaisedButton}"
-                                         materialDesign:ButtonAssist.CornerRadius="16"
-                                         ToolTip="进行银行挂失服务"
-                                         Content="银行挂失服务" Margin="10,3" />
-                                        <Button
                                          Tag="loan/StudentShortTermLoans.xaml" Click="Button_Click"
                                          Style="{StaticResource MaterialDesignRaisedButton}"
                                          materialDesign:ButtonAssist.CornerRadius="16"
