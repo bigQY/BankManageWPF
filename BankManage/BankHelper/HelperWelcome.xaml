@@ -12,7 +12,10 @@
     <Grid>
         <StackPanel>
             <StackPanel Height="203" VerticalAlignment="Top">
+                <!--
                 <Image gif:ImageBehavior.AnimatedSource="helpAnimation.gif" Height="203" />
+                -->
+
             </StackPanel>
             <StackPanel Margin="20">
                 <Label HorizontalAlignment="Center" FontSize="24" FontWeight="Bold">天地银行管理系统帮助</Label>

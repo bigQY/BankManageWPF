@@ -15,7 +15,9 @@
 
             <StackPanel>
                 <StackPanel Height="203" VerticalAlignment="Top">
-                    <Image gif:ImageBehavior.AnimatedSource="helpAnimation.gif" Height="203" />
+                    <!--
+                <Image gif:ImageBehavior.AnimatedSource="helpAnimation.gif" Height="203" />
+                -->
                 </StackPanel>
                 <StackPanel>
                     <Label HorizontalAlignment="Center" FontSize="24" FontWeight="Bold">天地银行管理系统帮助</Label>
