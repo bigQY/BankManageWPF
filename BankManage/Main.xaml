@@ -62,8 +62,12 @@
                 </Style>
             </materialDesign:DrawerHost.Style>
             <materialDesign:DrawerHost.LeftDrawerContent>
-                <StackPanel>
-                    <ScrollViewer VerticalScrollBarVisibility="Visible" Height="550" Margin="0,5,0,0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="9*"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <ScrollViewer VerticalScrollBarVisibility="Visible" Height="550" Margin="0,5,0,0" DockPanel.Dock="Top">
                         <StackPanel>
                             <StackPanel>
                                 <Image Source="1608970858732.png" Width="300" AutomationProperties.HelpText="cover" MouseRightButtonDown="Image_MouseRightButtonDown" />
@@ -219,7 +223,7 @@
                             </StackPanel>
                         </StackPanel>
                     </ScrollViewer>
-                    <StackPanel Orientation="Horizontal" Height="40" Margin="16,1,16,16">
+                    <StackPanel Orientation="Horizontal" Height="40" Margin="16,1,16,16" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" Grid.Row="1">
                         <materialDesign:PackIcon Kind="AccountCircle" VerticalAlignment="Center" Width="32" Height="32" />
                         <Label HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,0,0">Administrator</Label>
                         <materialDesign:PackIcon Kind="WeatherNight" Width="32" Height="32" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="107,0,0,0" />
@@ -227,7 +231,7 @@
                               Style="{StaticResource MaterialDesignSwitchToggleButton}"
                               ToolTip="夜间模式开关" Click="ToggleButton_Click_1"/>
                     </StackPanel>
-                </StackPanel>
+                </Grid>
             </materialDesign:DrawerHost.LeftDrawerContent>
 
             <materialDesign:DrawerHost x:Name="FrameDrawerHost"

@@ -86,8 +86,13 @@ namespace BankManage.loan
             BankEntities bankEntities = new BankEntities();
             string accountNo = txtAccountNo.Text;
             string accountPass = txtAccountPass.Password;
-            BankCustom bankCustom = DataOperation.GetBankCustom(accountNo);
-            LoanInfo loan = bankCustom.account.LoanInfo.FirstOrDefault();
+
+            var q = from t in bankEntities.LoanInfo
+                    where t.accountNo == accountNo
+                    select t;
+
+            LoanInfo loan;
+            loan = bankEntities.LoanInfo.Find(q.FirstOrDefault().Id);
             bankEntities.LoanInfo.Remove(loan);
             bankEntities.SaveChanges();
             showError("还款成功");

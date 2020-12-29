@@ -150,7 +150,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__LoanInfo__accoun__02FC7413">
+        <Association Name="FK__LoanInfo__accoun__756D6ECB">
           <End Role="AccountInfo" Type="Self.AccountInfo" Multiplicity="1" />
           <End Role="LoanInfo" Type="Self.LoanInfo" Multiplicity="*" />
           <ReferentialConstraint>
@@ -219,7 +219,7 @@ FROM [dbo].[OperateRecordView] AS [OperateRecordView]</DefiningQuery>
             <End Role="AccountInfo" EntitySet="AccountInfo" />
             <End Role="BlackList" EntitySet="BlackList" />
           </AssociationSet>
-          <AssociationSet Name="FK__LoanInfo__accoun__02FC7413" Association="Self.FK__LoanInfo__accoun__02FC7413">
+          <AssociationSet Name="FK__LoanInfo__accoun__756D6ECB" Association="Self.FK__LoanInfo__accoun__756D6ECB">
             <End Role="AccountInfo" EntitySet="AccountInfo" />
             <End Role="LoanInfo" EntitySet="LoanInfo" />
           </AssociationSet>

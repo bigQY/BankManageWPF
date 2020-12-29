@@ -57,7 +57,7 @@
          materialDesign:HintAssist.Hint="利率"
          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
          VerticalAlignment="Center"  Grid.Column="4" Grid.ColumnSpan="3" FontSize="14" Grid.Row="6" IsEnabled="False"  />
-        <Button x:Name="btnSubmit" Content="提交申请" Grid.Row="7" Grid.Column="4" Grid.ColumnSpan="3" HorizontalAlignment="Center"></Button>
+        <Button x:Name="btnSubmit" Content="提交申请" Grid.Row="7" Grid.Column="4" Grid.ColumnSpan="3" HorizontalAlignment="Center" Click="btnSubmit_Click"></Button>
         <Image Grid.ColumnSpan="3" HorizontalAlignment="Center" Height="100" Grid.Row="2" Grid.RowSpan="4" VerticalAlignment="Center" Width="100" Source="loan.png"/>
         <Label Content="助学贷款制度好，" Grid.Column="7" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Grid.RowSpan="2" Grid.ColumnSpan="3" FontSize="24" FontWeight="Bold"/>
         <Label Content="优惠政策很可靠。" Grid.Column="7" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Center" Grid.RowSpan="2" Grid.ColumnSpan="3" FontSize="24" FontWeight="Bold"/>
