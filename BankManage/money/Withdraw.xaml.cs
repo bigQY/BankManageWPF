@@ -170,7 +170,7 @@ namespace BankManage.money
         {
             bool success = false;
             string accountNo = txtAccountNo.Text;
-            string accountPass = txtAccountPass.Text;
+            string accountPass = txtAccountPass.Password;
             BankCustom bankCustom = DataOperation.GetBankCustom(accountNo);
             string accountType=bankCustom.account.accountType;
             if (accountType.Equals("定期存款"))
@@ -276,6 +276,7 @@ namespace BankManage.money
             else
             {
                 bankCustom.withdraw("取款", double.Parse(txtMount.Text));
+                success = true;
             }
 
 

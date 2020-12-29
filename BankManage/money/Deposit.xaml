@@ -38,10 +38,10 @@
                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                 VerticalAlignment="Center" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="4" />
             <Button Grid.Row="2" Grid.Column="7" Click="Button_Click">检查账号</Button>
-            <TextBox
+            <PasswordBox
                 Name="txtAccountPass"
                 materialDesign:HintAssist.Hint="密码"
-                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
                 VerticalAlignment="Center" Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="4"  />
             <TextBox
                 Name="txtAccountType"

@@ -39,9 +39,9 @@
               materialDesign:HintAssist.Hint="账号"
               Style="{StaticResource MaterialDesignFloatingHintTextBox}"
               VerticalAlignment="Center" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="4" />
-                <TextBox x:Name="txtAccountPass"
+                <PasswordBox x:Name="txtAccountPass"
               materialDesign:HintAssist.Hint="密码"
-              Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+              Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
               VerticalAlignment="Center" Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="4" />
                 <Button x:Name="checkAccountBtn" Grid.ColumnSpan="2" Content="检查账号" Grid.Column="7" HorizontalAlignment="Center"  Grid.Row="2" VerticalAlignment="Center" Height="30" Click="checkAccountBtn_Click"/>
                 <TextBox x:Name="txtAccountType"

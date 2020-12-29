@@ -146,7 +146,7 @@ namespace BankManage.money.bank
 
         public void withdraw(string dealType,double money)
         {
-            if (money >= account.accountBalance)
+            if (money <= account.accountBalance)
                 InsertData(dealType, -money);
             else
                 MessageBox.Show("余额不足");

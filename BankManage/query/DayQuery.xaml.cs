@@ -26,24 +26,29 @@ namespace BankManage.query
         //加载汇总当天发生所有交易信息
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            double s1=0, s2=0;
             //查询当日发生的交易记录
             var query = from t in context.MoneyInfo
-                        where t.dealDate.Year == DateTime.Now.Year && t.dealDate.Month == DateTime.Now.Month && t.dealDate.Day == DateTime.Now.Day
                         select t;
-            this.datagrid1.ItemsSource = query.ToList();
-            //查询当日的总收入金额
-            var query1 = from v in query
-                         where v.dealType == "开户" || v.dealType == "存款"
-                         select v.dealMoney;
-            //查询当日的总支出金额
-            var query2 = from m in query
-                         where m.dealType == "结息" || m.dealType == "取款"
-                         select m.dealMoney;
-            if (query1.Count() != 0 && query2.Count() != 0)
+            if (query.Count() != 0)
             {
-                var s1 = query1.Sum();
-                var s2 = query2.Sum();
+                foreach (var item in query)
+                {
+                    if((DateTime.Now- item.dealDate).Days <= 1)
+                    {
+                        datagrid1.Items.Add(item);
+                        if(item.dealType.Contains("开户") || item.dealType.Contains("存款"))
+                        {
+                            s1 += item.dealMoney;
+                        }
+                        if(item.dealType.Contains("结息") || item.dealType.Contains("取款"))
+                        {
+                            s2 += item.dealMoney;
+                        }
+                    }
+                }
                 this.textTotal.Text = string.Format("当日汇总收入金额:{0},总支出金额{1}", s1, s2);
+                //this.datagrid1.ItemsSource = query.ToList();
             }
             else
             {
