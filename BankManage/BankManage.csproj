@@ -111,6 +111,15 @@
     <Compile Include="BankHelper\AdvanceQueryHelp.xaml.cs">
       <DependentUpon>AdvanceQueryHelp.xaml</DependentUpon>
     </Compile>
+    <Compile Include="BankHelper\BankReportLossHelp.xaml.cs">
+      <DependentUpon>BankReportLossHelp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BankHelper\ChangeAccountHelp.xaml.cs">
+      <DependentUpon>ChangeAccountHelp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BankHelper\ChangeOperateHelp.xaml.cs">
+      <DependentUpon>ChangeOperateHelp.xaml</DependentUpon>
+    </Compile>
     <Compile Include="BankHelper\ChangePayHelp.xaml.cs">
       <DependentUpon>ChangePayHelp.xaml</DependentUpon>
     </Compile>
@@ -120,11 +129,20 @@
     <Compile Include="BankHelper\depoitHelp.xaml.cs">
       <DependentUpon>depoitHelp.xaml</DependentUpon>
     </Compile>
+    <Compile Include="BankHelper\EducationLoansHelp.xaml.cs">
+      <DependentUpon>EducationLoansHelp.xaml</DependentUpon>
+    </Compile>
     <Compile Include="BankHelper\EmployeeBaseHelp.xaml.cs">
       <DependentUpon>EmployeeBaseHelp.xaml</DependentUpon>
     </Compile>
+    <Compile Include="BankHelper\FirmLoansHelp.xaml.cs">
+      <DependentUpon>FirmLoansHelp.xaml</DependentUpon>
+    </Compile>
     <Compile Include="BankHelper\HelperWelcome.xaml.cs">
       <DependentUpon>HelperWelcome.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BankHelper\HelperWelcomeHelp.xaml.cs">
+      <DependentUpon>HelperWelcomeHelp.xaml</DependentUpon>
     </Compile>
     <Compile Include="BankHelper\kaihuHelp.xaml.cs">
       <DependentUpon>kaihuHelp.xaml</DependentUpon>
@@ -137,6 +155,18 @@
     </Compile>
     <Compile Include="BankHelper\Page1.xaml.cs">
       <DependentUpon>Page1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BankHelper\PersonLoansHelp.xaml.cs">
+      <DependentUpon>PersonLoansHelp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BankHelper\ratePageHelp.xaml.cs">
+      <DependentUpon>ratePageHelp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BankHelper\RemoveLossReportHelp.xaml.cs">
+      <DependentUpon>RemoveLossReportHelp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BankHelper\RepaymentHelp.xaml.cs">
+      <DependentUpon>RepaymentHelp.xaml</DependentUpon>
     </Compile>
     <Compile Include="BankHelper\TotalQueryHelp.xaml.cs">
       <DependentUpon>TotalQueryHelp.xaml</DependentUpon>
@@ -257,6 +287,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="BankHelper\BankReportLossHelp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BankHelper\ChangeAccountHelp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BankHelper\ChangeOperateHelp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="BankHelper\ChangePayHelp.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -269,11 +311,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="BankHelper\EducationLoansHelp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="BankHelper\EmployeeBaseHelp.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="BankHelper\FirmLoansHelp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="BankHelper\HelperWelcome.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BankHelper\HelperWelcomeHelp.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -290,6 +344,22 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="BankHelper\Page1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BankHelper\PersonLoansHelp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BankHelper\ratePageHelp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BankHelper\RemoveLossReportHelp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BankHelper\RepaymentHelp.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

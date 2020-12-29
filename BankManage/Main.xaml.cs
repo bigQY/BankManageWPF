@@ -65,7 +65,36 @@ namespace BankManage
                     case "employee/ChangePay.xaml":
                         helperFrame.Source = new Uri("BankHelper/ChangePayHelp.xaml", UriKind.Relative);
                         break;
-
+                    case "other/ChangeAccount.xaml":
+                        helperFrame.Source = new Uri("BankHelper/ChangeAccountHelp.xaml", UriKind.Relative);
+                        break;
+                    case "other/ChangeOperate.xaml":
+                        helperFrame.Source = new Uri("BankHelper/ChangeOperateHelp.xaml", UriKind.Relative);
+                        break;
+                    case "other/BankReportLoss.xaml":
+                        helperFrame.Source = new Uri("BankHelper/BankReportLossHelp.xaml", UriKind.Relative);
+                        break;
+                    case "other/RemoveLossReport.xaml":
+                        helperFrame.Source = new Uri("BankHelper/RemoveLossReportHelp.xaml", UriKind.Relative);
+                        break;
+                    case "rateManage/ratePage.xaml":
+                        helperFrame.Source = new Uri("BankHelper/ratePageHelp.xaml", UriKind.Relative);
+                        break;
+                    case "loan/FirmLoans.xaml":
+                        helperFrame.Source = new Uri("BankHelper/FirmLoansHelp.xaml", UriKind.Relative);
+                        break;
+                    case "loan/EducationLoans.xaml":
+                        helperFrame.Source = new Uri("BankHelper/EducationLoansHelp.xaml", UriKind.Relative);
+                        break;
+                    case "loan/PersonLoans.xaml":
+                        helperFrame.Source = new Uri("BankHelper/PersonLoansHelp.xaml", UriKind.Relative);
+                        break;
+                    case "loan/Repayment.xaml":
+                        helperFrame.Source = new Uri("BankHelper/RepaymentHelp.xaml", UriKind.Relative);
+                        break;
+                    case "BankHelper/HelperWelcome.xaml":
+                        helperFrame.Source = new Uri("BankHelper/HelperWelcomeHelp.xaml", UriKind.Relative);
+                        break;
                     default:
                         helperFrame.Source = new Uri("BankHelper/NotFoundPageHelper.xaml", UriKind.Relative);
                         break;
