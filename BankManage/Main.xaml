@@ -163,7 +163,7 @@
                                          ToolTip="进行银行挂失服务"
                                          Content="银行挂失服务" Margin="10,3" />
                                         <Button
-                                         Tag="other/RemoveLossReport.xaml.xaml" Click="Button_Click"
+                                         Tag="other/RemoveLossReport.xaml" Click="Button_Click"
                                          Style="{StaticResource MaterialDesignRaisedButton}"
                                          materialDesign:ButtonAssist.CornerRadius="16"
                                          ToolTip="进行银行解挂服务"
