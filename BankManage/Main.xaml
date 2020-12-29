@@ -158,6 +158,12 @@
                                          materialDesign:ButtonAssist.CornerRadius="16"
                                          ToolTip="进行银行挂失服务"
                                          Content="银行挂失服务" Margin="10,3" />
+                                        <Button
+                                         Tag="other/RemoveLossReport.xaml.xaml" Click="Button_Click"
+                                         Style="{StaticResource MaterialDesignRaisedButton}"
+                                         materialDesign:ButtonAssist.CornerRadius="16"
+                                         ToolTip="进行银行解挂服务"
+                                         Content="解挂服务" Margin="10,3" />
                                     </StackPanel>
                                 </Expander>
                                 <Expander Header="利率设置">
@@ -167,14 +173,6 @@
                                      materialDesign:ButtonAssist.CornerRadius="16"
                                      ToolTip="更改管理系统的利率"
                                      Content="利率设置" Margin="10,3" />
-                                </Expander>
-                                <Expander Header="系统帮助">
-                                    <Button
-                                     Tag="BankHelper/HelperWelcome.xaml" Click="Button_Click"
-                                     Style="{StaticResource MaterialDesignRaisedButton}"
-                                     materialDesign:ButtonAssist.CornerRadius="16"
-                                     ToolTip="系统帮助"
-                                     Content="帮助" Margin="10,3" />
                                 </Expander>
                                 <Expander Header="贷款服务">
                                     <StackPanel>
@@ -215,6 +213,14 @@
                                          ToolTip="还款"
                                          Content="还款" Margin="10,3" />
                                     </StackPanel>
+                                </Expander>
+                                <Expander Header="系统帮助">
+                                    <Button
+                                     Tag="BankHelper/HelperWelcome.xaml" Click="Button_Click"
+                                     Style="{StaticResource MaterialDesignRaisedButton}"
+                                     materialDesign:ButtonAssist.CornerRadius="16"
+                                     ToolTip="系统帮助"
+                                     Content="帮助" Margin="10,3" />
                                 </Expander>
                             </StackPanel>
                         </StackPanel>

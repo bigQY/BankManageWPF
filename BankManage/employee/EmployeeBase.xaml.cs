@@ -35,15 +35,20 @@ namespace BankManage.employee
         public EmployeeBase()
         {
             InitializeComponent();
+            refreshData();
 
+            //this.employee_DataGrid.ItemsSource = query.ToList();
+        }
+
+        private void refreshData()
+        {
             var query = DataOperation.GetEmployeeInfos();
+            dataGridContexts.Clear();
             foreach (var i in query)
             {
                 dataGridContexts.Add(new EmployeeDataGridContext(i));
             }
             DataContext = this;
-
-            //this.employee_DataGrid.ItemsSource = query.ToList();
         }
 
         private void editButton_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -71,6 +76,8 @@ namespace BankManage.employee
                 dialogHost.IsOpen = true;
                 selectedOperation = Operation.edit;
             }
+            refreshData();
+
         }
 
         private void deleteButton_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -98,6 +105,8 @@ namespace BankManage.employee
             employee_DataGrid.ItemsSource = null;
             employee_DataGrid.ItemsSource = dataGridContexts;
             context.SaveChanges();
+            refreshData();
+
         }
 
         private void detailButton_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -133,6 +142,8 @@ namespace BankManage.employee
                 dialogHost.IsOpen = true;
 
             }
+            refreshData();
+
         }
 
         private void addEmployerButton_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -165,6 +176,8 @@ namespace BankManage.employee
                     detailPhoto.Source = bmi;
                 }
             }
+            refreshData();
+
         }
 
         public class EmployeeDataGridContext
@@ -273,6 +286,7 @@ namespace BankManage.employee
             employee_DataGrid.ItemsSource = null;
             employee_DataGrid.ItemsSource = dataGridContexts;
             dialogHost.IsOpen = false;
+
         }
 
         private void Button_Click_Cancel(object sender, RoutedEventArgs e)

@@ -41,7 +41,7 @@ namespace BankManage.money
         {
             //check account
             string accountNo = txtAccountNo.Text;
-            string accountPass = txtAccountPass.Text;
+            string accountPass = txtAccountPass.Password;
 
             string accountType;
 
