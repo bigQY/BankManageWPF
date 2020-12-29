@@ -38,9 +38,34 @@ namespace BankManage
                 //帮助导航
                 switch (item.Tag.ToString())
                 {
-                    case "money/NewAccount.xaml":
-                        helperFrame.Source = new Uri("BankHelper/Page1.xaml", UriKind.Relative);
+                    //case "money/NewAccount.xaml":
+                    //    helperFrame.Source = new Uri("BankHelper/Page1.xaml", UriKind.Relative);
+                    //    break;
+                    case "money/Deposit.xaml":
+                        helperFrame.Source = new Uri("BankHelper/depoitHelp.xaml", UriKind.Relative);
                         break;
+                    case "money/NewAccount.xaml":
+                        helperFrame.Source = new Uri("BankHelper/kaihuHelp.xaml", UriKind.Relative);
+                        break;
+                    case "money/Withdraw.xaml":
+                        helperFrame.Source = new Uri("BankHelper/withdrawHelp.xaml", UriKind.Relative);
+                        break;
+                    case "query/DayQuery.xaml":
+                        helperFrame.Source = new Uri("BankHelper/DayQueryHelp.xaml", UriKind.Relative);
+                        break;
+                    case "query/TotalQuery.xaml":
+                        helperFrame.Source = new Uri("BankHelper/TotalQueryHelp.xaml", UriKind.Relative);
+                        break;
+                    case "query/AdvanceQuery.xaml":
+                        helperFrame.Source = new Uri("BankHelper/AdvanceQueryHelp.xaml", UriKind.Relative);
+                        break;
+                    case "employee/EmployeeBase.xaml":
+                        helperFrame.Source = new Uri("BankHelper/EmployeeBaseHelp.xaml", UriKind.Relative);
+                        break;
+                    case "employee/ChangePay.xaml":
+                        helperFrame.Source = new Uri("BankHelper/ChangePayHelp.xaml", UriKind.Relative);
+                        break;
+
                     default:
                         helperFrame.Source = new Uri("BankHelper/NotFoundPageHelper.xaml", UriKind.Relative);
                         break;

@@ -108,8 +108,26 @@
     <Compile Include="AccountInfo.cs">
       <DependentUpon>BankModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="BankHelper\AdvanceQueryHelp.xaml.cs">
+      <DependentUpon>AdvanceQueryHelp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BankHelper\ChangePayHelp.xaml.cs">
+      <DependentUpon>ChangePayHelp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BankHelper\DayQueryHelp.xaml.cs">
+      <DependentUpon>DayQueryHelp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BankHelper\depoitHelp.xaml.cs">
+      <DependentUpon>depoitHelp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BankHelper\EmployeeBaseHelp.xaml.cs">
+      <DependentUpon>EmployeeBaseHelp.xaml</DependentUpon>
+    </Compile>
     <Compile Include="BankHelper\HelperWelcome.xaml.cs">
       <DependentUpon>HelperWelcome.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BankHelper\kaihuHelp.xaml.cs">
+      <DependentUpon>kaihuHelp.xaml</DependentUpon>
     </Compile>
     <Compile Include="BankHelper\NotFoundPageHelper.xaml.cs">
       <DependentUpon>NotFoundPageHelper.xaml</DependentUpon>
@@ -119,6 +137,12 @@
     </Compile>
     <Compile Include="BankHelper\Page1.xaml.cs">
       <DependentUpon>Page1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BankHelper\TotalQueryHelp.xaml.cs">
+      <DependentUpon>TotalQueryHelp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BankHelper\withdrawHelp.xaml.cs">
+      <DependentUpon>withdrawHelp.xaml</DependentUpon>
     </Compile>
     <Compile Include="BankModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -229,7 +253,31 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="BankHelper\AdvanceQueryHelp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BankHelper\ChangePayHelp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BankHelper\DayQueryHelp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BankHelper\depoitHelp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BankHelper\EmployeeBaseHelp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="BankHelper\HelperWelcome.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BankHelper\kaihuHelp.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -242,6 +290,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="BankHelper\Page1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BankHelper\TotalQueryHelp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BankHelper\withdrawHelp.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
